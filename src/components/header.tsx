@@ -1,0 +1,115 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { Menu, X, Shield, ExternalLink } from 'lucide-react';
+import { siteConfig } from '@/lib/config';
+import { cn } from '@/lib/utils';
+
+const navLinks = [
+  { href: '#features', label: 'Features' },
+  { href: '#download', label: 'Download' },
+  { href: '#security', label: 'Security' },
+  { href: siteConfig.webAppUrl, label: 'Web App', external: true },
+];
+
+export function Header() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <header
+      className={cn(
+        'fixed left-0 right-0 top-0 z-50 transition-all duration-300',
+        isScrolled
+          ? 'border-b border-foreground-secondary/10 bg-background-primary/80 backdrop-blur-xl'
+          : 'bg-transparent'
+      )}
+    >
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent">
+            <Shield className="h-5 w-5 text-white" />
+          </div>
+          <span className="text-xl font-bold">{siteConfig.name}</span>
+        </Link>
+
+        {/* Desktop Navigation */}
+        <div className="hidden items-center gap-8 md:flex">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              target={link.external ? '_blank' : undefined}
+              rel={link.external ? 'noopener noreferrer' : undefined}
+              className="flex items-center gap-1 text-sm text-foreground-secondary transition-colors hover:text-foreground-primary"
+            >
+              {link.label}
+              {link.external && <ExternalLink className="h-3 w-3" />}
+            </Link>
+          ))}
+          <Link
+            href={siteConfig.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-lg bg-background-secondary px-4 py-2 text-sm font-medium transition-colors hover:bg-background-elevated"
+          >
+            GitHub
+          </Link>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="rounded-lg p-2 text-foreground-secondary transition-colors hover:bg-background-secondary md:hidden"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          {isMobileMenuOpen ? (
+            <X className="h-6 w-6" />
+          ) : (
+            <Menu className="h-6 w-6" />
+          )}
+        </button>
+      </nav>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="border-t border-foreground-secondary/10 bg-background-primary/95 backdrop-blur-xl md:hidden">
+          <div className="flex flex-col gap-4 px-6 py-6">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                target={link.external ? '_blank' : undefined}
+                rel={link.external ? 'noopener noreferrer' : undefined}
+                className="flex items-center gap-1 text-foreground-secondary transition-colors hover:text-foreground-primary"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {link.label}
+                {link.external && <ExternalLink className="h-3 w-3" />}
+              </Link>
+            ))}
+            <Link
+              href={siteConfig.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full rounded-lg bg-background-secondary px-4 py-3 text-center font-medium transition-colors hover:bg-background-elevated"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              GitHub
+            </Link>
+          </div>
+        </div>
+      )}
+    </header>
+  );
+}
