@@ -1,12 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Enable static export for maximum performance
-  output: 'export',
-  
   // Trailing slash for clean URLs
   trailingSlash: true,
   
-  // Image optimization (disabled for static export)
+  // Image optimization
   images: {
     unoptimized: true,
   },

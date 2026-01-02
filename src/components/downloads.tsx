@@ -72,9 +72,8 @@ export function Downloads() {
               const Icon = platform.icon;
 
               return (
-                <a
+                <div
                   key={platform.id}
-                  href={platform.downloadUrl}
                   className={`card flex flex-col items-center gap-4 text-center transition-all hover:-translate-y-1 ${
                     isPrimary
                       ? 'ring-2 ring-accent ring-offset-2 ring-offset-background-primary'
@@ -94,7 +93,8 @@ export function Downloads() {
                       {platform.description}
                     </p>
                   </div>
-                  <button
+                  <a
+                    href={platform.downloadUrl}
                     className={`mt-auto flex w-full items-center justify-center gap-2 rounded-lg px-4 py-3 font-semibold transition-colors ${
                       isPrimary
                         ? 'bg-success text-white hover:bg-success/90'
@@ -103,8 +103,8 @@ export function Downloads() {
                   >
                     <Download className="h-4 w-4" />
                     Download
-                  </button>
-                </a>
+                  </a>
+                </div>
               );
             })}
           </div>

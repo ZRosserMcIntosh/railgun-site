@@ -86,7 +86,7 @@ export function Header() {
         <div className="border-t border-foreground-secondary/10 bg-background-primary/95 backdrop-blur-xl md:hidden">
           <div className="flex flex-col gap-4 px-6 py-6">
             {navLinks.map((link) => (
-              <Link
+              <a
                 key={link.href}
                 href={link.href}
                 target={link.external ? '_blank' : undefined}
@@ -96,9 +96,9 @@ export function Header() {
               >
                 {link.label}
                 {link.external && <ExternalLink className="h-3 w-3" />}
-              </Link>
+              </a>
             ))}
-            <Link
+            <a
               href={siteConfig.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -106,7 +106,7 @@ export function Header() {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               GitHub
-            </Link>
+            </a>
           </div>
         </div>
       )}
