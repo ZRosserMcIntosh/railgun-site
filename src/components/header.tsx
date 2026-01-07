@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X, Shield } from 'lucide-react';
+import Image from 'next/image';
+import { Menu, X } from 'lucide-react';
 import { siteConfig } from '@/lib/config';
 import { cn } from '@/lib/utils';
 
@@ -36,8 +37,15 @@ export function Header() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent">
-            <Shield className="h-5 w-5 text-white" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent p-1.5">
+            <Image
+              src="/logo.png"
+              alt="Rail Gun"
+              width={32}
+              height={32}
+              className="h-full w-full brightness-0 invert"
+              priority
+            />
           </div>
           <span className="text-xl font-bold">{siteConfig.name}</span>
         </Link>
