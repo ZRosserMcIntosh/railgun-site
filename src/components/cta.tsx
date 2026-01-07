@@ -17,24 +17,22 @@ export function Cta() {
               Ready for private messaging?
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-white/80">
-              Join thousands of users who trust Rail Gun for their secure
-              communications. Download now and take back your privacy.
+              Join our exclusive waitlist for early access. Be among the first to 
+              experience truly private communications.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
-                href="#download"
+                href="#waitlist"
                 className="group inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 font-semibold text-accent transition-all hover:bg-white/90"
               >
-                Download Rail Gun
+                Request Early Access
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
-                href={siteConfig.webAppUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#security"
                 className="inline-flex items-center gap-2 rounded-lg border border-white/20 px-8 py-4 font-semibold text-white transition-all hover:bg-white/10"
               >
-                Try Web Version
+                Learn More
               </Link>
             </div>
           </div>

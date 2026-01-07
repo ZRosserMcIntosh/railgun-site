@@ -2,15 +2,14 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X, Shield, ExternalLink } from 'lucide-react';
+import { Menu, X, Shield } from 'lucide-react';
 import { siteConfig } from '@/lib/config';
 import { cn } from '@/lib/utils';
 
 const navLinks = [
   { href: '#features', label: 'Features' },
-  { href: '#download', label: 'Download' },
+  { href: '#waitlist', label: 'Waitlist' },
   { href: '#security', label: 'Security' },
-  { href: siteConfig.webAppUrl, label: 'Web App', external: true },
 ];
 
 export function Header() {
@@ -49,12 +48,9 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              target={link.external ? '_blank' : undefined}
-              rel={link.external ? 'noopener noreferrer' : undefined}
               className="flex items-center gap-1 text-sm text-foreground-secondary transition-colors hover:text-foreground-primary"
             >
               {link.label}
-              {link.external && <ExternalLink className="h-3 w-3" />}
             </Link>
           ))}
           <Link
@@ -89,13 +85,10 @@ export function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                target={link.external ? '_blank' : undefined}
-                rel={link.external ? 'noopener noreferrer' : undefined}
                 className="flex items-center gap-1 text-foreground-secondary transition-colors hover:text-foreground-primary"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.label}
-                {link.external && <ExternalLink className="h-3 w-3" />}
               </a>
             ))}
             <a

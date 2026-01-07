@@ -27,7 +27,7 @@ export function Hero() {
           {/* Badge */}
           <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/10 px-4 py-2 text-sm text-accent-light">
             <Shield className="h-4 w-4" />
-            <span>Signal Protocol + Curve25519 + ChaCha20-Poly1305</span>
+            <span>Invitation Only · Private Beta</span>
           </div>
 
           {/* Headline */}
@@ -48,19 +48,17 @@ export function Hero() {
           {/* CTAs */}
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
-              href="#download"
+              href="#waitlist"
               className="btn-primary group w-full sm:w-auto"
             >
-              Download Now
+              Join the Waitlist
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
-              href={siteConfig.webAppUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#security"
               className="btn-secondary w-full sm:w-auto"
             >
-              Open Web App
+              Learn About Security
             </Link>
           </div>
 

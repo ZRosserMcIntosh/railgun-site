@@ -1,6 +1,6 @@
 import { Header } from '@/components/header';
 import { Hero } from '@/components/hero';
-import { Downloads } from '@/components/downloads';
+import { Waitlist } from '@/components/waitlist';
 import { Features } from '@/components/features';
 import { Security } from '@/components/security';
 import { Platforms } from '@/components/platforms';
@@ -15,7 +15,7 @@ export default function Home() {
       <Header />
       <Hero />
       <Features />
-      <Downloads />
+      <Waitlist />
       <Security />
       <Platforms />
       <Cta />
