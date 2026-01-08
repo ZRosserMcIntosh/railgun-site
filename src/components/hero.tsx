@@ -535,8 +535,8 @@ export function Hero() {
 
           {/* Subheadline */}
           <p className="mt-6 text-lg text-foreground-secondary sm:text-xl">
-            Rail Gun is an end-to-end encrypted messaging app that keeps your
-            conversations private. Your keys never leave your device.
+            Rail Gun is civic infrastructure for private communication. End-to-end encrypted
+            messaging where your keys never leave your device. Truth without permission.
           </p>
 
           {/* CTAs */}

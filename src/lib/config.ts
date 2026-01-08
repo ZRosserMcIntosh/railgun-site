@@ -51,6 +51,7 @@ export const siteConfig = {
   
   links: {
     docs: 'https://docs.railgun.app',
+    charter: '/charter',
     security: '/security',
     privacy: '/privacy',
     terms: '/terms',

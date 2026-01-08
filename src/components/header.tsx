@@ -8,6 +8,7 @@ import { siteConfig } from '@/lib/config';
 import { cn } from '@/lib/utils';
 
 const navLinks = [
+  { href: '/charter', label: 'Charter' },
   { href: '#features', label: 'Features' },
   { href: '#waitlist', label: 'Waitlist' },
   { href: '#security', label: 'Security' },

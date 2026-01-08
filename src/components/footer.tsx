@@ -10,6 +10,7 @@ const footerLinks = {
     { label: 'Security', href: '#security' },
   ],
   resources: [
+    { label: 'Charter', href: '/charter' },
     { label: 'Documentation', href: siteConfig.links.docs, external: true },
     { label: 'Release Notes', href: siteConfig.links.releases, external: true },
     { label: 'Report Issues', href: siteConfig.links.issues, external: true },
