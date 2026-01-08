@@ -21,7 +21,7 @@ Railgun never advocates, facilitates, or enables violence, coercion, or physical
 We build roads, not barricades. Printing presses, not weapons. Our purpose is to provide neutral, durable infrastructure that any community can use for lawful purposes. We do not organize movements, target individuals, or frame any party as an enemy.
 
 ### 3. Truth Without Permission
-Every person has the right to communicate, to publish evidence, and to coordinate with others—without requiring approval from any central authority. Railgun exists to make that right technically enforceable, not merely aspirational.
+Every person has the right to communicate, to publish evidence, and to coordinate with others—without requiring approval from any central authority. Railgun exists to make that right technically absolute, not merely aspirational.
 
 ### 4. Sovereignty At The Edge
 Users control their own keys, their own data, and their own relationships. Railgun operators cannot read messages, cannot identify users beyond minimal routing metadata, and cannot comply with demands to produce data they do not possess.

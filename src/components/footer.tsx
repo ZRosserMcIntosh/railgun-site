@@ -1,28 +1,34 @@
+'use client';
+
 import Link from 'next/link';
 import { Shield, Github, ExternalLink } from 'lucide-react';
 import { siteConfig } from '@/lib/config';
-
-const footerLinks = {
-  product: [
-    { label: 'Download', href: '#download' },
-    { label: 'Web App', href: siteConfig.webAppUrl, external: true },
-    { label: 'Features', href: '#features' },
-    { label: 'Security', href: '#security' },
-  ],
-  resources: [
-    { label: 'Charter', href: '/charter' },
-    { label: 'Documentation', href: siteConfig.links.docs, external: true },
-    { label: 'Release Notes', href: siteConfig.links.releases, external: true },
-    { label: 'Report Issues', href: siteConfig.links.issues, external: true },
-  ],
-  legal: [
-    { label: 'Privacy Policy', href: '/privacy' },
-    { label: 'Terms of Service', href: '/terms' },
-    { label: 'Security', href: '/security' },
-  ],
-};
+import { useTranslations } from '@/i18n/provider';
 
 export function Footer() {
+  const { t } = useTranslations('footer');
+  const currentYear = new Date().getFullYear();
+
+  const footerLinks = {
+    product: [
+      { label: t('links.download'), href: '#download' },
+      { label: t('links.webApp'), href: siteConfig.webAppUrl, external: true },
+      { label: t('links.features'), href: '#features' },
+      { label: t('links.security'), href: '#security' },
+    ],
+    resources: [
+      { label: t('links.charter'), href: '/charter' },
+      { label: t('links.documentation'), href: siteConfig.links.docs, external: true },
+      { label: t('links.releaseNotes'), href: siteConfig.links.releases, external: true },
+      { label: t('links.reportIssues'), href: siteConfig.links.issues, external: true },
+    ],
+    legal: [
+      { label: t('links.privacy'), href: '/privacy' },
+      { label: t('links.terms'), href: '/terms' },
+      { label: t('links.security'), href: '/security' },
+    ],
+  };
+
   return (
     <footer className="border-t border-foreground-secondary/10 bg-background-primary">
       <div className="mx-auto max-w-7xl px-6 py-12 sm:py-16">
@@ -36,8 +42,7 @@ export function Footer() {
               <span className="text-xl font-bold">{siteConfig.name}</span>
             </Link>
             <p className="mt-4 max-w-xs text-sm text-foreground-secondary">
-              End-to-end encrypted with Signal Protocol (X3DH + Double Ratchet),
-              Curve25519, and ChaCha20-Poly1305. Your keys, your privacy.
+              {t('description')}
             </p>
             <div className="mt-6 flex items-center gap-4">
               <a
@@ -54,7 +59,7 @@ export function Footer() {
 
           {/* Product Links */}
           <div>
-            <h3 className="mb-4 text-sm font-semibold">Product</h3>
+            <h3 className="mb-4 text-sm font-semibold">{t('product')}</h3>
             <ul className="space-y-3">
               {footerLinks.product.map((link) => (
                 <li key={link.label}>
@@ -74,7 +79,7 @@ export function Footer() {
 
           {/* Resources Links */}
           <div>
-            <h3 className="mb-4 text-sm font-semibold">Resources</h3>
+            <h3 className="mb-4 text-sm font-semibold">{t('resources')}</h3>
             <ul className="space-y-3">
               {footerLinks.resources.map((link) => (
                 <li key={link.label}>
@@ -94,7 +99,7 @@ export function Footer() {
 
           {/* Legal Links */}
           <div>
-            <h3 className="mb-4 text-sm font-semibold">Legal</h3>
+            <h3 className="mb-4 text-sm font-semibold">{t('legal')}</h3>
             <ul className="space-y-3">
               {footerLinks.legal.map((link) => (
                 <li key={link.label}>
@@ -113,8 +118,7 @@ export function Footer() {
         {/* Bottom */}
         <div className="mt-12 border-t border-foreground-secondary/10 pt-8">
           <p className="text-center text-sm text-foreground-secondary">
-            © {new Date().getFullYear()} Rail Gun. Open source software. Not
-            affiliated with Signal Foundation.
+            {t('copyright', { year: currentYear })}
           </p>
         </div>
       </div>
