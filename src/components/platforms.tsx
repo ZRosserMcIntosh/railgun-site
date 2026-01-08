@@ -1,42 +1,46 @@
-import { Monitor, Smartphone, Globe } from 'lucide-react';
+'use client';
 
-const platforms = [
-  {
-    icon: Monitor,
-    title: 'Desktop',
-    description: 'Native apps for macOS, Windows, and Linux',
-    status: 'Available Now',
-    statusColor: 'text-success',
-    available: true,
-  },
-  {
-    icon: Globe,
-    title: 'Web',
-    description: 'Access from any browser with QR code sign-in',
-    status: 'Coming Soon',
-    statusColor: 'text-warning',
-    available: false,
-  },
-  {
-    icon: Smartphone,
-    title: 'Mobile',
-    description: 'iOS and Android apps with seamless sync',
-    status: 'In Development',
-    statusColor: 'text-foreground-secondary',
-    available: false,
-  },
-];
+import { Monitor, Smartphone, Globe } from 'lucide-react';
+import { useTranslations } from '@/i18n/provider';
 
 export function Platforms() {
+  const { t } = useTranslations('platforms');
+
+  const platforms = [
+    {
+      icon: Monitor,
+      title: t('mac'),
+      description: `macOS, Windows, Linux`,
+      status: t('download'),
+      statusColor: 'text-success',
+      available: true,
+    },
+    {
+      icon: Globe,
+      title: t('web'),
+      description: t('web'),
+      status: t('comingSoon'),
+      statusColor: 'text-warning',
+      available: false,
+    },
+    {
+      icon: Smartphone,
+      title: `${t('ios')} & ${t('android')}`,
+      description: `${t('ios')}, ${t('android')}`,
+      status: t('comingSoon'),
+      statusColor: 'text-foreground-secondary',
+      available: false,
+    },
+  ];
+
   return (
     <section className="py-20 sm:py-32">
       <div className="mx-auto max-w-7xl px-6">
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="section-title">Available Everywhere</h2>
+          <h2 className="section-title">{t('title')}</h2>
           <p className="section-subtitle">
-            Use Rail Gun on your favorite platform. Your encrypted messages sync
-            securely across all your devices.
+            {t('subtitle')}
           </p>
         </div>
 

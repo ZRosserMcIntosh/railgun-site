@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Shield,
   Lock,
@@ -8,68 +10,73 @@ import {
   Key,
   Eye,
 } from 'lucide-react';
+import { useTranslations } from '@/i18n/provider';
 
-const features = [
-  {
-    icon: Shield,
-    title: 'Signal Protocol',
-    description:
-      'Double Ratchet (KDF chains) + X3DH key exchange. Industry-standard end-to-end encryption with libsignal',
-  },
-  {
-    icon: Key,
-    title: 'Curve25519 Encryption',
-    description:
-      'Modern elliptic curve cryptography (Curve25519) for key exchange and signatures via NaCl',
-  },
-  {
-    icon: Lock,
-    title: 'ChaCha20-Poly1305',
-    description:
-      'AEAD cipher providing authenticated encryption with associated data (AEAD) for message confidentiality',
-  },
-  {
-    icon: Users,
-    title: 'Group Encryption',
-    description:
-      'Communities with encrypted channels using Signal Protocol group sessions and per-recipient keys',
-  },
-  {
-    icon: MessageSquare,
-    title: 'Perfect Forward Secrecy',
-    description:
-      'Each message uses ephemeral keys. Compromised long-term keys cannot decrypt past messages',
-  },
-  {
-    icon: Code,
-    title: 'Open Source & Auditable',
-    description:
-      'Full transparency on GitHub. Cryptographic implementations reviewed and auditable by security experts',
-  },
-  {
-    icon: Eye,
-    title: 'Server Blindness',
-    description:
-      'Backend sees only encrypted blobs (ChaCha20-Poly1305) and routing metadata. Content never exposed',
-  },
-  {
-    icon: Monitor,
-    title: 'Desktop-First Client',
-    description:
-      'Native Electron app for macOS, Windows, Linux with local key storage and OS-level encryption',
-  },
-];
+const featureIcons = {
+  signal: Shield,
+  curve: Key,
+  chacha: Lock,
+  group: Users,
+  pfs: MessageSquare,
+  opensource: Code,
+  blind: Eye,
+  desktop: Monitor,
+};
 
 export function Features() {
+  const { t } = useTranslations('features');
+
+  const features = [
+    {
+      icon: Shield,
+      title: t('items.signal.title'),
+      description: t('items.signal.description'),
+    },
+    {
+      icon: Key,
+      title: t('items.curve.title'),
+      description: t('items.curve.description'),
+    },
+    {
+      icon: Lock,
+      title: t('items.chacha.title'),
+      description: t('items.chacha.description'),
+    },
+    {
+      icon: Users,
+      title: t('items.group.title'),
+      description: t('items.group.description'),
+    },
+    {
+      icon: MessageSquare,
+      title: t('items.pfs.title'),
+      description: t('items.pfs.description'),
+    },
+    {
+      icon: Code,
+      title: t('items.opensource.title'),
+      description: t('items.opensource.description'),
+    },
+    {
+      icon: Eye,
+      title: t('items.blind.title'),
+      description: t('items.blind.description'),
+    },
+    {
+      icon: Monitor,
+      title: t('items.desktop.title'),
+      description: t('items.desktop.description'),
+    },
+  ];
+
   return (
     <section id="features" className="py-20 sm:py-32">
       <div className="mx-auto max-w-7xl px-6">
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="section-title">Why Rail Gun?</h2>
+          <h2 className="section-title">{t('title')}</h2>
           <p className="section-subtitle">
-            Built from the ground up with privacy and security as the foundation,
-            not an afterthought.
+            {t('subtitle')}
           </p>
         </div>
 

@@ -2,22 +2,21 @@
 
 import { useState } from 'react';
 import { Mail, CheckCircle, AlertCircle } from 'lucide-react';
+import { useTranslations } from '@/i18n/provider';
 
 export function Waitlist() {
+  const { t } = useTranslations('waitlist');
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [message, setMessage] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
-    setMessage('');
 
     // Simple email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       setStatus('error');
-      setMessage('Please enter a valid email address');
       return;
     }
 
@@ -30,11 +29,9 @@ export function Waitlist() {
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       setStatus('success');
-      setMessage('Thanks! You\'re on the waitlist. We\'ll be in touch soon.');
       setEmail('');
     } catch (error) {
       setStatus('error');
-      setMessage('Something went wrong. Please try again.');
     }
   };
 
@@ -45,13 +42,12 @@ export function Waitlist() {
           {/* Badge */}
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/10 px-4 py-2 text-sm text-accent-light">
             <Mail className="h-4 w-4" />
-            <span>Invitation Only</span>
+            <span>{t('badge')}</span>
           </div>
 
-          <h2 className="section-title">Join the Waitlist</h2>
+          <h2 className="section-title">{t('title')}</h2>
           <p className="section-subtitle">
-            Rail Gun is currently in private beta. Enter your email to request
-            early access and be notified when we&apos;re ready for you.
+            {t('subtitle')}
           </p>
 
           {/* Waitlist Form */}
@@ -62,7 +58,7 @@ export function Waitlist() {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
+                  placeholder={t('emailPlaceholder')}
                   disabled={status === 'loading' || status === 'success'}
                   className="flex-1 rounded-lg border border-foreground-secondary/20 bg-background-secondary px-4 py-3 text-foreground-primary placeholder:text-foreground-secondary/50 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 disabled:cursor-not-allowed disabled:opacity-50"
                   required
@@ -72,7 +68,7 @@ export function Waitlist() {
                   disabled={status === 'loading' || status === 'success'}
                   className="btn-primary whitespace-nowrap disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  {status === 'loading' ? 'Joining...' : 'Join Waitlist'}
+                  {status === 'loading' ? t('submitting') : t('submit')}
                 </button>
               </div>
 
@@ -80,13 +76,13 @@ export function Waitlist() {
               {status === 'success' && (
                 <div className="mt-4 flex items-center gap-2 rounded-lg bg-success/10 p-3 text-sm text-success">
                   <CheckCircle className="h-4 w-4 flex-shrink-0" />
-                  <span>{message}</span>
+                  <span>{t('success')}</span>
                 </div>
               )}
               {status === 'error' && (
                 <div className="mt-4 flex items-center gap-2 rounded-lg bg-red-500/10 p-3 text-sm text-red-500">
                   <AlertCircle className="h-4 w-4 flex-shrink-0" />
-                  <span>{message}</span>
+                  <span>{t('error')}</span>
                 </div>
               )}
             </div>

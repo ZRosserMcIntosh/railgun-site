@@ -1,8 +1,13 @@
+'use client';
+
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { siteConfig } from '@/lib/config';
+import { useTranslations } from '@/i18n/provider';
 
 export function Cta() {
+  const { t } = useTranslations('cta');
+
   return (
     <section className="bg-gradient-to-b from-background-primary to-accent/10 py-20 sm:py-32">
       <div className="mx-auto max-w-7xl px-6">
@@ -14,25 +19,24 @@ export function Cta() {
 
           <div className="relative">
             <h2 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
-              Ready for private messaging?
+              {t('title')}
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-white/80">
-              Join our exclusive waitlist for early access. Be among the first to 
-              experience truly private communications.
+              {t('subtitle')}
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="#waitlist"
                 className="group inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 font-semibold text-accent transition-all hover:bg-white/90"
               >
-                Request Early Access
+                {t('button')}
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
                 href="#security"
                 className="inline-flex items-center gap-2 rounded-lg border border-white/20 px-8 py-4 font-semibold text-white transition-all hover:bg-white/10"
               >
-                Learn More
+                {t('button')}
               </Link>
             </div>
           </div>
