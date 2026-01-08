@@ -1,0 +1,254 @@
+{
+  "meta": {
+    "title": "Rail Gun - Biztonságos Privát Üzenetküldés",
+    "titleTemplate": "{title} | Rail Gun",
+    "description": "A Rail Gun polgári infrastruktúra a privát kommunikációhoz. Végpontok közötti titkosítás, ahol a kulcsaid soha nem hagyják el az eszközödet.",
+    "keywords": "titkosított üzenetek, biztonságos chat, Signal protokoll, végponttól végpontig titkosítás, privát üzenetküldés"
+  },
+  "nav": {
+    "charter": "Alapokmány",
+    "features": "Funkciók",
+    "waitlist": "Várólistа",
+    "security": "Biztonság",
+    "github": "GitHub",
+    "language": "Nyelv"
+  },
+  "hero": {
+    "badge": "Csak meghívóval · Zárt béta",
+    "headline1": "Privát üzenetküldés.",
+    "headline2": "Kompromisszumok nélkül.",
+    "subheadline": "A Rail Gun polgári infrastruktúra a privát kommunikációhoz. Végpontok közötti titkosítás, ahol a kulcsaid soha nem hagyják el az eszközödet. Igazság engedély nélkül.",
+    "cta": {
+      "waitlist": "Csatlakozz a várólistához",
+      "security": "Ismerd meg a biztonságot"
+    },
+    "stats": {
+      "protocol": {
+        "title": "X3DH + Double Ratchet",
+        "description": "Signal Protocol kulcscsere"
+      },
+      "curve": {
+        "title": "Curve25519",
+        "description": "Modern elliptikus görbe kriptográfia"
+      },
+      "cipher": {
+        "title": "ChaCha20-Poly1305",
+        "description": "AEAD hitelesített titkosítás"
+      }
+    }
+  },
+  "features": {
+    "title": "Miért a Rail Gun?",
+    "subtitle": "Az alapoktól építve, ahol a magánélet és a biztonság az alapja, nem utógondolat.",
+    "items": {
+      "signal": {
+        "title": "Signal Protokoll",
+        "description": "Double Ratchet (KDF láncok) + X3DH kulcscsere. Ipari szabványú végponttól végpontig titkosítás libsignal-lal"
+      },
+      "curve": {
+        "title": "Curve25519 titkosítás",
+        "description": "Modern elliptikus görbe kriptográfia (Curve25519) kulcscseréhez és aláírásokhoz NaCl-on keresztül"
+      },
+      "chacha": {
+        "title": "ChaCha20-Poly1305",
+        "description": "AEAD cipher, amely hitelesített titkosítást biztosít társított adatokkal az üzenet titkosságához"
+      },
+      "group": {
+        "title": "Csoport titkosítás",
+        "description": "Közösségek titkosított csatornákkal, Signal Protocol csoportos munkamenetekkel és címzettenkénti kulcsokkal"
+      },
+      "pfs": {
+        "title": "Perfect Forward Secrecy",
+        "description": "Minden üzenet efemer kulcsokat használ. A kompromittált hosszú távú kulcsok nem tudják visszafejteni a korábbi üzeneteket"
+      },
+      "opensource": {
+        "title": "Nyílt forráskód és auditálható",
+        "description": "Teljes átláthatóság a GitHubon. A kriptográfiai implementációkat biztonsági szakértők ellenőrizték és auditálták"
+      },
+      "blind": {
+        "title": "Vak szerver",
+        "description": "A backend csak titkosított blobokat (ChaCha20-Poly1305) és routing metaadatokat lát. A tartalom soha nem kerül felfedésre"
+      },
+      "desktop": {
+        "title": "Desktop-First kliens",
+        "description": "Natív Electron alkalmazás macOS, Windows, Linux rendszerekhez helyi kulcstárolással és OS-szintű titkosítással"
+      }
+    }
+  },
+  "waitlist": {
+    "title": "Csatlakozz a zárt bétához",
+    "subtitle": "A Rail Gun jelenleg csak meghívóval elérhető. Csatlakozz a várólistához a korai hozzáférésért.",
+    "emailPlaceholder": "Add meg az email címed",
+    "submit": "Csatlakozás",
+    "submitting": "Csatlakozás...",
+    "success": "Rajta vagy a listán! Hamarosan jelentkezünk.",
+    "error": "Valami hiba történt. Kérjük, próbáld újra.",
+    "privacy": "Tiszteletben tartjuk a magánéleted. Nincs spam."
+  },
+  "security": {
+    "badge": "Beépített biztonság",
+    "title": "Az üzeneteid valóban privátak",
+    "subtitle": "A Rail Gun ugyanazt a titkosítási protokollt használja, amelyben a világ milliárdnyi felhasználója bízik. A privát kulcsaid helyben generálódnak és soha nem érintik a szervereinket.",
+    "features": [
+      "Signal Protocol (X3DH + Double Ratchet)",
+      "Perfect Forward Secrecy (PFS)",
+      "Extended Triple Diffie-Hellman (X3DH)",
+      "Double Ratchet algoritmus (KDF lánc)",
+      "libsodium / NaCl (Curve25519, ChaCha20-Poly1305)",
+      "HMAC-alapú kulcsszármaztatási függvény (HKDF)",
+      "Helyi kulcsgenerálás és tárolás (soha nem továbbítódik)",
+      "Nyílt forráskód és auditálható (GitHub)",
+      "Nem szükséges telefonszám",
+      "Metaadat minimalizálás (csak routing)",
+      "Forward Secrecy és Backward Secrecy",
+      "Tagadható hitelesítés"
+    ],
+    "verify": {
+      "title": "Letöltés ellenőrzése",
+      "description": "Mindig ellenőrizd a letöltéseket, hogy biztosan ne legyenek módosítva.",
+      "step1": {
+        "title": "1. Importáld a GPG kulcsunkat:",
+        "command": "gpg --keyserver keys.openpgp.org --recv-keys [KEY_ID]"
+      },
+      "step2": {
+        "title": "2. Ellenőrizd az aláírást:",
+        "command": "gpg --verify SHA256SUMS.txt.asc SHA256SUMS.txt"
+      },
+      "step3": {
+        "title": "3. Ellenőrizd az ellenőrzőösszeget:",
+        "macLinux": "# macOS/Linux\nsha256sum -c SHA256SUMS.txt --ignore-missing",
+        "windows": "# Windows PowerShell\nGet-FileHash Rail-Gun-*.exe | Format-List"
+      },
+      "checksums": "A teljes ellenőrzőösszegek elérhetők itt"
+    }
+  },
+  "platforms": {
+    "title": "Mindenhol elérhető",
+    "subtitle": "Töltsd le a Rail Gun-t a platformodra vagy használd a webes verziót.",
+    "download": "Letöltés",
+    "comingSoon": "Hamarosan",
+    "mac": "macOS",
+    "windows": "Windows",
+    "linux": "Linux",
+    "ios": "iOS",
+    "android": "Android",
+    "web": "Webes alkalmazás"
+  },
+  "cta": {
+    "title": "Készen állsz visszavenni a magánéleted?",
+    "subtitle": "Csatlakozz a felhasználók ezreihez, akik a Rail Gun-ban bíznak a biztonságos kommunikációhoz.",
+    "button": "Kezdd el"
+  },
+  "footer": {
+    "description": "Végpontok közötti titkosítás Signal Protocol-lal (X3DH + Double Ratchet), Curve25519 és ChaCha20-Poly1305. A te kulcsaid, a te magánéleted.",
+    "product": "Termék",
+    "resources": "Források",
+    "legal": "Jogi",
+    "links": {
+      "download": "Letöltés",
+      "webApp": "Webes alkalmazás",
+      "features": "Funkciók",
+      "security": "Biztonság",
+      "charter": "Alapokmány",
+      "documentation": "Dokumentáció",
+      "releaseNotes": "Kiadási megjegyzések",
+      "reportIssues": "Hibák jelentése",
+      "privacy": "Adatvédelmi irányelvek",
+      "terms": "Felhasználási feltételek"
+    },
+    "copyright": "© {year} Rail Gun. Minden jog fenntartva."
+  },
+  "charter": {
+    "badge": "Alapító dokumentum",
+    "title": "A Rail Gun Alapokmánya",
+    "subtitle": "A Rail Gun polgári infrastruktúra. Azért létezik, hogy csökkentse az igazság költségét, megvédje az engedély nélküli kommunikációt és lehetővé tegye a békés koordinációt nagy léptékben.",
+    "preamble": {
+      "title": "Preambulum",
+      "p1": "A Rail Gun nem fegyver. Út, nyomda, közszolgáltatás az információs korhoz. Olyan infrastruktúrát építünk, amely feleslegessé teszi az erőszakot azáltal, hogy az igazságot hozzáférhetővé, a hazugságot költségessé és a békés önkorrekciót lehetségessé teszi.",
+      "p2": "Akkor sikerülünk, amikor egy újságíró félelem nélkül publikálhat bizonyítékokat, amikor családok kommunikálhatnak ellenséges határokon keresztül, amikor közösségek szervezhetnek kölcsönös segítséget megfigyelés nélkül, és amikor társadalmak korrigálhatják magukat vérontás nélkül."
+    },
+    "principlesTitle": "A tíz alapelv",
+    "principlesSubtitle": "Ezek az elvek nem megvitathatók. Minden termékdöntésnek, minden funkciónak, minden kommunikációnak összhangban kell lennie velük.",
+    "principles": {
+      "1": {
+        "title": "Az erőszakmentesség nem megvitatható",
+        "description": "A Rail Gun soha nem propagálja, nem segíti elő és nem tolerálja az erőszakot, kényszert vagy fizikai károkozást. Úgy tervezünk, hogy csökkentsük az erőszakhoz vezető feltételeket azáltal, hogy a békés alternatívákat életképessé tesszük."
+      },
+      "2": {
+        "title": "Infrastruktúra, nem agitáció",
+        "description": "Utakat építünk, nem barikádokat. Nyomdákat, nem fegyvereket. Célunk semleges, tartós infrastruktúra biztosítása, amelyet bármely közösség használhat legitim célokra."
+      },
+      "3": {
+        "title": "Igazság engedély nélkül",
+        "description": "Minden embernek joga van kommunikálni, bizonyítékokat publikálni és másokkal koordinálni — anélkül, hogy bármilyen központi hatóságtól jóváhagyást kellene kérnie."
+      },
+      "4": {
+        "title": "Szuverenitás a peremén",
+        "description": "A felhasználók irányítják saját kulcsaikat, adataikat és kapcsolataikat. A Rail Gun operátorai nem tudják olvasni az üzeneteket vagy azonosítani a felhasználókat a minimális routing metaadatokon túl."
+      },
+      "5": {
+        "title": "A protokoll túléli az operátort",
+        "description": "A mag protokollnak működőképesnek kell maradnia akkor is, ha a Rail Gun kompromittálódik, felvásárolják vagy bezárják. Nincs egyetlen hibapont. Nincs vészleállító."
+      },
+      "6": {
+        "title": "A réteg elkülönítés védi a legitimitást",
+        "description": "A szuverén mag (protokoll) semleges. A szolgáltatási réteg (üzleti, megfelelőségi) az, ahol az üzlet zajlik. Ezek a rétegek architekturálisan elkülönítettek."
+      },
+      "7": {
+        "title": "Biztonságos alapértelmezések, tudatos hatalom",
+        "description": "Az alapértelmezések biztonságosak és megfelelőek a mindennapi kommunikációhoz. A magasabb kockázatú funkciók kifejezett felhasználói szándékot és tájékozott beleegyezést igényelnek."
+      },
+      "8": {
+        "title": "Minimális megőrzés, maximális törlés",
+        "description": "A routinghoz szükséges minimális adatot tároljuk, és soha nem tovább, mint szükséges. A felhasználók teljesen törölhetik adataikat."
+      },
+      "9": {
+        "title": "Legitimitás átláthatósággal",
+        "description": "A Rail Gun publikálja protokolljait, auditálja kódját, nyilvánosságra hozza finanszírozását és nyíltan működik. A legitimitást elszámoltathatósággal érdemeljük ki."
+      },
+      "10": {
+        "title": "Nincsenek ellenségek, csak problémák",
+        "description": "Nem személyesítjük meg az ellenzőket és nem nevezünk meg célpontokat. Problémákat írunk le és megoldásokat építünk. A cél egy olyan világ, ahol mindenki biztonságosan kommunikálhat."
+      }
+    },
+    "whatWeAreNot": {
+      "title": "Mi nem a Rail Gun",
+      "items": [
+        "Nem zaklatás, doxxolás vagy stalkolás eszköze",
+        "Nem illegális erőszak koordinálására szolgáló platform",
+        "Nem fegyver semmilyen személy, intézmény vagy kormány ellen",
+        "Nem a következmények alóli mentesség ígérete",
+        "Nem ideológia — hanem infrastruktúra"
+      ]
+    },
+    "commitments": {
+      "title": "Működési kötelezettségvállalások",
+      "items": {
+        "audit": {
+          "title": "Éves etikai audit",
+          "description": "A termékdöntések független felülvizsgálata ezen Alapokmány alapján."
+        },
+        "transparency": {
+          "title": "Átláthatósági jelentések",
+          "description": "Negyedéves közzététel a kormányzati kérésekről és megfelelőségi intézkedésekről."
+        },
+        "marketing": {
+          "title": "Nincs félrevezető marketing",
+          "description": "Minden biztonsági és adatvédelmi állítás technikailag ellenőrizhetőnek kell lennie."
+        },
+        "governance": {
+          "title": "Közösségi irányítás",
+          "description": "A protokoll változtatások nyílt vitát és hozzávetőleges konszenzust igényelnek."
+        }
+      }
+    },
+    "closing": "Ez az Alapokmány élő dokumentum. A módosítások nyilvános vitát, közösségi beleegyezést és az erőszakmentesség elvével való összhangot igényelnek.",
+    "viewOnGithub": "Megtekintés a GitHubon",
+    "securityDetails": "Biztonsági részletek"
+  },
+  "notFound": {
+    "title": "Az oldal nem található",
+    "description": "Sajnáljuk, nem találjuk a keresett oldalt.",
+    "backHome": "Vissza a főoldalra"
+  }
+}

@@ -1,0 +1,254 @@
+{
+  "meta": {
+    "title": "Rail Gun - 安全私密通讯",
+    "titleTemplate": "{title} | Rail Gun",
+    "description": "Rail Gun 是为私密通讯而设计的公民基础设施。端到端加密，您的密钥永远不会离开您的设备。",
+    "keywords": "加密消息, 安全聊天, Signal协议, 端到端加密, 私密通讯"
+  },
+  "nav": {
+    "charter": "宪章",
+    "features": "功能",
+    "waitlist": "等候名单",
+    "security": "安全",
+    "github": "GitHub",
+    "language": "语言"
+  },
+  "hero": {
+    "badge": "仅限邀请 · 封闭测试",
+    "headline1": "私密通讯。",
+    "headline2": "零妥协。",
+    "subheadline": "Rail Gun 是为私密通讯而设计的公民基础设施。端到端加密，您的密钥永远不会离开您的设备。无需许可的真相。",
+    "cta": {
+      "waitlist": "加入等候名单",
+      "security": "了解安全性"
+    },
+    "stats": {
+      "protocol": {
+        "title": "X3DH + Double Ratchet",
+        "description": "Signal Protocol 密钥交换"
+      },
+      "curve": {
+        "title": "Curve25519",
+        "description": "现代椭圆曲线加密"
+      },
+      "cipher": {
+        "title": "ChaCha20-Poly1305",
+        "description": "AEAD 认证加密"
+      }
+    }
+  },
+  "features": {
+    "title": "为什么选择 Rail Gun？",
+    "subtitle": "从零开始构建，将隐私和安全作为基础，而非事后考虑。",
+    "items": {
+      "signal": {
+        "title": "Signal 协议",
+        "description": "Double Ratchet（KDF链）+ X3DH密钥交换。使用libsignal的行业标准端到端加密"
+      },
+      "curve": {
+        "title": "Curve25519 加密",
+        "description": "通过NaCl进行密钥交换和签名的现代椭圆曲线加密（Curve25519）"
+      },
+      "chacha": {
+        "title": "ChaCha20-Poly1305",
+        "description": "AEAD密码，为消息机密性提供带关联数据的认证加密"
+      },
+      "group": {
+        "title": "群组加密",
+        "description": "使用Signal Protocol群组会话和每个接收者密钥的加密频道社区"
+      },
+      "pfs": {
+        "title": "完美前向保密",
+        "description": "每条消息使用临时密钥。泄露的长期密钥无法解密过去的消息"
+      },
+      "opensource": {
+        "title": "开源且可审计",
+        "description": "在GitHub上完全透明。加密实现已由安全专家审查并可审计"
+      },
+      "blind": {
+        "title": "盲服务器",
+        "description": "后端只看到加密的数据块（ChaCha20-Poly1305）和路由元数据。内容永远不会被暴露"
+      },
+      "desktop": {
+        "title": "桌面优先客户端",
+        "description": "适用于macOS、Windows、Linux的原生Electron应用，具有本地密钥存储和操作系统级加密"
+      }
+    }
+  },
+  "waitlist": {
+    "title": "加入封闭测试",
+    "subtitle": "Rail Gun 目前仅限邀请。加入等候名单以获得早期访问权限。",
+    "emailPlaceholder": "输入您的邮箱",
+    "submit": "加入",
+    "submitting": "加入中...",
+    "success": "您已加入名单！我们很快会联系您。",
+    "error": "出了点问题。请再试一次。",
+    "privacy": "我们尊重您的隐私。绝不发送垃圾邮件。"
+  },
+  "security": {
+    "badge": "内置安全",
+    "title": "您的消息真正私密",
+    "subtitle": "Rail Gun 使用与全球数十亿用户信任的相同加密协议。您的私钥在本地生成，永远不会接触我们的服务器。",
+    "features": [
+      "Signal 协议（X3DH + Double Ratchet）",
+      "完美前向保密（PFS）",
+      "扩展三重Diffie-Hellman（X3DH）",
+      "Double Ratchet算法（KDF链）",
+      "libsodium / NaCl（Curve25519, ChaCha20-Poly1305）",
+      "基于HMAC的密钥派生函数（HKDF）",
+      "本地密钥生成和存储（永不传输）",
+      "开源且可审计（GitHub）",
+      "无需电话号码",
+      "元数据最小化（仅路由）",
+      "前向保密和后向保密",
+      "可否认认证"
+    ],
+    "verify": {
+      "title": "验证下载",
+      "description": "请始终验证下载以确保它们未被篡改。",
+      "step1": {
+        "title": "1. 导入我们的 GPG 密钥：",
+        "command": "gpg --keyserver keys.openpgp.org --recv-keys [KEY_ID]"
+      },
+      "step2": {
+        "title": "2. 验证签名：",
+        "command": "gpg --verify SHA256SUMS.txt.asc SHA256SUMS.txt"
+      },
+      "step3": {
+        "title": "3. 检查校验和：",
+        "macLinux": "# macOS/Linux\nsha256sum -c SHA256SUMS.txt --ignore-missing",
+        "windows": "# Windows PowerShell\nGet-FileHash Rail-Gun-*.exe | Format-List"
+      },
+      "checksums": "完整校验和可在此处获取"
+    }
+  },
+  "platforms": {
+    "title": "随处可用",
+    "subtitle": "为您的平台下载 Rail Gun 或使用网页版。",
+    "download": "下载",
+    "comingSoon": "即将推出",
+    "mac": "macOS",
+    "windows": "Windows",
+    "linux": "Linux",
+    "ios": "iOS",
+    "android": "Android",
+    "web": "网页应用"
+  },
+  "cta": {
+    "title": "准备好夺回您的隐私了吗？",
+    "subtitle": "加入信任 Rail Gun 进行安全通讯的数千名用户。",
+    "button": "开始使用"
+  },
+  "footer": {
+    "description": "使用 Signal Protocol（X3DH + Double Ratchet）、Curve25519 和 ChaCha20-Poly1305 的端到端加密。您的密钥，您的隐私。",
+    "product": "产品",
+    "resources": "资源",
+    "legal": "法律",
+    "links": {
+      "download": "下载",
+      "webApp": "网页应用",
+      "features": "功能",
+      "security": "安全",
+      "charter": "宪章",
+      "documentation": "文档",
+      "releaseNotes": "发布说明",
+      "reportIssues": "报告问题",
+      "privacy": "隐私政策",
+      "terms": "使用条款"
+    },
+    "copyright": "© {year} Rail Gun. 保留所有权利。"
+  },
+  "charter": {
+    "badge": "创始文件",
+    "title": "Rail Gun 宪章",
+    "subtitle": "Rail Gun 是公民基础设施。它的存在是为了降低真相的成本，保护无需许可的通讯，并实现大规模的和平协调。",
+    "preamble": {
+      "title": "序言",
+      "p1": "Rail Gun 不是武器。它是道路、印刷机、信息时代的公共服务。我们构建基础设施，通过使真相可及、谎言昂贵、和平自我纠正成为可能，来使暴力变得不必要。",
+      "p2": "当记者可以无惧地发布证据，当家庭可以跨越敌对边界进行通讯，当社区可以在没有监视的情况下组织互助，当社会可以在没有流血的情况下自我纠正时，我们就成功了。"
+    },
+    "principlesTitle": "十大原则",
+    "principlesSubtitle": "这些原则不可协商。每个产品决策、每个功能、每次通讯都必须与它们保持一致。",
+    "principles": {
+      "1": {
+        "title": "非暴力不可协商",
+        "description": "Rail Gun 绝不提倡、促进或容忍暴力、胁迫或身体伤害。我们通过使和平替代方案可行来设计减少导致暴力的条件。"
+      },
+      "2": {
+        "title": "基础设施，而非煽动",
+        "description": "我们建造道路，而非路障。印刷机，而非武器。我们的目标是提供任何社区都可以用于合法目的的中立、持久的基础设施。"
+      },
+      "3": {
+        "title": "无需许可的真相",
+        "description": "每个人都有权进行通讯、发布证据并与他人协调——无需任何中央权力机构的批准。"
+      },
+      "4": {
+        "title": "边缘主权",
+        "description": "用户控制自己的密钥、自己的数据和自己的关系。Rail Gun 运营商无法读取消息或识别最小路由元数据之外的用户。"
+      },
+      "5": {
+        "title": "协议比运营商更长寿",
+        "description": "核心协议必须在 Rail Gun 被入侵、收购或关闭后仍能运行。没有单点故障。没有终止开关。"
+      },
+      "6": {
+        "title": "层分离保护合法性",
+        "description": "主权核心（协议）是中立的。服务层（商业、合规）是业务发生的地方。这些层在架构上是分离的。"
+      },
+      "7": {
+        "title": "安全默认，有意识的权力",
+        "description": "默认设置是安全的，适用于普通通讯。高风险功能需要明确的用户意图和知情同意。"
+      },
+      "8": {
+        "title": "最小保留，最大删除",
+        "description": "我们存储路由所需的最小数据，且保存时间不超过必要时间。用户可以完全删除他们的数据。"
+      },
+      "9": {
+        "title": "透明带来合法性",
+        "description": "Rail Gun 公开其协议，审计其代码，披露其资金，并公开运营。合法性通过问责来赢得。"
+      },
+      "10": {
+        "title": "没有敌人，只有问题",
+        "description": "我们不将对手人格化，也不点名目标。我们描述问题并构建解决方案。目标是一个每个人都能安全通讯的世界。"
+      }
+    },
+    "whatWeAreNot": {
+      "title": "Rail Gun 不是什么",
+      "items": [
+        "不是骚扰、人肉搜索或跟踪的工具",
+        "不是协调非法暴力的平台",
+        "不是针对任何个人、机构或政府的武器",
+        "不是免于后果的承诺",
+        "不是意识形态——而是基础设施"
+      ]
+    },
+    "commitments": {
+      "title": "运营承诺",
+      "items": {
+        "audit": {
+          "title": "年度道德审计",
+          "description": "根据本宪章对产品决策进行独立审查。"
+        },
+        "transparency": {
+          "title": "透明度报告",
+          "description": "每季度披露政府请求和合规行动。"
+        },
+        "marketing": {
+          "title": "无误导性营销",
+          "description": "所有安全和隐私声明必须是技术上可验证的。"
+        },
+        "governance": {
+          "title": "社区治理",
+          "description": "协议变更需要公开辩论和大致共识。"
+        }
+      }
+    },
+    "closing": "本宪章是一份活文件。修订需要公开辩论、社区同意以及与非暴力原则的一致性。",
+    "viewOnGithub": "在 GitHub 上查看",
+    "securityDetails": "安全详情"
+  },
+  "notFound": {
+    "title": "页面未找到",
+    "description": "抱歉，我们找不到您要查找的页面。",
+    "backHome": "返回首页"
+  }
+}

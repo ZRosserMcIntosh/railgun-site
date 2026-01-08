@@ -1,0 +1,254 @@
+{
+  "meta": {
+    "title": "Rail Gun - Secure Private Messaging",
+    "titleTemplate": "{title} | Rail Gun",
+    "description": "Rail Gun is civic infrastructure for private communication. End-to-end encrypted messaging where your keys never leave your device.",
+    "keywords": "encrypted messaging, secure chat, Signal protocol, end-to-end encryption, private messaging"
+  },
+  "nav": {
+    "charter": "Charter",
+    "features": "Features",
+    "waitlist": "Waitlist",
+    "security": "Security",
+    "github": "GitHub",
+    "language": "Language"
+  },
+  "hero": {
+    "badge": "Invitation Only · Private Beta",
+    "headline1": "Private messaging.",
+    "headline2": "Zero compromises.",
+    "subheadline": "Rail Gun is civic infrastructure for private communication. End-to-end encrypted messaging where your keys never leave your device. Truth without permission.",
+    "cta": {
+      "waitlist": "Join the Waitlist",
+      "security": "Learn About Security"
+    },
+    "stats": {
+      "protocol": {
+        "title": "X3DH + Double Ratchet",
+        "description": "Signal Protocol key exchange"
+      },
+      "curve": {
+        "title": "Curve25519",
+        "description": "Modern elliptic curve cryptography"
+      },
+      "cipher": {
+        "title": "ChaCha20-Poly1305",
+        "description": "AEAD authenticated encryption"
+      }
+    }
+  },
+  "features": {
+    "title": "Why Rail Gun?",
+    "subtitle": "Built from the ground up with privacy and security as the foundation, not an afterthought.",
+    "items": {
+      "signal": {
+        "title": "Signal Protocol",
+        "description": "Double Ratchet (KDF chains) + X3DH key exchange. Industry-standard end-to-end encryption with libsignal"
+      },
+      "curve": {
+        "title": "Curve25519 Encryption",
+        "description": "Modern elliptic curve cryptography (Curve25519) for key exchange and signatures via NaCl"
+      },
+      "chacha": {
+        "title": "ChaCha20-Poly1305",
+        "description": "AEAD cipher providing authenticated encryption with associated data (AEAD) for message confidentiality"
+      },
+      "group": {
+        "title": "Group Encryption",
+        "description": "Communities with encrypted channels using Signal Protocol group sessions and per-recipient keys"
+      },
+      "pfs": {
+        "title": "Perfect Forward Secrecy",
+        "description": "Each message uses ephemeral keys. Compromised long-term keys cannot decrypt past messages"
+      },
+      "opensource": {
+        "title": "Open Source & Auditable",
+        "description": "Full transparency on GitHub. Cryptographic implementations reviewed and auditable by security experts"
+      },
+      "blind": {
+        "title": "Server Blindness",
+        "description": "Backend sees only encrypted blobs (ChaCha20-Poly1305) and routing metadata. Content never exposed"
+      },
+      "desktop": {
+        "title": "Desktop-First Client",
+        "description": "Native Electron app for macOS, Windows, Linux with local key storage and OS-level encryption"
+      }
+    }
+  },
+  "waitlist": {
+    "title": "Join the Private Beta",
+    "subtitle": "Rail Gun is currently invitation-only. Join the waitlist to get early access when we expand.",
+    "emailPlaceholder": "Enter your email",
+    "submit": "Join Waitlist",
+    "submitting": "Joining...",
+    "success": "You're on the list! We'll be in touch soon.",
+    "error": "Something went wrong. Please try again.",
+    "privacy": "We respect your privacy. No spam, ever."
+  },
+  "security": {
+    "badge": "Security Built-In",
+    "title": "Your messages are truly private",
+    "subtitle": "Rail Gun uses the same encryption protocol trusted by billions of users worldwide. Your private keys are generated locally and never touch our servers.",
+    "features": [
+      "Signal Protocol (X3DH + Double Ratchet)",
+      "Perfect Forward Secrecy (PFS)",
+      "Extended Triple Diffie-Hellman (X3DH)",
+      "Double Ratchet Algorithm (KDF Chain)",
+      "libsodium / NaCl (Curve25519, ChaCha20-Poly1305)",
+      "HMAC-based Key Derivation Function (HKDF)",
+      "Local key generation and storage (never transmitted)",
+      "Open source and auditable (GitHub)",
+      "No phone number required",
+      "Metadata minimization (routing only)",
+      "Forward Secrecy & Backward Secrecy",
+      "Deniable Authentication"
+    ],
+    "verify": {
+      "title": "Verify Your Download",
+      "description": "Always verify downloads to ensure they haven't been tampered with.",
+      "step1": {
+        "title": "1. Import our GPG key:",
+        "command": "gpg --keyserver keys.openpgp.org --recv-keys [KEY_ID]"
+      },
+      "step2": {
+        "title": "2. Verify the signature:",
+        "command": "gpg --verify SHA256SUMS.txt.asc SHA256SUMS.txt"
+      },
+      "step3": {
+        "title": "3. Check the checksum:",
+        "macLinux": "# macOS/Linux\nsha256sum -c SHA256SUMS.txt --ignore-missing",
+        "windows": "# Windows PowerShell\nGet-FileHash Rail-Gun-*.exe | Format-List"
+      },
+      "checksums": "Full checksums available in"
+    }
+  },
+  "platforms": {
+    "title": "Available Everywhere",
+    "subtitle": "Download Rail Gun for your platform or use the web version.",
+    "download": "Download",
+    "comingSoon": "Coming Soon",
+    "mac": "macOS",
+    "windows": "Windows",
+    "linux": "Linux",
+    "ios": "iOS",
+    "android": "Android",
+    "web": "Web App"
+  },
+  "cta": {
+    "title": "Ready to take back your privacy?",
+    "subtitle": "Join thousands of users who trust Rail Gun for secure communication.",
+    "button": "Get Started"
+  },
+  "footer": {
+    "description": "End-to-end encrypted with Signal Protocol (X3DH + Double Ratchet), Curve25519, and ChaCha20-Poly1305. Your keys, your privacy.",
+    "product": "Product",
+    "resources": "Resources",
+    "legal": "Legal",
+    "links": {
+      "download": "Download",
+      "webApp": "Web App",
+      "features": "Features",
+      "security": "Security",
+      "charter": "Charter",
+      "documentation": "Documentation",
+      "releaseNotes": "Release Notes",
+      "reportIssues": "Report Issues",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    },
+    "copyright": "© {year} Rail Gun. All rights reserved."
+  },
+  "charter": {
+    "badge": "Foundational Document",
+    "title": "The Rail Gun Charter",
+    "subtitle": "Rail Gun is civic infrastructure. It exists to lower the cost of truth, protect communication without permission, and enable peaceful coordination at scale.",
+    "preamble": {
+      "title": "Preamble",
+      "p1": "Rail Gun is not a weapon. It is a road, a printing press, a public utility for the information age. We build infrastructure that makes violence unnecessary by making truth accessible, lies expensive, and peaceful self-correction possible.",
+      "p2": "We succeed when a journalist can publish evidence without fear, when families can communicate across hostile borders, when communities can organize mutual aid without surveillance, and when societies can correct themselves without bloodshed."
+    },
+    "principlesTitle": "The Ten Principles",
+    "principlesSubtitle": "These principles are non-negotiable. Every product decision, every feature, every communication must align with them.",
+    "principles": {
+      "1": {
+        "title": "Non-Violence Is Non-Negotiable",
+        "description": "Rail Gun never advocates, facilitates, or enables violence, coercion, or physical harm. We design to reduce the conditions that lead to violence by making peaceful alternatives viable."
+      },
+      "2": {
+        "title": "Infrastructure, Not Agitation",
+        "description": "We build roads, not barricades. Printing presses, not weapons. Our purpose is to provide neutral, durable infrastructure that any community can use for lawful purposes."
+      },
+      "3": {
+        "title": "Truth Without Permission",
+        "description": "Every person has the right to communicate, to publish evidence, and to coordinate with others—without requiring approval from any central authority."
+      },
+      "4": {
+        "title": "Sovereignty At The Edge",
+        "description": "Users control their own keys, their own data, and their own relationships. Rail Gun operators cannot read messages or identify users beyond minimal routing metadata."
+      },
+      "5": {
+        "title": "The Protocol Survives The Operator",
+        "description": "The core protocol must remain functional even if Rail Gun is compromised, acquired, or shut down. No single point of failure. No kill switch."
+      },
+      "6": {
+        "title": "Layered Separation Protects Legitimacy",
+        "description": "The Sovereign Core (protocol) is neutral. The Services Layer (enterprise, compliance) is where business happens. These layers are architecturally separate."
+      },
+      "7": {
+        "title": "Safe Defaults, Deliberate Power",
+        "description": "Default settings are safe and appropriate for ordinary communication. Features with elevated risk require explicit user intent and informed consent."
+      },
+      "8": {
+        "title": "Minimal Retention, Maximum Deletion",
+        "description": "We retain the minimum data necessary for routing and never longer than required. Users can delete their data completely."
+      },
+      "9": {
+        "title": "Legitimacy Through Transparency",
+        "description": "Rail Gun publishes its protocols, audits its code, discloses its funding, and operates in the open. Legitimacy is earned through accountability."
+      },
+      "10": {
+        "title": "No Enemies, Only Problems",
+        "description": "We do not personalize adversaries or name targets. We describe problems and build solutions. The goal is a world where everyone can communicate safely."
+      }
+    },
+    "whatWeAreNot": {
+      "title": "What Rail Gun Is Not",
+      "items": [
+        "Not a tool for harassment, doxxing, or stalking",
+        "Not a platform for coordinating illegal violence",
+        "Not a weapon against any person, institution, or government",
+        "Not a promise of immunity from consequences",
+        "Not an ideology—it is infrastructure"
+      ]
+    },
+    "commitments": {
+      "title": "Operational Commitments",
+      "items": {
+        "audit": {
+          "title": "Annual Ethics Audit",
+          "description": "Independent review of product decisions against this Charter."
+        },
+        "transparency": {
+          "title": "Transparency Reports",
+          "description": "Quarterly disclosure of government requests and compliance actions."
+        },
+        "marketing": {
+          "title": "No Deceptive Marketing",
+          "description": "All claims about security and privacy must be technically verifiable."
+        },
+        "governance": {
+          "title": "Community Governance",
+          "description": "Protocol changes require open deliberation and rough consensus."
+        }
+      }
+    },
+    "closing": "This Charter is a living document. Amendments require public deliberation, community consent, and alignment with the principle of non-violence.",
+    "viewOnGithub": "View on GitHub",
+    "securityDetails": "Security Details"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "Sorry, we couldn't find the page you're looking for.",
+    "backHome": "Go back home"
+  }
+}

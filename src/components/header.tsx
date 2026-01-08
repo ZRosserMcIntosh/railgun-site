@@ -6,17 +6,20 @@ import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 import { siteConfig } from '@/lib/config';
 import { cn } from '@/lib/utils';
-
-const navLinks = [
-  { href: '/charter', label: 'Charter' },
-  { href: '#features', label: 'Features' },
-  { href: '#waitlist', label: 'Waitlist' },
-  { href: '#security', label: 'Security' },
-];
+import { LanguageSwitcher } from './language-switcher';
+import { useTranslations } from '@/i18n/provider';
 
 export function Header() {
+  const { t } = useTranslations('nav');
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const navLinks = [
+    { href: '/charter', label: t('charter') },
+    { href: '#features', label: t('features') },
+    { href: '#waitlist', label: t('waitlist') },
+    { href: '#security', label: t('security') },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,13 +65,14 @@ export function Header() {
               {link.label}
             </Link>
           ))}
+          <LanguageSwitcher />
           <Link
             href={siteConfig.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-lg bg-background-secondary px-4 py-2 text-sm font-medium transition-colors hover:bg-background-elevated"
           >
-            GitHub
+            {t('github')}
           </Link>
         </div>
 
@@ -100,6 +104,7 @@ export function Header() {
                 {link.label}
               </a>
             ))}
+            <LanguageSwitcher className="w-full" />
             <a
               href={siteConfig.githubUrl}
               target="_blank"
@@ -107,7 +112,7 @@ export function Header() {
               className="w-full rounded-lg bg-background-secondary px-4 py-3 text-center font-medium transition-colors hover:bg-background-elevated"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              GitHub
+              {t('github')}
             </a>
           </div>
         </div>

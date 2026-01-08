@@ -1,0 +1,254 @@
+{
+  "meta": {
+    "title": "Rail Gun - 안전한 프라이빗 메시징",
+    "titleTemplate": "{title} | Rail Gun",
+    "description": "Rail Gun은 프라이빗 커뮤니케이션을 위한 시민 인프라입니다. 당신의 키가 절대 기기를 떠나지 않는 종단간 암호화.",
+    "keywords": "암호화 메시지, 보안 채팅, Signal 프로토콜, 종단간 암호화, 프라이빗 메시징"
+  },
+  "nav": {
+    "charter": "헌장",
+    "features": "기능",
+    "waitlist": "대기자 명단",
+    "security": "보안",
+    "github": "GitHub",
+    "language": "언어"
+  },
+  "hero": {
+    "badge": "초대 전용 · 비공개 베타",
+    "headline1": "프라이빗 메시징.",
+    "headline2": "타협 없이.",
+    "subheadline": "Rail Gun은 프라이빗 커뮤니케이션을 위한 시민 인프라입니다. 당신의 키가 절대 기기를 떠나지 않는 종단간 암호화. 허가 없는 진실.",
+    "cta": {
+      "waitlist": "대기자 명단 참가",
+      "security": "보안 알아보기"
+    },
+    "stats": {
+      "protocol": {
+        "title": "X3DH + Double Ratchet",
+        "description": "Signal Protocol 키 교환"
+      },
+      "curve": {
+        "title": "Curve25519",
+        "description": "현대 타원 곡선 암호화"
+      },
+      "cipher": {
+        "title": "ChaCha20-Poly1305",
+        "description": "AEAD 인증 암호화"
+      }
+    }
+  },
+  "features": {
+    "title": "왜 Rail Gun인가?",
+    "subtitle": "프라이버시와 보안을 기초로 처음부터 구축되었습니다. 사후 고려가 아닙니다.",
+    "items": {
+      "signal": {
+        "title": "Signal 프로토콜",
+        "description": "Double Ratchet (KDF 체인) + X3DH 키 교환. libsignal을 사용한 업계 표준 종단간 암호화"
+      },
+      "curve": {
+        "title": "Curve25519 암호화",
+        "description": "NaCl을 통한 키 교환 및 서명을 위한 현대 타원 곡선 암호화 (Curve25519)"
+      },
+      "chacha": {
+        "title": "ChaCha20-Poly1305",
+        "description": "메시지 기밀성을 위한 연관 데이터를 포함한 인증 암호화를 제공하는 AEAD 암호"
+      },
+      "group": {
+        "title": "그룹 암호화",
+        "description": "Signal Protocol 그룹 세션과 수신자별 키를 사용하는 암호화 채널이 있는 커뮤니티"
+      },
+      "pfs": {
+        "title": "완전 순방향 비밀성",
+        "description": "모든 메시지는 임시 키를 사용합니다. 손상된 장기 키로는 과거 메시지를 해독할 수 없습니다"
+      },
+      "opensource": {
+        "title": "오픈 소스 및 감사 가능",
+        "description": "GitHub에서 완전한 투명성. 암호화 구현은 보안 전문가가 검토하고 감사할 수 있습니다"
+      },
+      "blind": {
+        "title": "블라인드 서버",
+        "description": "백엔드는 암호화된 블롭 (ChaCha20-Poly1305)과 라우팅 메타데이터만 봅니다. 콘텐츠는 절대 노출되지 않습니다"
+      },
+      "desktop": {
+        "title": "데스크톱 우선 클라이언트",
+        "description": "로컬 키 저장소와 OS 수준 암호화를 갖춘 macOS, Windows, Linux용 네이티브 Electron 앱"
+      }
+    }
+  },
+  "waitlist": {
+    "title": "비공개 베타 참가",
+    "subtitle": "Rail Gun은 현재 초대 전용입니다. 조기 액세스를 위해 대기자 명단에 참가하세요.",
+    "emailPlaceholder": "이메일을 입력하세요",
+    "submit": "참가",
+    "submitting": "참가 중...",
+    "success": "명단에 등록되었습니다! 곧 연락드리겠습니다.",
+    "error": "문제가 발생했습니다. 다시 시도해 주세요.",
+    "privacy": "당신의 프라이버시를 존중합니다. 스팸 없음."
+  },
+  "security": {
+    "badge": "내장 보안",
+    "title": "당신의 메시지는 진정으로 프라이빗합니다",
+    "subtitle": "Rail Gun은 전 세계 수십억 사용자가 신뢰하는 동일한 암호화 프로토콜을 사용합니다. 당신의 개인 키는 로컬에서 생성되며 우리 서버에 절대 접촉하지 않습니다.",
+    "features": [
+      "Signal Protocol (X3DH + Double Ratchet)",
+      "완전 순방향 비밀성 (PFS)",
+      "확장 트리플 디피-헬먼 (X3DH)",
+      "Double Ratchet 알고리즘 (KDF 체인)",
+      "libsodium / NaCl (Curve25519, ChaCha20-Poly1305)",
+      "HMAC 기반 키 파생 함수 (HKDF)",
+      "로컬 키 생성 및 저장 (전송되지 않음)",
+      "오픈 소스 및 감사 가능 (GitHub)",
+      "전화번호 불필요",
+      "메타데이터 최소화 (라우팅만)",
+      "순방향 비밀성 및 역방향 비밀성",
+      "부인 가능 인증"
+    ],
+    "verify": {
+      "title": "다운로드 확인",
+      "description": "항상 다운로드가 변조되지 않았는지 확인하세요.",
+      "step1": {
+        "title": "1. GPG 키 가져오기:",
+        "command": "gpg --keyserver keys.openpgp.org --recv-keys [KEY_ID]"
+      },
+      "step2": {
+        "title": "2. 서명 확인:",
+        "command": "gpg --verify SHA256SUMS.txt.asc SHA256SUMS.txt"
+      },
+      "step3": {
+        "title": "3. 체크섬 확인:",
+        "macLinux": "# macOS/Linux\nsha256sum -c SHA256SUMS.txt --ignore-missing",
+        "windows": "# Windows PowerShell\nGet-FileHash Rail-Gun-*.exe | Format-List"
+      },
+      "checksums": "전체 체크섬은 여기에서 확인 가능"
+    }
+  },
+  "platforms": {
+    "title": "어디서나 사용 가능",
+    "subtitle": "플랫폼용 Rail Gun을 다운로드하거나 웹 버전을 사용하세요.",
+    "download": "다운로드",
+    "comingSoon": "곧 출시",
+    "mac": "macOS",
+    "windows": "Windows",
+    "linux": "Linux",
+    "ios": "iOS",
+    "android": "Android",
+    "web": "웹 앱"
+  },
+  "cta": {
+    "title": "프라이버시를 되찾을 준비가 되셨나요?",
+    "subtitle": "안전한 커뮤니케이션을 위해 Rail Gun을 신뢰하는 수천 명의 사용자와 함께하세요.",
+    "button": "시작하기"
+  },
+  "footer": {
+    "description": "Signal Protocol (X3DH + Double Ratchet), Curve25519 및 ChaCha20-Poly1305를 사용한 종단간 암호화. 당신의 키, 당신의 프라이버시.",
+    "product": "제품",
+    "resources": "리소스",
+    "legal": "법적",
+    "links": {
+      "download": "다운로드",
+      "webApp": "웹 앱",
+      "features": "기능",
+      "security": "보안",
+      "charter": "헌장",
+      "documentation": "문서",
+      "releaseNotes": "릴리스 노트",
+      "reportIssues": "문제 보고",
+      "privacy": "개인정보 보호정책",
+      "terms": "이용약관"
+    },
+    "copyright": "© {year} Rail Gun. 모든 권리 보유."
+  },
+  "charter": {
+    "badge": "창립 문서",
+    "title": "Rail Gun 헌장",
+    "subtitle": "Rail Gun은 시민 인프라입니다. 진실의 비용을 낮추고, 허가 없는 커뮤니케이션을 보호하며, 대규모 평화적 조정을 가능하게 하기 위해 존재합니다.",
+    "preamble": {
+      "title": "서문",
+      "p1": "Rail Gun은 무기가 아닙니다. 도로, 인쇄기, 정보 시대를 위한 공공 서비스입니다. 우리는 진실을 접근 가능하게 하고, 거짓말을 비용 높게 만들며, 평화적 자기 수정을 가능하게 함으로써 폭력을 불필요하게 만드는 인프라를 구축합니다.",
+      "p2": "기자가 두려움 없이 증거를 공개할 수 있을 때, 가족이 적대적인 국경을 넘어 소통할 수 있을 때, 커뮤니티가 감시 없이 상호 지원을 조직할 수 있을 때, 사회가 유혈 없이 스스로를 교정할 수 있을 때 우리는 성공합니다."
+    },
+    "principlesTitle": "10대 원칙",
+    "principlesSubtitle": "이러한 원칙은 협상 불가능합니다. 모든 제품 결정, 모든 기능, 모든 커뮤니케이션은 이와 일치해야 합니다.",
+    "principles": {
+      "1": {
+        "title": "비폭력은 협상 불가능",
+        "description": "Rail Gun은 폭력, 강압 또는 신체적 해를 절대 옹호, 조장 또는 용인하지 않습니다. 우리는 평화적 대안을 실행 가능하게 만들어 폭력으로 이어지는 조건을 줄이도록 설계합니다."
+      },
+      "2": {
+        "title": "인프라, 선동이 아님",
+        "description": "우리는 바리케이드가 아닌 도로를 건설합니다. 무기가 아닌 인쇄기를. 우리의 목표는 모든 커뮤니티가 합법적인 목적으로 사용할 수 있는 중립적이고 내구성 있는 인프라를 제공하는 것입니다."
+      },
+      "3": {
+        "title": "허가 없는 진실",
+        "description": "모든 사람은 중앙 권한의 승인 없이 소통하고, 증거를 공개하고, 다른 사람들과 조정할 권리가 있습니다."
+      },
+      "4": {
+        "title": "엣지에서의 주권",
+        "description": "사용자는 자신의 키, 자신의 데이터, 자신의 관계를 통제합니다. Rail Gun 운영자는 최소한의 라우팅 메타데이터 이상으로 메시지를 읽거나 사용자를 식별할 수 없습니다."
+      },
+      "5": {
+        "title": "프로토콜은 운영자보다 오래 지속",
+        "description": "핵심 프로토콜은 Rail Gun이 손상, 인수 또는 폐쇄되더라도 기능을 유지해야 합니다. 단일 장애 지점 없음. 킬 스위치 없음."
+      },
+      "6": {
+        "title": "계층 분리가 정당성 보호",
+        "description": "주권 코어 (프로토콜)는 중립적입니다. 서비스 계층 (비즈니스, 규정 준수)은 비즈니스가 이루어지는 곳입니다. 이러한 계층은 아키텍처적으로 분리됩니다."
+      },
+      "7": {
+        "title": "안전한 기본값, 의식적인 힘",
+        "description": "기본값은 안전하며 일상적인 커뮤니케이션에 적합합니다. 고위험 기능은 명시적인 사용자 의도와 정보에 입각한 동의가 필요합니다."
+      },
+      "8": {
+        "title": "최소 보유, 최대 삭제",
+        "description": "라우팅에 필요한 최소한의 데이터를 저장하며, 필요 이상으로 오래 보관하지 않습니다. 사용자는 데이터를 완전히 삭제할 수 있습니다."
+      },
+      "9": {
+        "title": "투명성을 통한 정당성",
+        "description": "Rail Gun은 프로토콜을 공개하고, 코드를 감사하며, 자금 조달을 공개하고, 공개적으로 운영합니다. 정당성은 책임을 통해 얻습니다."
+      },
+      "10": {
+        "title": "적 없음, 문제만 있음",
+        "description": "우리는 반대자를 개인화하거나 대상을 지명하지 않습니다. 우리는 문제를 설명하고 해결책을 구축합니다. 목표는 모든 사람이 안전하게 소통할 수 있는 세상입니다."
+      }
+    },
+    "whatWeAreNot": {
+      "title": "Rail Gun이 아닌 것",
+      "items": [
+        "괴롭힘, 신상털기 또는 스토킹 도구가 아님",
+        "불법 폭력 조정 플랫폼이 아님",
+        "어떤 사람, 기관 또는 정부에 대한 무기가 아님",
+        "결과에 대한 면책 약속이 아님",
+        "이념이 아님 — 인프라임"
+      ]
+    },
+    "commitments": {
+      "title": "운영 약속",
+      "items": {
+        "audit": {
+          "title": "연간 윤리 감사",
+          "description": "이 헌장에 따른 제품 결정의 독립적 검토."
+        },
+        "transparency": {
+          "title": "투명성 보고서",
+          "description": "정부 요청 및 규정 준수 조치의 분기별 공개."
+        },
+        "marketing": {
+          "title": "오해의 소지가 있는 마케팅 없음",
+          "description": "모든 보안 및 개인정보 보호 주장은 기술적으로 검증 가능해야 합니다."
+        },
+        "governance": {
+          "title": "커뮤니티 거버넌스",
+          "description": "프로토콜 변경은 공개 토론과 대략적인 합의가 필요합니다."
+        }
+      }
+    },
+    "closing": "이 헌장은 살아있는 문서입니다. 수정은 공개 토론, 커뮤니티 동의 및 비폭력 원칙과의 일치가 필요합니다.",
+    "viewOnGithub": "GitHub에서 보기",
+    "securityDetails": "보안 세부 정보"
+  },
+  "notFound": {
+    "title": "페이지를 찾을 수 없음",
+    "description": "죄송합니다. 찾고 계신 페이지를 찾을 수 없습니다.",
+    "backHome": "홈으로 돌아가기"
+  }
+}

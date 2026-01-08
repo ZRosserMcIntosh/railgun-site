@@ -1,0 +1,254 @@
+{
+  "meta": {
+    "title": "Rail Gun - Bezpieczna Prywatna Komunikacja",
+    "titleTemplate": "{title} | Rail Gun",
+    "description": "Rail Gun to infrastruktura obywatelska dla prywatnej komunikacji. Szyfrowanie end-to-end, gdzie Twoje klucze nigdy nie opuszczają Twojego urządzenia.",
+    "keywords": "szyfrowane wiadomości, bezpieczny czat, protokół Signal, szyfrowanie end-to-end, prywatne wiadomości"
+  },
+  "nav": {
+    "charter": "Karta",
+    "features": "Funkcje",
+    "waitlist": "Lista oczekujących",
+    "security": "Bezpieczeństwo",
+    "github": "GitHub",
+    "language": "Język"
+  },
+  "hero": {
+    "badge": "Tylko na zaproszenie · Zamknięta beta",
+    "headline1": "Prywatne wiadomości.",
+    "headline2": "Zero kompromisów.",
+    "subheadline": "Rail Gun to infrastruktura obywatelska dla prywatnej komunikacji. Szyfrowanie end-to-end, gdzie Twoje klucze nigdy nie opuszczają Twojego urządzenia. Prawda bez pozwolenia.",
+    "cta": {
+      "waitlist": "Dołącz do listy oczekujących",
+      "security": "Poznaj bezpieczeństwo"
+    },
+    "stats": {
+      "protocol": {
+        "title": "X3DH + Double Ratchet",
+        "description": "Wymiana kluczy Signal Protocol"
+      },
+      "curve": {
+        "title": "Curve25519",
+        "description": "Nowoczesna kryptografia krzywych eliptycznych"
+      },
+      "cipher": {
+        "title": "ChaCha20-Poly1305",
+        "description": "Uwierzytelnione szyfrowanie AEAD"
+      }
+    }
+  },
+  "features": {
+    "title": "Dlaczego Rail Gun?",
+    "subtitle": "Zbudowany od podstaw z prywatnością i bezpieczeństwem jako fundamentem, nie jako refleksja.",
+    "items": {
+      "signal": {
+        "title": "Protokół Signal",
+        "description": "Double Ratchet (łańcuchy KDF) + wymiana kluczy X3DH. Branżowy standard szyfrowania end-to-end z libsignal"
+      },
+      "curve": {
+        "title": "Szyfrowanie Curve25519",
+        "description": "Nowoczesna kryptografia krzywych eliptycznych (Curve25519) dla wymiany kluczy i podpisów przez NaCl"
+      },
+      "chacha": {
+        "title": "ChaCha20-Poly1305",
+        "description": "Szyfr AEAD zapewniający uwierzytelnione szyfrowanie z powiązanymi danymi dla poufności wiadomości"
+      },
+      "group": {
+        "title": "Szyfrowanie grupowe",
+        "description": "Społeczności z zaszyfrowanymi kanałami używającymi sesji grupowych Signal Protocol i kluczy dla każdego odbiorcy"
+      },
+      "pfs": {
+        "title": "Perfect Forward Secrecy",
+        "description": "Każda wiadomość używa efemerycznych kluczy. Skompromitowane klucze długoterminowe nie mogą odszyfrować przeszłych wiadomości"
+      },
+      "opensource": {
+        "title": "Open Source i audytowalny",
+        "description": "Pełna przejrzystość na GitHub. Implementacje kryptograficzne sprawdzone i audytowalne przez ekspertów bezpieczeństwa"
+      },
+      "blind": {
+        "title": "Ślepy serwer",
+        "description": "Backend widzi tylko zaszyfrowane bloby (ChaCha20-Poly1305) i metadane routingu. Zawartość nigdy nie jest ujawniana"
+      },
+      "desktop": {
+        "title": "Klient Desktop-First",
+        "description": "Natywna aplikacja Electron dla macOS, Windows, Linux z lokalnym przechowywaniem kluczy i szyfrowaniem na poziomie OS"
+      }
+    }
+  },
+  "waitlist": {
+    "title": "Dołącz do zamkniętej bety",
+    "subtitle": "Rail Gun jest obecnie tylko na zaproszenie. Dołącz do listy oczekujących, aby uzyskać wczesny dostęp.",
+    "emailPlaceholder": "Wprowadź swój email",
+    "submit": "Dołącz",
+    "submitting": "Dołączanie...",
+    "success": "Jesteś na liście! Skontaktujemy się wkrótce.",
+    "error": "Coś poszło nie tak. Spróbuj ponownie.",
+    "privacy": "Szanujemy Twoją prywatność. Żadnego spamu."
+  },
+  "security": {
+    "badge": "Wbudowane bezpieczeństwo",
+    "title": "Twoje wiadomości są naprawdę prywatne",
+    "subtitle": "Rail Gun używa tego samego protokołu szyfrowania, któremu ufają miliardy użytkowników na całym świecie. Twoje klucze prywatne są generowane lokalnie i nigdy nie dotykają naszych serwerów.",
+    "features": [
+      "Protokół Signal (X3DH + Double Ratchet)",
+      "Perfect Forward Secrecy (PFS)",
+      "Extended Triple Diffie-Hellman (X3DH)",
+      "Algorytm Double Ratchet (łańcuch KDF)",
+      "libsodium / NaCl (Curve25519, ChaCha20-Poly1305)",
+      "Funkcja wyprowadzania kluczy oparta na HMAC (HKDF)",
+      "Lokalna generacja i przechowywanie kluczy (nigdy nie przesyłane)",
+      "Open source i audytowalny (GitHub)",
+      "Nie wymaga numeru telefonu",
+      "Minimalizacja metadanych (tylko routing)",
+      "Forward Secrecy i Backward Secrecy",
+      "Zaprzeczalna autentykacja"
+    ],
+    "verify": {
+      "title": "Zweryfikuj pobieranie",
+      "description": "Zawsze weryfikuj pobierania, aby upewnić się, że nie zostały zmienione.",
+      "step1": {
+        "title": "1. Zaimportuj nasz klucz GPG:",
+        "command": "gpg --keyserver keys.openpgp.org --recv-keys [KEY_ID]"
+      },
+      "step2": {
+        "title": "2. Zweryfikuj podpis:",
+        "command": "gpg --verify SHA256SUMS.txt.asc SHA256SUMS.txt"
+      },
+      "step3": {
+        "title": "3. Sprawdź sumę kontrolną:",
+        "macLinux": "# macOS/Linux\nsha256sum -c SHA256SUMS.txt --ignore-missing",
+        "windows": "# Windows PowerShell\nGet-FileHash Rail-Gun-*.exe | Format-List"
+      },
+      "checksums": "Pełne sumy kontrolne dostępne w"
+    }
+  },
+  "platforms": {
+    "title": "Dostępny wszędzie",
+    "subtitle": "Pobierz Rail Gun dla swojej platformy lub użyj wersji web.",
+    "download": "Pobierz",
+    "comingSoon": "Wkrótce",
+    "mac": "macOS",
+    "windows": "Windows",
+    "linux": "Linux",
+    "ios": "iOS",
+    "android": "Android",
+    "web": "Aplikacja Web"
+  },
+  "cta": {
+    "title": "Gotowy odzyskać swoją prywatność?",
+    "subtitle": "Dołącz do tysięcy użytkowników, którzy ufają Rail Gun w bezpiecznej komunikacji.",
+    "button": "Zacznij"
+  },
+  "footer": {
+    "description": "Szyfrowanie end-to-end z Signal Protocol (X3DH + Double Ratchet), Curve25519 i ChaCha20-Poly1305. Twoje klucze, Twoja prywatność.",
+    "product": "Produkt",
+    "resources": "Zasoby",
+    "legal": "Prawne",
+    "links": {
+      "download": "Pobierz",
+      "webApp": "Aplikacja Web",
+      "features": "Funkcje",
+      "security": "Bezpieczeństwo",
+      "charter": "Karta",
+      "documentation": "Dokumentacja",
+      "releaseNotes": "Informacje o wydaniu",
+      "reportIssues": "Zgłoś problemy",
+      "privacy": "Polityka prywatności",
+      "terms": "Warunki użytkowania"
+    },
+    "copyright": "© {year} Rail Gun. Wszelkie prawa zastrzeżone."
+  },
+  "charter": {
+    "badge": "Dokument założycielski",
+    "title": "Karta Rail Gun",
+    "subtitle": "Rail Gun to infrastruktura obywatelska. Istnieje, aby obniżyć koszt prawdy, chronić komunikację bez pozwolenia i umożliwić pokojową koordynację na dużą skalę.",
+    "preamble": {
+      "title": "Preambuła",
+      "p1": "Rail Gun nie jest bronią. To droga, drukarnia, usługa publiczna dla ery informacji. Budujemy infrastrukturę, która czyni przemoc niepotrzebną, czyniąc prawdę dostępną, kłamstwa kosztownymi, a pokojową samokorekcję możliwą.",
+      "p2": "Odnosimy sukces, gdy dziennikarz może publikować dowody bez strachu, gdy rodziny mogą komunikować się przez wrogie granice, gdy społeczności mogą organizować wzajemną pomoc bez inwigilacji, i gdy społeczeństwa mogą się korygować bez rozlewu krwi."
+    },
+    "principlesTitle": "Dziesięć zasad",
+    "principlesSubtitle": "Te zasady nie podlegają negocjacjom. Każda decyzja produktowa, każda funkcja, każda komunikacja musi być z nimi zgodna.",
+    "principles": {
+      "1": {
+        "title": "Niestosowanie przemocy jest niepodważalne",
+        "description": "Rail Gun nigdy nie propaguje, nie ułatwia ani nie dopuszcza przemocy, przymusu ani szkody fizycznej. Projektujemy, aby zmniejszyć warunki prowadzące do przemocy, czyniąc pokojowe alternatywy realnymi."
+      },
+      "2": {
+        "title": "Infrastruktura, nie agitacja",
+        "description": "Budujemy drogi, nie barykady. Drukarnie, nie broń. Naszym celem jest dostarczenie neutralnej, trwałej infrastruktury, którą każda społeczność może wykorzystać do legalnych celów."
+      },
+      "3": {
+        "title": "Prawda bez pozwolenia",
+        "description": "Każda osoba ma prawo komunikować się, publikować dowody i koordynować z innymi — bez wymagania zgody od jakiejkolwiek centralnej władzy."
+      },
+      "4": {
+        "title": "Suwerenność na krawędzi",
+        "description": "Użytkownicy kontrolują własne klucze, własne dane i własne relacje. Operatorzy Rail Gun nie mogą czytać wiadomości ani identyfikować użytkowników poza minimalnymi metadanymi routingu."
+      },
+      "5": {
+        "title": "Protokół przetrwa operatora",
+        "description": "Główny protokół musi pozostać funkcjonalny nawet jeśli Rail Gun zostanie skompromitowany, przejęty lub zamknięty. Żadnego pojedynczego punktu awarii. Żadnego wyłącznika."
+      },
+      "6": {
+        "title": "Separacja warstw chroni legitymację",
+        "description": "Suwerenne jądro (protokół) jest neutralne. Warstwa usług (biznes, zgodność) to miejsce, gdzie odbywa się biznes. Te warstwy są architektonicznie oddzielone."
+      },
+      "7": {
+        "title": "Bezpieczne ustawienia domyślne, świadoma moc",
+        "description": "Ustawienia domyślne są bezpieczne i odpowiednie dla zwykłej komunikacji. Funkcje o podwyższonym ryzyku wymagają wyraźnego zamiaru użytkownika i świadomej zgody."
+      },
+      "8": {
+        "title": "Minimalna retencja, maksymalne usuwanie",
+        "description": "Przechowujemy minimum danych niezbędnych do routingu i nigdy dłużej niż to konieczne. Użytkownicy mogą całkowicie usunąć swoje dane."
+      },
+      "9": {
+        "title": "Legitymacja przez przejrzystość",
+        "description": "Rail Gun publikuje swoje protokoły, audytuje swój kod, ujawnia swoje finansowanie i działa otwarcie. Legitymacja jest zdobywana przez odpowiedzialność."
+      },
+      "10": {
+        "title": "Żadnych wrogów, tylko problemy",
+        "description": "Nie personalizujemy przeciwników ani nie nazywamy celów. Opisujemy problemy i budujemy rozwiązania. Celem jest świat, gdzie każdy może bezpiecznie się komunikować."
+      }
+    },
+    "whatWeAreNot": {
+      "title": "Czym Rail Gun nie jest",
+      "items": [
+        "Nie jest narzędziem do nękania, doxxingu lub stalkingu",
+        "Nie jest platformą do koordynowania nielegalnej przemocy",
+        "Nie jest bronią przeciwko jakiejkolwiek osobie, instytucji lub rządowi",
+        "Nie jest obietnicą immunitetu od konsekwencji",
+        "Nie jest ideologią — to infrastruktura"
+      ]
+    },
+    "commitments": {
+      "title": "Zobowiązania operacyjne",
+      "items": {
+        "audit": {
+          "title": "Coroczny audyt etyczny",
+          "description": "Niezależny przegląd decyzji produktowych względem tej Karty."
+        },
+        "transparency": {
+          "title": "Raporty przejrzystości",
+          "description": "Kwartalne ujawnianie żądań rządowych i działań zgodności."
+        },
+        "marketing": {
+          "title": "Bez wprowadzającego w błąd marketingu",
+          "description": "Wszystkie twierdzenia o bezpieczeństwie i prywatności muszą być technicznie weryfikowalne."
+        },
+        "governance": {
+          "title": "Zarządzanie społecznością",
+          "description": "Zmiany protokołu wymagają otwartej debaty i przybliżonego konsensusu."
+        }
+      }
+    },
+    "closing": "Ta Karta jest żywym dokumentem. Poprawki wymagają publicznej debaty, zgody społeczności i zgodności z zasadą niestosowania przemocy.",
+    "viewOnGithub": "Zobacz na GitHub",
+    "securityDetails": "Szczegóły bezpieczeństwa"
+  },
+  "notFound": {
+    "title": "Strona nie znaleziona",
+    "description": "Przepraszamy, nie mogliśmy znaleźć strony, której szukasz.",
+    "backHome": "Wróć na stronę główną"
+  }
+}

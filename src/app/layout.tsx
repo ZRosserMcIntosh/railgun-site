@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import { I18nClientWrapper } from '@/i18n/client-wrapper';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -81,9 +82,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body className="min-h-screen bg-background-primary font-sans antialiased">
-        {children}
+        <I18nClientWrapper>
+          {children}
+        </I18nClientWrapper>
       </body>
     </html>
   );

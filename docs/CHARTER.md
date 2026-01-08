@@ -52,6 +52,7 @@ We do not personalize adversaries. We do not name targets. We do not celebrate t
 - **Transparency Reports**: Quarterly disclosure of government requests, takedowns, and compliance actions.
 - **No Deceptive Marketing**: All claims about security, privacy, and anonymity must be technically accurate and independently verifiable.
 - **Community Governance**: Protocol changes require open deliberation and rough consensus. No unilateral modifications to the Sovereign Core.
+- **Localization Accessibility**: Provide a language dropdown with translations for the most important languages. English is the primary language. On first visit, auto-select based on browser language or IP-derived region, with a clear manual override and a persistent user preference. Supported languages: English, Spanish, Portuguese, Italian, French, German, Ukrainian, Russian, Polish, Hungarian, Korean, Japanese, Chinese, Persian/Farsi (Iran), and Arabic (Arab countries).
 
 ---
 

@@ -1,0 +1,254 @@
+{
+  "meta": {
+    "title": "Rail Gun - 安全なプライベートメッセージング",
+    "titleTemplate": "{title} | Rail Gun",
+    "description": "Rail Gunはプライベートコミュニケーションのための市民インフラです。あなたの鍵がデバイスを離れることのないエンドツーエンド暗号化。",
+    "keywords": "暗号化メッセージ, セキュアチャット, Signalプロトコル, エンドツーエンド暗号化, プライベートメッセージング"
+  },
+  "nav": {
+    "charter": "憲章",
+    "features": "機能",
+    "waitlist": "ウェイトリスト",
+    "security": "セキュリティ",
+    "github": "GitHub",
+    "language": "言語"
+  },
+  "hero": {
+    "badge": "招待制 · クローズドベータ",
+    "headline1": "プライベートメッセージング。",
+    "headline2": "妥協なし。",
+    "subheadline": "Rail Gunはプライベートコミュニケーションのための市民インフラです。あなたの鍵がデバイスを離れることのないエンドツーエンド暗号化。許可不要の真実。",
+    "cta": {
+      "waitlist": "ウェイトリストに参加",
+      "security": "セキュリティを学ぶ"
+    },
+    "stats": {
+      "protocol": {
+        "title": "X3DH + Double Ratchet",
+        "description": "Signal Protocol鍵交換"
+      },
+      "curve": {
+        "title": "Curve25519",
+        "description": "最新の楕円曲線暗号"
+      },
+      "cipher": {
+        "title": "ChaCha20-Poly1305",
+        "description": "AEAD認証暗号化"
+      }
+    }
+  },
+  "features": {
+    "title": "なぜRail Gunなのか?",
+    "subtitle": "プライバシーとセキュリティを基盤として一から構築。後付けではありません。",
+    "items": {
+      "signal": {
+        "title": "Signalプロトコル",
+        "description": "Double Ratchet (KDFチェーン) + X3DH鍵交換。libsignalによる業界標準のエンドツーエンド暗号化"
+      },
+      "curve": {
+        "title": "Curve25519暗号化",
+        "description": "NaClを介した鍵交換と署名のための最新の楕円曲線暗号 (Curve25519)"
+      },
+      "chacha": {
+        "title": "ChaCha20-Poly1305",
+        "description": "メッセージの機密性のために関連データを伴う認証暗号化を提供するAEAD暗号"
+      },
+      "group": {
+        "title": "グループ暗号化",
+        "description": "Signal Protocolグループセッションと受信者ごとの鍵を使用した暗号化チャンネルを持つコミュニティ"
+      },
+      "pfs": {
+        "title": "Perfect Forward Secrecy",
+        "description": "すべてのメッセージは一時鍵を使用。侵害された長期鍵では過去のメッセージを復号できません"
+      },
+      "opensource": {
+        "title": "オープンソース＆監査可能",
+        "description": "GitHubで完全な透明性。暗号実装はセキュリティ専門家によるレビューと監査が可能"
+      },
+      "blind": {
+        "title": "ブラインドサーバー",
+        "description": "バックエンドは暗号化されたブロブ (ChaCha20-Poly1305) とルーティングメタデータのみを参照。コンテンツは決して公開されません"
+      },
+      "desktop": {
+        "title": "デスクトップファーストクライアント",
+        "description": "ローカル鍵ストレージとOSレベル暗号化を備えたmacOS、Windows、Linux用ネイティブElectronアプリ"
+      }
+    }
+  },
+  "waitlist": {
+    "title": "クローズドベータに参加",
+    "subtitle": "Rail Gunは現在招待制です。早期アクセスのためにウェイトリストに参加してください。",
+    "emailPlaceholder": "メールアドレスを入力",
+    "submit": "参加",
+    "submitting": "参加中...",
+    "success": "リストに登録されました！近日中にご連絡いたします。",
+    "error": "問題が発生しました。もう一度お試しください。",
+    "privacy": "プライバシーを尊重します。スパムはありません。"
+  },
+  "security": {
+    "badge": "組み込みセキュリティ",
+    "title": "あなたのメッセージは本当にプライベートです",
+    "subtitle": "Rail Gunは世界中で数十億のユーザーに信頼されているのと同じ暗号化プロトコルを使用しています。プライベート鍵はローカルで生成され、私たちのサーバーに触れることはありません。",
+    "features": [
+      "Signalプロトコル (X3DH + Double Ratchet)",
+      "Perfect Forward Secrecy (PFS)",
+      "Extended Triple Diffie-Hellman (X3DH)",
+      "Double Ratchetアルゴリズム (KDFチェーン)",
+      "libsodium / NaCl (Curve25519, ChaCha20-Poly1305)",
+      "HMACベースの鍵導出関数 (HKDF)",
+      "ローカル鍵生成・保存 (送信されません)",
+      "オープンソース＆監査可能 (GitHub)",
+      "電話番号不要",
+      "メタデータ最小化 (ルーティングのみ)",
+      "Forward SecrecyとBackward Secrecy",
+      "否認可能な認証"
+    ],
+    "verify": {
+      "title": "ダウンロードを検証",
+      "description": "ダウンロードが改ざんされていないことを常に確認してください。",
+      "step1": {
+        "title": "1. GPG鍵をインポート:",
+        "command": "gpg --keyserver keys.openpgp.org --recv-keys [KEY_ID]"
+      },
+      "step2": {
+        "title": "2. 署名を検証:",
+        "command": "gpg --verify SHA256SUMS.txt.asc SHA256SUMS.txt"
+      },
+      "step3": {
+        "title": "3. チェックサムを確認:",
+        "macLinux": "# macOS/Linux\nsha256sum -c SHA256SUMS.txt --ignore-missing",
+        "windows": "# Windows PowerShell\nGet-FileHash Rail-Gun-*.exe | Format-List"
+      },
+      "checksums": "完全なチェックサムはこちらで確認可能"
+    }
+  },
+  "platforms": {
+    "title": "どこでも利用可能",
+    "subtitle": "お使いのプラットフォーム用のRail Gunをダウンロードするか、Webバージョンをご利用ください。",
+    "download": "ダウンロード",
+    "comingSoon": "近日公開",
+    "mac": "macOS",
+    "windows": "Windows",
+    "linux": "Linux",
+    "ios": "iOS",
+    "android": "Android",
+    "web": "Webアプリ"
+  },
+  "cta": {
+    "title": "プライバシーを取り戻す準備はできましたか?",
+    "subtitle": "セキュアなコミュニケーションのためにRail Gunを信頼する何千人ものユーザーに参加しましょう。",
+    "button": "始める"
+  },
+  "footer": {
+    "description": "Signal Protocol (X3DH + Double Ratchet)、Curve25519、ChaCha20-Poly1305によるエンドツーエンド暗号化。あなたの鍵、あなたのプライバシー。",
+    "product": "製品",
+    "resources": "リソース",
+    "legal": "法的情報",
+    "links": {
+      "download": "ダウンロード",
+      "webApp": "Webアプリ",
+      "features": "機能",
+      "security": "セキュリティ",
+      "charter": "憲章",
+      "documentation": "ドキュメント",
+      "releaseNotes": "リリースノート",
+      "reportIssues": "問題を報告",
+      "privacy": "プライバシーポリシー",
+      "terms": "利用規約"
+    },
+    "copyright": "© {year} Rail Gun. All rights reserved."
+  },
+  "charter": {
+    "badge": "設立文書",
+    "title": "Rail Gun憲章",
+    "subtitle": "Rail Gunは市民インフラです。真実のコストを下げ、許可不要のコミュニケーションを保護し、大規模な平和的調整を可能にするために存在します。",
+    "preamble": {
+      "title": "前文",
+      "p1": "Rail Gunは武器ではありません。道路であり、印刷機であり、情報時代のための公共サービスです。私たちは真実をアクセス可能にし、嘘を高コストにし、平和的な自己修正を可能にすることで、暴力を不要にするインフラを構築します。",
+      "p2": "ジャーナリストが恐れずに証拠を公開できるとき、家族が敵対的な国境を越えて連絡できるとき、コミュニティが監視なしに相互扶助を組織できるとき、社会が流血なしに自己修正できるとき、私たちは成功します。"
+    },
+    "principlesTitle": "10の原則",
+    "principlesSubtitle": "これらの原則は交渉の余地がありません。すべての製品決定、すべての機能、すべてのコミュニケーションはこれらに沿っていなければなりません。",
+    "principles": {
+      "1": {
+        "title": "非暴力は交渉不可",
+        "description": "Rail Gunは暴力、強制、または身体的危害を決して提唱、促進、または容認しません。平和的な代替手段を実行可能にすることで、暴力につながる条件を減らすように設計しています。"
+      },
+      "2": {
+        "title": "インフラであり、扇動ではない",
+        "description": "バリケードではなく道路を建設します。武器ではなく印刷機を。私たちの目標は、どのコミュニティも正当な目的で使用できる中立的で耐久性のあるインフラを提供することです。"
+      },
+      "3": {
+        "title": "許可不要の真実",
+        "description": "すべての人は、中央権力の承認を求めることなく、コミュニケーションし、証拠を公開し、他者と調整する権利があります。"
+      },
+      "4": {
+        "title": "エッジでの主権",
+        "description": "ユーザーは自分の鍵、自分のデータ、自分の関係を管理します。Rail Gunの運営者は、最小限のルーティングメタデータ以外でメッセージを読んだりユーザーを特定したりすることはできません。"
+      },
+      "5": {
+        "title": "プロトコルは運営者より長く生きる",
+        "description": "コアプロトコルは、Rail Gunが侵害、買収、または閉鎖されても機能し続けなければなりません。単一障害点なし。キルスイッチなし。"
+      },
+      "6": {
+        "title": "レイヤー分離が正当性を保護",
+        "description": "主権コア（プロトコル）は中立です。サービスレイヤー（ビジネス、コンプライアンス）はビジネスが行われる場所です。これらのレイヤーはアーキテクチャ的に分離されています。"
+      },
+      "7": {
+        "title": "安全なデフォルト、意識的な力",
+        "description": "デフォルトは安全であり、日常的なコミュニケーションに適しています。リスクの高い機能は、明示的なユーザーの意図と十分な情報に基づく同意が必要です。"
+      },
+      "8": {
+        "title": "最小保持、最大削除",
+        "description": "ルーティングに必要な最小限のデータを保存し、必要以上に長く保持することはありません。ユーザーは自分のデータを完全に削除できます。"
+      },
+      "9": {
+        "title": "透明性による正当性",
+        "description": "Rail Gunはプロトコルを公開し、コードを監査し、資金調達を開示し、オープンに運営します。正当性は説明責任を通じて獲得されます。"
+      },
+      "10": {
+        "title": "敵はいない、問題だけ",
+        "description": "私たちは反対者を擬人化したり、標的を名指ししたりしません。問題を説明し、解決策を構築します。目標は誰もが安全にコミュニケーションできる世界です。"
+      }
+    },
+    "whatWeAreNot": {
+      "title": "Rail Gunではないもの",
+      "items": [
+        "ハラスメント、晒し、ストーキングのツールではない",
+        "違法な暴力を調整するプラットフォームではない",
+        "いかなる人、機関、政府に対する武器ではない",
+        "結果からの免責の約束ではない",
+        "イデオロギーではない — インフラである"
+      ]
+    },
+    "commitments": {
+      "title": "運営上のコミットメント",
+      "items": {
+        "audit": {
+          "title": "年次倫理監査",
+          "description": "この憲章に照らした製品決定の独立したレビュー。"
+        },
+        "transparency": {
+          "title": "透明性レポート",
+          "description": "政府からの要請とコンプライアンス措置の四半期ごとの開示。"
+        },
+        "marketing": {
+          "title": "誤解を招くマーケティングなし",
+          "description": "すべてのセキュリティとプライバシーの主張は技術的に検証可能でなければなりません。"
+        },
+        "governance": {
+          "title": "コミュニティガバナンス",
+          "description": "プロトコルの変更には公開討論と大まかなコンセンサスが必要です。"
+        }
+      }
+    },
+    "closing": "この憲章は生きた文書です。修正には公開討論、コミュニティの同意、および非暴力原則との整合が必要です。",
+    "viewOnGithub": "GitHubで見る",
+    "securityDetails": "セキュリティの詳細"
+  },
+  "notFound": {
+    "title": "ページが見つかりません",
+    "description": "申し訳ありません。お探しのページが見つかりませんでした。",
+    "backHome": "ホームに戻る"
+  }
+}
