@@ -6,7 +6,21 @@ import { useTranslations } from '@/i18n/provider';
 export function Security() {
   const { t } = useTranslations('security');
 
-  const securityFeatures = t('features') as unknown as string[];
+  // Build the features array from individual translations
+  const securityFeatures = [
+    t('features.0'),
+    t('features.1'),
+    t('features.2'),
+    t('features.3'),
+    t('features.4'),
+    t('features.5'),
+    t('features.6'),
+    t('features.7'),
+    t('features.8'),
+    t('features.9'),
+    t('features.10'),
+    t('features.11'),
+  ];
 
   return (
     <section id="security" className="bg-background-secondary py-20 sm:py-32">
