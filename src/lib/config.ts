@@ -12,14 +12,15 @@ const GITHUB_REPO = 'ZRosserMcIntosh/railgun';
 const RELEASES_BASE = `https://github.com/${GITHUB_REPO}/releases`;
 
 // Current version - update this when releasing
+// This is overridden by NEXT_PUBLIC_APP_VERSION env var
 const VERSION = process.env.NEXT_PUBLIC_APP_VERSION || '0.1.0';
 
 /**
  * Get download URL for a release artifact
+ * Uses GitHub Releases for hosting
  */
 function getDownloadUrl(filename: string): string {
-  // Use GitHub Releases download URL
-  return `${RELEASES_BASE}/download/v${VERSION}/${filename}`;
+  return `${RELEASES_BASE}/download/v${VERSION}/${encodeURIComponent(filename)}`;
 }
 
 export const siteConfig = {
@@ -33,15 +34,15 @@ export const siteConfig = {
   
   downloads: {
     mac: {
-      dmg: getDownloadUrl(`Rail-Gun-${VERSION}-mac-universal.dmg`),
-      zip: getDownloadUrl(`Rail-Gun-${VERSION}-mac.zip`),
+      dmg: getDownloadUrl(`Rail Gun-${VERSION}-arm64.dmg`),
+      zip: getDownloadUrl(`Rail Gun-${VERSION}-arm64-mac.zip`),
     },
     windows: {
-      exe: getDownloadUrl(`Rail-Gun-${VERSION}-win-x64.exe`),
+      exe: getDownloadUrl(`Rail Gun-${VERSION}-Setup.exe`),
     },
     linux: {
-      appImage: getDownloadUrl(`Rail-Gun-${VERSION}-linux-x86_64.AppImage`),
-      deb: getDownloadUrl(`Rail-Gun-${VERSION}-linux-amd64.deb`),
+      appImage: getDownloadUrl(`Rail Gun-${VERSION}.AppImage`),
+      deb: getDownloadUrl(`Rail Gun-${VERSION}_amd64.deb`),
     },
     // Latest release page for all platforms
     latest: `${RELEASES_BASE}/latest`,

@@ -542,10 +542,10 @@ export function Hero() {
           {/* CTAs */}
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
-              href="#waitlist"
+              href="#download"
               className="btn-primary group w-full sm:w-auto"
             >
-              Join the Waitlist
+              Download Now
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link

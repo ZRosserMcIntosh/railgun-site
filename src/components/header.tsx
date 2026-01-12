@@ -15,9 +15,9 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navLinks = [
+    { href: '#download', label: 'Download' },
     { href: '/charter', label: t('charter') },
     { href: '#features', label: t('features') },
-    { href: '#waitlist', label: t('waitlist') },
     { href: '#security', label: t('security') },
   ];
 

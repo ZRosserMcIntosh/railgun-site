@@ -1,6 +1,6 @@
 import { Header } from '@/components/header';
 import { Hero } from '@/components/hero';
-import { Waitlist } from '@/components/waitlist';
+import { Downloads } from '@/components/downloads';
 import { Features } from '@/components/features';
 import { Security } from '@/components/security';
 import { Platforms } from '@/components/platforms';
@@ -14,8 +14,8 @@ export default function Home() {
     <main className="relative">
       <Header />
       <Hero />
+      <Downloads />
       <Features />
-      <Waitlist />
       <Security />
       <Platforms />
       <Cta />
