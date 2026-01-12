@@ -1,9 +1,9 @@
 {
   "meta": {
-    "title": "Rail Gun - Mensajería Privada Segura",
+    "title": "Rail Gun - Mensajería Segura y Cifrada",
     "titleTemplate": "{title} | Rail Gun",
-    "description": "Rail Gun es infraestructura cívica para comunicación privada. Mensajería cifrada de extremo a extremo donde tus claves nunca salen de tu dispositivo.",
-    "keywords": "mensajería cifrada, chat seguro, protocolo Signal, cifrado de extremo a extremo, mensajería privada"
+    "description": "Rail Gun es una app de mensajería con cifrado de extremo a extremo y protocolo Signal. Funciona sin internet con Modo Nodo. Resistente a la censura. Tus claves nunca salen de tu dispositivo.",
+    "keywords": "mensajería cifrada, chat seguro, protocolo Signal, cifrado de extremo a extremo, mensajería privada, red mesh, mensajería sin internet, resistente a censura, alternativa a Telegram, alternativa a WhatsApp, comunicación anónima, privacidad digital"
   },
   "nav": {
     "charter": "Carta",

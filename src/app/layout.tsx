@@ -1,6 +1,13 @@
 import type { Metadata, Viewport } from 'next';
 import { I18nClientWrapper } from '@/i18n/client-wrapper';
+import { StructuredData } from '@/components/structured-data';
+import { locales } from '@/i18n/config';
 import './globals.css';
+
+// Generate hreflang alternate links for all supported languages
+const languages = Object.fromEntries(
+  locales.map((locale) => [locale, `https://railgun.app?locale=${locale}`])
+);
 
 export const metadata: Metadata = {
   title: {
@@ -22,6 +29,9 @@ export const metadata: Metadata = {
     'private messaging',
     'desktop chat app',
     'secure communications',
+    'mesh network messaging',
+    'offline messaging',
+    'censorship resistant',
   ],
   authors: [{ name: 'Rail Gun Team' }],
   creator: 'Rail Gun',
@@ -37,9 +47,14 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  alternates: {
+    canonical: 'https://railgun.app',
+    languages,
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
+    alternateLocale: ['es_ES', 'pt_BR', 'fr_FR', 'de_DE', 'it_IT', 'uk_UA', 'ru_RU', 'pl_PL', 'hu_HU', 'ko_KR', 'ja_JP', 'zh_CN', 'fa_IR', 'ar_SA'],
     url: 'https://railgun.app',
     siteName: 'Rail Gun',
     title: 'Rail Gun - Secure Private Messaging',
@@ -68,6 +83,12 @@ export const metadata: Metadata = {
   },
   manifest: '/site.webmanifest',
   metadataBase: new URL('https://railgun.app'),
+  verification: {
+    // Add your verification codes here when ready
+    // google: 'your-google-verification-code',
+    // yandex: 'your-yandex-verification-code',
+  },
+  category: 'technology',
 };
 
 export const viewport: Viewport = {
@@ -83,6 +104,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <head>
+        <StructuredData />
+      </head>
       <body className="min-h-screen bg-background-primary font-sans antialiased">
         <I18nClientWrapper>
           {children}

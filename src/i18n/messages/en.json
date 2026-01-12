@@ -2,8 +2,8 @@
   "meta": {
     "title": "Rail Gun - Secure Private Messaging",
     "titleTemplate": "{title} | Rail Gun",
-    "description": "Rail Gun is civic infrastructure for private communication. End-to-end encrypted messaging where your keys never leave your device.",
-    "keywords": "encrypted messaging, secure chat, Signal protocol, end-to-end encryption, private messaging"
+    "description": "Rail Gun is end-to-end encrypted messaging with Signal Protocol. Works offline with mesh networking Node Mode. Censorship-resistant communication where your keys never leave your device.",
+    "keywords": "encrypted messaging, secure chat, Signal protocol, end-to-end encryption, private messaging, mesh network, offline messaging, censorship resistant, Node Mode, privacy app, secure communications, Telegram alternative, WhatsApp alternative, anonymous messaging, digital privacy"
   },
   "nav": {
     "charter": "Charter",

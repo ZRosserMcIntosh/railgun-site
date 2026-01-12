@@ -1,9 +1,9 @@
 {
   "meta": {
-    "title": "Rail Gun - 安全私密通讯",
+    "title": "Rail Gun - 安全加密通讯应用",
     "titleTemplate": "{title} | Rail Gun",
-    "description": "Rail Gun 是为私密通讯而设计的公民基础设施。端到端加密，您的密钥永远不会离开您的设备。",
-    "keywords": "加密消息, 安全聊天, Signal协议, 端到端加密, 私密通讯"
+    "description": "Rail Gun 是采用 Signal 协议的端到端加密通讯应用。无需网络即可使用节点模式通信。抗审查、抗封锁。您的密钥永远不会离开设备。",
+    "keywords": "安全通讯, 加密聊天, 翻墙软件, 抗审查, Signal协议, 端到端加密, 自由上网, 离线通讯, mesh网络, 安全通信, 电报替代品, 微信替代品, 匿名消息, 数字隐私, 网络自由"
   },
   "nav": {
     "charter": "宪章",
