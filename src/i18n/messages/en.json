@@ -7,6 +7,7 @@
   },
   "nav": {
     "charter": "Charter",
+    "nodeMode": "Node Mode",
     "features": "Features",
     "waitlist": "Waitlist",
     "security": "Security",
@@ -250,5 +251,122 @@
     "title": "Page not found",
     "description": "Sorry, we couldn't find the page you're looking for.",
     "backHome": "Go back home"
+  },
+  "nodeMode": {
+    "badge": "Resilient Infrastructure",
+    "title": "Node Mode: Communication Without Infrastructure",
+    "subtitle": "When governments shut down the internet, when cell towers fail, when you're in the middle of nowhere—Railgun keeps working. Your phone becomes part of a mesh network that connects people directly.",
+    "noInternet": "No Internet",
+    "meshActive": "Mesh Active",
+    "stillSecure": "Still Secure",
+    "whatIs": {
+      "title": "What is Node Mode?",
+      "description1": "Node Mode transforms every Railgun device into a communication relay. Using Bluetooth, Wi-Fi Direct, and other local radio technologies, devices automatically discover each other and form a mesh network—no cell towers, no internet, no central servers required.",
+      "description2": "Messages hop from device to device using delay-tolerant networking (DTN) principles. If your message can't reach its destination immediately, it's stored and forwarded as the network topology changes. This is the same technology designed for space communication where latency can be hours.",
+      "description3": "The moment even ONE device in the mesh regains internet access—through a café Wi-Fi, satellite link, or cellular signal—it becomes a gateway. The entire local mesh can then sync with the global Railgun network, all while maintaining end-to-end encryption."
+    },
+    "useCases": {
+      "title": "When You Need It Most",
+      "subtitle": "Node Mode was designed for the moments when traditional communication fails you.",
+      "protests": {
+        "title": "Protests & Civil Unrest",
+        "description": "When authorities shut down cellular networks or flood cell towers with surveillance, coordinate safely through device-to-device mesh."
+      },
+      "disasters": {
+        "title": "Natural Disasters",
+        "description": "After earthquakes, hurricanes, or floods when infrastructure is destroyed, maintain communication with nearby survivors and rescue teams."
+      },
+      "remote": {
+        "title": "Remote Areas",
+        "description": "Hiking, camping, or working in areas with no cellular coverage? Stay connected with your group through mesh networking."
+      },
+      "censorship": {
+        "title": "Internet Censorship",
+        "description": "In regions where the internet is blocked or heavily monitored, communicate freely through local mesh networks."
+      },
+      "infrastructure": {
+        "title": "Infrastructure Failures",
+        "description": "Power outages, fiber cuts, or ISP failures don't stop Node Mode. If devices have battery, communication continues."
+      },
+      "privacy": {
+        "title": "Maximum Privacy",
+        "description": "For sensitive communications where you don't want ANY internet traffic, keep everything local and air-gapped."
+      }
+    },
+    "howItWorks": {
+      "title": "How Node Mode Works",
+      "subtitle": "A four-layer system designed for resilience, security, and real-world mobile constraints.",
+      "discovery": {
+        "title": "Peer Discovery",
+        "description": "Devices use BLE advertising to find nearby Railgun users. Once discovered, they negotiate a high-bandwidth connection via Wi-Fi Direct or Wi-Fi Aware."
+      },
+      "mesh": {
+        "title": "Mesh Formation",
+        "description": "Nodes maintain a peer table and exchange 'inventory' of messages using compact bloom filters. No flooding—just efficient set reconciliation."
+      },
+      "storeForward": {
+        "title": "Store & Forward",
+        "description": "Messages propagate opportunistically with TTL and hop limits. Loop prevention, backpressure, and credit-based forwarding prevent abuse."
+      },
+      "gateway": {
+        "title": "Gateway Sync",
+        "description": "When a node gains internet access, it advertises uplink availability. The mesh syncs to the global network through encrypted envelopes—the gateway never sees plaintext."
+      }
+    },
+    "gateway": {
+      "title": "The Gateway: One Connection for Everyone",
+      "description1": "Imagine 100 people at a protest with no cellular service. If just ONE person has a satellite hotspot or finds café Wi-Fi, that device becomes a gateway—allowing all 100 users to sync their messages with the outside world.",
+      "description2": "The gateway never decrypts your messages. It routes encrypted envelopes to and from the global Railgun network. Even a compromised gateway cannot read your communications. Messages are prioritized intelligently:",
+      "priorityTitle": "Message Priority Queue",
+      "priority1": "Emergency & coordination messages (highest priority)",
+      "priority2": "Short text messages",
+      "priority3": "Thumbnails & previews",
+      "priority4": "Full images",
+      "priority5": "Video & large files (opportunistic)"
+    },
+    "technical": {
+      "title": "Security Without Compromise",
+      "subtitle": "Node Mode maintains the same cryptographic guarantees as online Railgun—your keys never leave your device.",
+      "e2ee": {
+        "title": "Always End-to-End Encrypted",
+        "description": "Every message, every hop. Signal Protocol with forward secrecy. Relay nodes cannot read content—they only see encrypted blobs."
+      },
+      "metadata": {
+        "title": "Metadata Minimization",
+        "description": "Rotating peer IDs, no global usernames in broadcasts. Your stable identity is only revealed to contacts you explicitly trust."
+      },
+      "battery": {
+        "title": "Battery Intelligent",
+        "description": "Adaptive duty cycling keeps radios from draining your battery. Node Mode Off/On/Aggressive modes for different situations."
+      },
+      "abuse": {
+        "title": "Abuse Resistant",
+        "description": "Rate limiting, proof-of-work for broadcasts, and credit-based forwarding. One bad actor can't flood the mesh."
+      },
+      "crossPlatform": {
+        "title": "iOS & Android Native",
+        "description": "Built using platform-native APIs: MultipeerConnectivity, Wi-Fi Aware, Nearby Connections. No jailbreaking or rooting required."
+      },
+      "superNodes": {
+        "title": "Desktop Super-Nodes",
+        "description": "Laptops and desktops can run as high-capacity mesh nodes with Wi-Fi AP mode, extended caching, and optional community relay functionality."
+      }
+    },
+    "transparency": {
+      "title": "Honest About Limitations",
+      "description1": "We believe in transparency about what Node Mode can and cannot do. No technology is invincible, and we won't pretend otherwise.",
+      "description2": "Node Mode significantly increases resilience against network shutdowns and surveillance, but it operates within real-world constraints:",
+      "limitationsTitle": "What Node Mode Cannot Defeat",
+      "limitation1": "RF jamming that blankets all Bluetooth and Wi-Fi frequencies",
+      "limitation2": "Physical device seizure or OS-level compromise",
+      "limitation3": "Targeted individual surveillance with unlimited resources",
+      "limitation4": "iOS background execution limits (works best with app in foreground)"
+    },
+    "cta": {
+      "title": "Join the Network",
+      "description": "Node Mode is coming to Railgun for iOS, Android, and Desktop. Join the waitlist to be among the first to build a more resilient communication network.",
+      "joinWaitlist": "Join the Waitlist",
+      "readCharter": "Read Our Charter"
+    }
   }
 }

@@ -7,6 +7,7 @@
   },
   "nav": {
     "charter": "Carta",
+    "nodeMode": "Modo Nodo",
     "features": "Características",
     "waitlist": "Lista de Espera",
     "security": "Seguridad",
@@ -250,5 +251,122 @@
     "title": "Página no encontrada",
     "description": "Lo sentimos, no pudimos encontrar la página que buscas.",
     "backHome": "Volver al inicio"
+  },
+  "nodeMode": {
+    "badge": "Infraestructura Resiliente",
+    "title": "Modo Nodo: Comunicación Sin Infraestructura",
+    "subtitle": "Cuando los gobiernos cortan internet, cuando fallan las torres celulares, cuando estás en medio de la nada—Railgun sigue funcionando. Tu teléfono se convierte en parte de una red mesh que conecta personas directamente.",
+    "noInternet": "Sin Internet",
+    "meshActive": "Mesh Activa",
+    "stillSecure": "Aún Seguro",
+    "whatIs": {
+      "title": "¿Qué es el Modo Nodo?",
+      "description1": "El Modo Nodo transforma cada dispositivo Railgun en un repetidor de comunicación. Usando Bluetooth, Wi-Fi Direct y otras tecnologías de radio local, los dispositivos se descubren automáticamente y forman una red mesh—sin torres celulares, sin internet, sin servidores centrales.",
+      "description2": "Los mensajes saltan de dispositivo a dispositivo usando principios de redes tolerantes a demoras (DTN). Si tu mensaje no puede llegar a su destino inmediatamente, se almacena y reenvía a medida que cambia la topología de la red. Esta es la misma tecnología diseñada para comunicación espacial donde la latencia puede ser de horas.",
+      "description3": "En el momento en que incluso UN dispositivo en la mesh recupera acceso a internet—a través de Wi-Fi de cafetería, enlace satelital o señal celular—se convierte en puerta de enlace. Toda la mesh local puede sincronizarse con la red global Railgun, manteniendo el cifrado de extremo a extremo."
+    },
+    "useCases": {
+      "title": "Cuando Más Lo Necesitas",
+      "subtitle": "El Modo Nodo fue diseñado para los momentos cuando la comunicación tradicional te falla.",
+      "protests": {
+        "title": "Protestas y Disturbios Civiles",
+        "description": "Cuando las autoridades cortan las redes celulares o inundan las torres con vigilancia, coordina de forma segura a través de la mesh dispositivo a dispositivo."
+      },
+      "disasters": {
+        "title": "Desastres Naturales",
+        "description": "Después de terremotos, huracanes o inundaciones cuando la infraestructura está destruida, mantén comunicación con sobrevivientes cercanos y equipos de rescate."
+      },
+      "remote": {
+        "title": "Áreas Remotas",
+        "description": "¿Senderismo, camping o trabajo en áreas sin cobertura celular? Mantente conectado con tu grupo a través de la red mesh."
+      },
+      "censorship": {
+        "title": "Censura de Internet",
+        "description": "En regiones donde internet está bloqueado o muy vigilado, comunícate libremente a través de redes mesh locales."
+      },
+      "infrastructure": {
+        "title": "Fallos de Infraestructura",
+        "description": "Cortes de energía, cortes de fibra o fallos de ISP no detienen el Modo Nodo. Si los dispositivos tienen batería, la comunicación continúa."
+      },
+      "privacy": {
+        "title": "Máxima Privacidad",
+        "description": "Para comunicaciones sensibles donde no quieres NINGÚN tráfico de internet, mantén todo local y aislado."
+      }
+    },
+    "howItWorks": {
+      "title": "Cómo Funciona el Modo Nodo",
+      "subtitle": "Un sistema de cuatro capas diseñado para resiliencia, seguridad y restricciones reales de móviles.",
+      "discovery": {
+        "title": "Descubrimiento de Pares",
+        "description": "Los dispositivos usan publicidad BLE para encontrar usuarios Railgun cercanos. Una vez descubiertos, negocian una conexión de alto ancho de banda vía Wi-Fi Direct o Wi-Fi Aware."
+      },
+      "mesh": {
+        "title": "Formación de Mesh",
+        "description": "Los nodos mantienen una tabla de pares e intercambian 'inventario' de mensajes usando filtros bloom compactos. Sin inundación—solo reconciliación eficiente de conjuntos."
+      },
+      "storeForward": {
+        "title": "Almacenar y Reenviar",
+        "description": "Los mensajes se propagan oportunísticamente con TTL y límites de saltos. Prevención de bucles, contrapresión y reenvío basado en créditos previenen abusos."
+      },
+      "gateway": {
+        "title": "Sincronización con Puerta de Enlace",
+        "description": "Cuando un nodo obtiene acceso a internet, anuncia disponibilidad de enlace. La mesh se sincroniza con la red global a través de sobres cifrados—la puerta de enlace nunca ve texto plano."
+      }
+    },
+    "gateway": {
+      "title": "La Puerta de Enlace: Una Conexión para Todos",
+      "description1": "Imagina 100 personas en una protesta sin servicio celular. Si solo UNA persona tiene un hotspot satelital o encuentra Wi-Fi de cafetería, ese dispositivo se convierte en puerta de enlace—permitiendo a los 100 usuarios sincronizar sus mensajes con el mundo exterior.",
+      "description2": "La puerta de enlace nunca descifra tus mensajes. Enruta sobres cifrados hacia y desde la red global Railgun. Incluso una puerta de enlace comprometida no puede leer tus comunicaciones. Los mensajes se priorizan inteligentemente:",
+      "priorityTitle": "Cola de Prioridad de Mensajes",
+      "priority1": "Mensajes de emergencia y coordinación (máxima prioridad)",
+      "priority2": "Mensajes de texto cortos",
+      "priority3": "Miniaturas y vistas previas",
+      "priority4": "Imágenes completas",
+      "priority5": "Video y archivos grandes (oportunístico)"
+    },
+    "technical": {
+      "title": "Seguridad Sin Compromisos",
+      "subtitle": "El Modo Nodo mantiene las mismas garantías criptográficas que Railgun en línea—tus claves nunca salen de tu dispositivo.",
+      "e2ee": {
+        "title": "Siempre Cifrado de Extremo a Extremo",
+        "description": "Cada mensaje, cada salto. Protocolo Signal con secreto hacia adelante. Los nodos repetidores no pueden leer contenido—solo ven blobs cifrados."
+      },
+      "metadata": {
+        "title": "Minimización de Metadatos",
+        "description": "IDs de pares rotativos, sin nombres de usuario globales en transmisiones. Tu identidad estable solo se revela a contactos en los que confías explícitamente."
+      },
+      "battery": {
+        "title": "Inteligente con la Batería",
+        "description": "Ciclos adaptativos evitan que las radios agoten tu batería. Modos Apagado/Encendido/Agresivo para diferentes situaciones."
+      },
+      "abuse": {
+        "title": "Resistente a Abusos",
+        "description": "Límites de tasa, prueba de trabajo para transmisiones y reenvío basado en créditos. Un mal actor no puede inundar la mesh."
+      },
+      "crossPlatform": {
+        "title": "Nativo en iOS y Android",
+        "description": "Construido usando APIs nativas de plataforma: MultipeerConnectivity, Wi-Fi Aware, Nearby Connections. Sin jailbreak ni root necesario."
+      },
+      "superNodes": {
+        "title": "Super-Nodos de Escritorio",
+        "description": "Laptops y escritorios pueden funcionar como nodos mesh de alta capacidad con modo AP Wi-Fi, caché extendido y funcionalidad opcional de repetidor comunitario."
+      }
+    },
+    "transparency": {
+      "title": "Honestidad Sobre Limitaciones",
+      "description1": "Creemos en la transparencia sobre lo que el Modo Nodo puede y no puede hacer. Ninguna tecnología es invencible, y no pretenderemos lo contrario.",
+      "description2": "El Modo Nodo aumenta significativamente la resiliencia contra cortes de red y vigilancia, pero opera dentro de restricciones del mundo real:",
+      "limitationsTitle": "Lo Que el Modo Nodo No Puede Derrotar",
+      "limitation1": "Interferencia RF que cubre todas las frecuencias Bluetooth y Wi-Fi",
+      "limitation2": "Incautación física del dispositivo o compromiso a nivel de SO",
+      "limitation3": "Vigilancia individual dirigida con recursos ilimitados",
+      "limitation4": "Límites de ejecución en segundo plano de iOS (funciona mejor con la app en primer plano)"
+    },
+    "cta": {
+      "title": "Únete a la Red",
+      "description": "El Modo Nodo llegará a Railgun para iOS, Android y Escritorio. Únete a la lista de espera para ser de los primeros en construir una red de comunicación más resiliente.",
+      "joinWaitlist": "Unirse a la Lista de Espera",
+      "readCharter": "Leer Nuestra Carta"
+    }
   }
 }

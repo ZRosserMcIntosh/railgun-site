@@ -7,6 +7,7 @@
   },
   "nav": {
     "charter": "Charta",
+    "nodeMode": "Knoten-Modus",
     "features": "Funktionen",
     "waitlist": "Warteliste",
     "security": "Sicherheit",
@@ -250,5 +251,122 @@
     "title": "Seite nicht gefunden",
     "description": "Entschuldigung, wir konnten die gesuchte Seite nicht finden.",
     "backHome": "Zurück zur Startseite"
+  },
+  "nodeMode": {
+    "badge": "Resiliente Infrastruktur",
+    "title": "Knoten-Modus: Kommunikation Ohne Infrastruktur",
+    "subtitle": "Wenn Regierungen das Internet abschalten, wenn Mobilfunkmasten ausfallen, wenn Sie mitten im Nirgendwo sind—Railgun funktioniert weiter. Ihr Telefon wird Teil eines Mesh-Netzwerks, das Menschen direkt verbindet.",
+    "noInternet": "Kein Internet",
+    "meshActive": "Mesh Aktiv",
+    "stillSecure": "Immer Noch Sicher",
+    "whatIs": {
+      "title": "Was ist der Knoten-Modus?",
+      "description1": "Der Knoten-Modus verwandelt jedes Railgun-Gerät in einen Kommunikations-Relay. Mit Bluetooth, Wi-Fi Direct und anderen lokalen Funktechnologien entdecken sich Geräte automatisch und bilden ein Mesh-Netzwerk—ohne Mobilfunkmasten, ohne Internet, ohne zentrale Server.",
+      "description2": "Nachrichten springen von Gerät zu Gerät nach den Prinzipien verzögerungstoleranter Netzwerke (DTN). Wenn Ihre Nachricht ihr Ziel nicht sofort erreichen kann, wird sie gespeichert und weitergeleitet, wenn sich die Netzwerktopologie ändert. Dies ist die gleiche Technologie, die für die Weltraumkommunikation entwickelt wurde, wo die Latenz Stunden betragen kann.",
+      "description3": "Sobald auch nur EIN Gerät im Mesh wieder Internetzugang erhält—über ein Café-Wi-Fi, Satellitenverbindung oder Mobilfunksignal—wird es zum Gateway. Das gesamte lokale Mesh kann sich dann mit dem globalen Railgun-Netzwerk synchronisieren, während die Ende-zu-Ende-Verschlüsselung beibehalten wird."
+    },
+    "useCases": {
+      "title": "Wenn Sie Es Am Meisten Brauchen",
+      "subtitle": "Der Knoten-Modus wurde für die Momente entwickelt, in denen traditionelle Kommunikation versagt.",
+      "protests": {
+        "title": "Proteste und Zivile Unruhen",
+        "description": "Wenn Behörden Mobilfunknetze abschalten oder Masten mit Überwachung überfluten, koordinieren Sie sicher über Gerät-zu-Gerät-Mesh."
+      },
+      "disasters": {
+        "title": "Naturkatastrophen",
+        "description": "Nach Erdbeben, Hurrikans oder Überschwemmungen, wenn die Infrastruktur zerstört ist, halten Sie Kontakt mit Überlebenden in der Nähe und Rettungsteams."
+      },
+      "remote": {
+        "title": "Abgelegene Gebiete",
+        "description": "Wandern, Camping oder Arbeiten in Gebieten ohne Mobilfunkabdeckung? Bleiben Sie mit Ihrer Gruppe über das Mesh-Netzwerk verbunden."
+      },
+      "censorship": {
+        "title": "Internet-Zensur",
+        "description": "In Regionen, wo das Internet blockiert oder stark überwacht wird, kommunizieren Sie frei über lokale Mesh-Netzwerke."
+      },
+      "infrastructure": {
+        "title": "Infrastrukturausfälle",
+        "description": "Stromausfälle, Glasfaserbrüche oder ISP-Ausfälle stoppen den Knoten-Modus nicht. Solange Geräte Akku haben, geht die Kommunikation weiter."
+      },
+      "privacy": {
+        "title": "Maximale Privatsphäre",
+        "description": "Für sensible Kommunikation, bei der Sie KEINEN Internetverkehr wollen, halten Sie alles lokal und isoliert."
+      }
+    },
+    "howItWorks": {
+      "title": "Wie der Knoten-Modus Funktioniert",
+      "subtitle": "Ein Vier-Schichten-System, entwickelt für Resilienz, Sicherheit und reale mobile Einschränkungen.",
+      "discovery": {
+        "title": "Peer-Erkennung",
+        "description": "Geräte nutzen BLE-Advertising, um Railgun-Nutzer in der Nähe zu finden. Nach der Erkennung verhandeln sie eine Hochgeschwindigkeitsverbindung über Wi-Fi Direct oder Wi-Fi Aware."
+      },
+      "mesh": {
+        "title": "Mesh-Bildung",
+        "description": "Knoten pflegen eine Peer-Tabelle und tauschen 'Inventar' von Nachrichten über kompakte Bloom-Filter aus. Kein Flooding—nur effiziente Mengenabgleichung."
+      },
+      "storeForward": {
+        "title": "Speichern & Weiterleiten",
+        "description": "Nachrichten verbreiten sich opportunistisch mit TTL und Hop-Limits. Schleifenverhinderung, Gegendruck und kreditbasierte Weiterleitung verhindern Missbrauch."
+      },
+      "gateway": {
+        "title": "Gateway-Synchronisation",
+        "description": "Wenn ein Knoten Internetzugang erhält, kündigt er Uplink-Verfügbarkeit an. Das Mesh synchronisiert sich mit dem globalen Netzwerk über verschlüsselte Umschläge—das Gateway sieht nie Klartext."
+      }
+    },
+    "gateway": {
+      "title": "Das Gateway: Eine Verbindung für Alle",
+      "description1": "Stellen Sie sich 100 Menschen bei einer Demonstration ohne Mobilfunkdienst vor. Wenn nur EINE Person einen Satelliten-Hotspot hat oder Café-Wi-Fi findet, wird dieses Gerät zum Gateway—und ermöglicht allen 100 Nutzern, ihre Nachrichten mit der Außenwelt zu synchronisieren.",
+      "description2": "Das Gateway entschlüsselt Ihre Nachrichten nie. Es leitet verschlüsselte Umschläge zum und vom globalen Railgun-Netzwerk weiter. Selbst ein kompromittiertes Gateway kann Ihre Kommunikation nicht lesen. Nachrichten werden intelligent priorisiert:",
+      "priorityTitle": "Nachrichten-Prioritätswarteschlange",
+      "priority1": "Notfall- und Koordinationsnachrichten (höchste Priorität)",
+      "priority2": "Kurze Textnachrichten",
+      "priority3": "Thumbnails und Vorschauen",
+      "priority4": "Vollständige Bilder",
+      "priority5": "Video und große Dateien (opportunistisch)"
+    },
+    "technical": {
+      "title": "Sicherheit Ohne Kompromisse",
+      "subtitle": "Der Knoten-Modus behält die gleichen kryptografischen Garantien wie Online-Railgun—Ihre Schlüssel verlassen nie Ihr Gerät.",
+      "e2ee": {
+        "title": "Immer Ende-zu-Ende-Verschlüsselt",
+        "description": "Jede Nachricht, jeder Hop. Signal-Protokoll mit Forward Secrecy. Relay-Knoten können Inhalte nicht lesen—sie sehen nur verschlüsselte Blobs."
+      },
+      "metadata": {
+        "title": "Metadaten-Minimierung",
+        "description": "Rotierende Peer-IDs, keine globalen Benutzernamen in Broadcasts. Ihre stabile Identität wird nur Kontakten offenbart, denen Sie ausdrücklich vertrauen."
+      },
+      "battery": {
+        "title": "Batterie-Intelligent",
+        "description": "Adaptives Duty-Cycling verhindert, dass Funkmodule Ihren Akku leeren. Aus/An/Aggressiv-Modi für verschiedene Situationen."
+      },
+      "abuse": {
+        "title": "Missbrauchsresistent",
+        "description": "Ratenbegrenzung, Proof-of-Work für Broadcasts und kreditbasierte Weiterleitung. Ein böswilliger Akteur kann das Mesh nicht überfluten."
+      },
+      "crossPlatform": {
+        "title": "Nativ für iOS und Android",
+        "description": "Mit nativen Plattform-APIs gebaut: MultipeerConnectivity, Wi-Fi Aware, Nearby Connections. Kein Jailbreak oder Root erforderlich."
+      },
+      "superNodes": {
+        "title": "Desktop-Super-Knoten",
+        "description": "Laptops und Desktops können als Hochkapazitäts-Mesh-Knoten mit Wi-Fi-AP-Modus, erweitertem Caching und optionaler Community-Relay-Funktionalität laufen."
+      }
+    },
+    "transparency": {
+      "title": "Ehrlich Über Grenzen",
+      "description1": "Wir glauben an Transparenz darüber, was der Knoten-Modus kann und was nicht. Keine Technologie ist unbesiegbar, und wir werden nicht so tun, als wäre es anders.",
+      "description2": "Der Knoten-Modus erhöht die Resilienz gegen Netzwerkabschaltungen und Überwachung erheblich, aber er arbeitet innerhalb realer Einschränkungen:",
+      "limitationsTitle": "Was der Knoten-Modus Nicht Überwinden Kann",
+      "limitation1": "RF-Störung, die alle Bluetooth- und Wi-Fi-Frequenzen abdeckt",
+      "limitation2": "Physische Beschlagnahme des Geräts oder Kompromittierung auf OS-Ebene",
+      "limitation3": "Gezielte Einzelüberwachung mit unbegrenzten Ressourcen",
+      "limitation4": "iOS-Hintergrundausführungslimits (funktioniert am besten mit App im Vordergrund)"
+    },
+    "cta": {
+      "title": "Treten Sie dem Netzwerk Bei",
+      "description": "Der Knoten-Modus kommt zu Railgun für iOS, Android und Desktop. Treten Sie der Warteliste bei, um zu den Ersten zu gehören, die ein resilienteres Kommunikationsnetzwerk aufbauen.",
+      "joinWaitlist": "Der Warteliste Beitreten",
+      "readCharter": "Unsere Charta Lesen"
+    }
   }
 }

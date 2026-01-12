@@ -91,7 +91,7 @@ export function LanguageSwitcher({ className, variant = 'default' }: LanguageSwi
             : 'bg-background-secondary px-3 py-2 text-sm hover:bg-background-elevated'
         )}
         aria-label={t('language')}
-        aria-expanded={isOpen ? 'true' : 'false'}
+        {...(isOpen ? { 'aria-expanded': 'true' } : { 'aria-expanded': 'false' })}
         aria-haspopup="listbox"
       >
         <Globe className="h-4 w-4 text-foreground-secondary" />
@@ -126,7 +126,7 @@ export function LanguageSwitcher({ className, variant = 'default' }: LanguageSwi
                     : 'text-foreground-secondary hover:bg-background-secondary hover:text-foreground-primary'
                 )}
                 role="option"
-                aria-selected={locale === loc ? 'true' : 'false'}
+                {...(locale === loc ? { 'aria-selected': 'true' } : { 'aria-selected': 'false' })}
               >
                 <span className="text-lg">{localeFlags[loc]}</span>
                 <span className="flex-1">{localeNames[loc]}</span>

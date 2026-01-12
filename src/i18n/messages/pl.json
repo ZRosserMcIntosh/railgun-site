@@ -7,6 +7,7 @@
   },
   "nav": {
     "charter": "Karta",
+    "nodeMode": "Tryb Węzła",
     "features": "Funkcje",
     "waitlist": "Lista oczekujących",
     "security": "Bezpieczeństwo",
@@ -250,5 +251,122 @@
     "title": "Strona nie znaleziona",
     "description": "Przepraszamy, nie mogliśmy znaleźć strony, której szukasz.",
     "backHome": "Wróć na stronę główną"
+  },
+  "nodeMode": {
+    "badge": "Odporna Infrastruktura",
+    "title": "Tryb Węzła: Komunikacja Bez Infrastruktury",
+    "subtitle": "Gdy rządy wyłączają internet, gdy padają wieże komórkowe, gdy jesteś na odludziu—Railgun działa dalej. Twój telefon staje się częścią sieci mesh łączącej ludzi bezpośrednio.",
+    "noInternet": "Brak Internetu",
+    "meshActive": "Mesh Aktywny",
+    "stillSecure": "Wciąż Bezpieczny",
+    "whatIs": {
+      "title": "Czym jest Tryb Węzła?",
+      "description1": "Tryb Węzła zamienia każde urządzenie Railgun w przekaźnik komunikacyjny. Używając Bluetooth, Wi-Fi Direct i innych lokalnych technologii radiowych, urządzenia automatycznie się odnajdują i tworzą sieć mesh—bez wież komórkowych, bez internetu, bez centralnych serwerów.",
+      "description2": "Wiadomości przeskakują z urządzenia na urządzenie zgodnie z zasadami sieci tolerancyjnych na opóźnienia (DTN). Jeśli Twoja wiadomość nie może natychmiast dotrzeć do celu, jest przechowywana i przekazywana w miarę zmian topologii sieci. To ta sama technologia zaprojektowana dla komunikacji kosmicznej, gdzie opóźnienia mogą wynosić godziny.",
+      "description3": "W momencie, gdy choć JEDNO urządzenie w sieci mesh odzyskuje dostęp do internetu—przez Wi-Fi kawiarni, łącze satelitarne lub sygnał komórkowy—staje się bramą. Cała lokalna sieć mesh może zsynchronizować się z globalną siecią Railgun, zachowując szyfrowanie end-to-end."
+    },
+    "useCases": {
+      "title": "Gdy Najbardziej Potrzebujesz",
+      "subtitle": "Tryb Węzła został zaprojektowany na momenty, gdy tradycyjna komunikacja zawodzi.",
+      "protests": {
+        "title": "Protesty i Zamieszki",
+        "description": "Gdy władze wyłączają sieci komórkowe lub zalewają wieże inwigilacją, koordynuj się bezpiecznie przez sieć mesh między urządzeniami."
+      },
+      "disasters": {
+        "title": "Klęski Żywiołowe",
+        "description": "Po trzęsieniach ziemi, huraganach czy powodziach, gdy infrastruktura jest zniszczona, utrzymuj łączność z ocalałymi w pobliżu i zespołami ratunkowymi."
+      },
+      "remote": {
+        "title": "Odległe Obszary",
+        "description": "Wędrówki, camping czy praca w miejscach bez zasięgu? Pozostań w kontakcie ze swoją grupą przez sieć mesh."
+      },
+      "censorship": {
+        "title": "Cenzura Internetu",
+        "description": "W regionach, gdzie internet jest blokowany lub ściśle monitorowany, komunikuj się swobodnie przez lokalne sieci mesh."
+      },
+      "infrastructure": {
+        "title": "Awarie Infrastruktury",
+        "description": "Przerwy w zasilaniu, zerwane światłowody czy awarie dostawców nie zatrzymują Trybu Węzła. Dopóki urządzenia mają baterię, komunikacja trwa."
+      },
+      "privacy": {
+        "title": "Maksymalna Prywatność",
+        "description": "Dla wrażliwej komunikacji, gdy nie chcesz ŻADNEGO ruchu internetowego, trzymaj wszystko lokalnie i odizolowanie."
+      }
+    },
+    "howItWorks": {
+      "title": "Jak Działa Tryb Węzła",
+      "subtitle": "Czterowarstwowy system zaprojektowany dla odporności, bezpieczeństwa i realnych ograniczeń urządzeń mobilnych.",
+      "discovery": {
+        "title": "Wykrywanie Peerów",
+        "description": "Urządzenia używają reklam BLE do znajdowania pobliskich użytkowników Railgun. Po wykryciu negocjują szybkie połączenie przez Wi-Fi Direct lub Wi-Fi Aware."
+      },
+      "mesh": {
+        "title": "Formowanie Sieci Mesh",
+        "description": "Węzły utrzymują tablicę peerów i wymieniają 'inwentarz' wiadomości za pomocą kompaktowych filtrów Blooma. Bez zalewania—tylko efektywna synchronizacja zbiorów."
+      },
+      "storeForward": {
+        "title": "Przechowuj i Przekazuj",
+        "description": "Wiadomości propagują się oportunistycznie z TTL i limitami skoków. Zapobieganie pętlom, przeciwciśnienie i przekazywanie oparte na kredytach zapobiegają nadużyciom."
+      },
+      "gateway": {
+        "title": "Synchronizacja przez Bramę",
+        "description": "Gdy węzeł uzyskuje dostęp do internetu, ogłasza dostępność łącza. Sieć mesh synchronizuje się z globalną siecią przez zaszyfrowane koperty—brama nigdy nie widzi tekstu jawnego."
+      }
+    },
+    "gateway": {
+      "title": "Brama: Jedno Połączenie dla Wszystkich",
+      "description1": "Wyobraź sobie 100 osób na proteście bez usługi komórkowej. Jeśli choć JEDNA osoba ma hotspot satelitarny lub znajdzie Wi-Fi kawiarni, to urządzenie staje się bramą—pozwalając wszystkim 100 użytkownikom synchronizować wiadomości ze światem zewnętrznym.",
+      "description2": "Brama nigdy nie odszyfrowuje Twoich wiadomości. Przekazuje zaszyfrowane koperty do i z globalnej sieci Railgun. Nawet skompromitowana brama nie może przeczytać Twojej komunikacji. Wiadomości są priorytetyzowane inteligentnie:",
+      "priorityTitle": "Kolejka Priorytetów Wiadomości",
+      "priority1": "Wiadomości awaryjne i koordynacyjne (najwyższy priorytet)",
+      "priority2": "Krótkie wiadomości tekstowe",
+      "priority3": "Miniatury i podglądy",
+      "priority4": "Pełne obrazy",
+      "priority5": "Wideo i duże pliki (oportunistycznie)"
+    },
+    "technical": {
+      "title": "Bezpieczeństwo Bez Kompromisów",
+      "subtitle": "Tryb Węzła zachowuje te same gwarancje kryptograficzne co Railgun online—Twoje klucze nigdy nie opuszczają urządzenia.",
+      "e2ee": {
+        "title": "Zawsze Szyfrowanie End-to-End",
+        "description": "Każda wiadomość, każdy skok. Protokół Signal z forward secrecy. Węzły przekaźnikowe nie mogą czytać treści—widzą tylko zaszyfrowane bloby."
+      },
+      "metadata": {
+        "title": "Minimalizacja Metadanych",
+        "description": "Rotacyjne ID peerów, brak globalnych nazw użytkowników w rozgłoszeniach. Twoja stała tożsamość jest ujawniana tylko kontaktom, którym wyraźnie ufasz."
+      },
+      "battery": {
+        "title": "Inteligentne Zarządzanie Baterią",
+        "description": "Adaptacyjne cykle zapobiegają wyczerpywaniu baterii przez moduły radiowe. Tryby Wyłączony/Włączony/Agresywny dla różnych sytuacji."
+      },
+      "abuse": {
+        "title": "Odporność na Nadużycia",
+        "description": "Limity szybkości, proof-of-work dla rozgłoszeń i przekazywanie oparte na kredytach. Jeden zły aktor nie może zalać sieci mesh."
+      },
+      "crossPlatform": {
+        "title": "Natywnie na iOS i Android",
+        "description": "Zbudowany z użyciem natywnych API platform: MultipeerConnectivity, Wi-Fi Aware, Nearby Connections. Bez jailbreaka czy rootowania."
+      },
+      "superNodes": {
+        "title": "Desktopowe Super-Węzły",
+        "description": "Laptopy i desktopy mogą działać jako węzły mesh o wysokiej pojemności z trybem AP Wi-Fi, rozszerzonym cachingiem i opcjonalną funkcją przekaźnika społecznościowego."
+      }
+    },
+    "transparency": {
+      "title": "Szczerość o Ograniczeniach",
+      "description1": "Wierzymy w przejrzystość tego, co Tryb Węzła może, a czego nie może zrobić. Żadna technologia nie jest niezwyciężona i nie będziemy udawać inaczej.",
+      "description2": "Tryb Węzła znacząco zwiększa odporność na wyłączenia sieci i inwigilację, ale działa w ramach ograniczeń świata rzeczywistego:",
+      "limitationsTitle": "Czego Tryb Węzła Nie Może Pokonać",
+      "limitation1": "Zagłuszanie RF pokrywające wszystkie częstotliwości Bluetooth i Wi-Fi",
+      "limitation2": "Fizyczne zajęcie urządzenia lub kompromitacja na poziomie systemu operacyjnego",
+      "limitation3": "Ukierunkowana inwigilacja jednostki z nieograniczonymi zasobami",
+      "limitation4": "Limity wykonywania w tle iOS (najlepiej działa z aplikacją na pierwszym planie)"
+    },
+    "cta": {
+      "title": "Dołącz do Sieci",
+      "description": "Tryb Węzła pojawi się w Railgun dla iOS, Android i Desktop. Dołącz do listy oczekujących, aby być wśród pierwszych, którzy zbudują bardziej odporną sieć komunikacyjną.",
+      "joinWaitlist": "Dołącz do Listy Oczekujących",
+      "readCharter": "Przeczytaj Naszą Kartę"
+    }
   }
 }

@@ -7,6 +7,7 @@
   },
   "nav": {
     "charter": "Alapokmány",
+    "nodeMode": "Csomópont Mód",
     "features": "Funkciók",
     "waitlist": "Várólistа",
     "security": "Biztonság",
@@ -250,5 +251,122 @@
     "title": "Az oldal nem található",
     "description": "Sajnáljuk, nem találjuk a keresett oldalt.",
     "backHome": "Vissza a főoldalra"
+  },
+  "nodeMode": {
+    "badge": "Ellenálló Infrastruktúra",
+    "title": "Csomópont Mód: Kommunikáció Infrastruktúra Nélkül",
+    "subtitle": "Amikor a kormányok lekapcsolják az internetet, amikor a mobiladók meghibásodnak, amikor a semmi közepén vagy—a Railgun tovább működik. A telefonod egy mesh hálózat részévé válik, amely közvetlenül összeköti az embereket.",
+    "noInternet": "Nincs Internet",
+    "meshActive": "Mesh Aktív",
+    "stillSecure": "Még Mindig Biztonságos",
+    "whatIs": {
+      "title": "Mi a Csomópont Mód?",
+      "description1": "A Csomópont Mód minden Railgun eszközt kommunikációs átjátszóvá alakít. Bluetooth, Wi-Fi Direct és más helyi rádiótechnológiák segítségével az eszközök automatikusan felfedezik egymást és mesh hálózatot alkotnak—mobiladók, internet és központi szerverek nélkül.",
+      "description2": "Az üzenetek eszközről eszközre ugrálnak a késleltetés-toleráns hálózatok (DTN) elvei szerint. Ha az üzeneted nem tudja azonnal elérni a célját, tárolódik és továbbítódik, ahogy a hálózat topológiája változik. Ez ugyanaz a technológia, amelyet az űrkommunikációhoz terveztek, ahol a késleltetés órákig is tarthat.",
+      "description3": "Abban a pillanatban, amikor akár EGYETLEN eszköz is visszanyeri az internet-hozzáférést—kávézó Wi-Fi-n, műholdas kapcsolaton vagy mobiljelen keresztül—átjáróvá válik. Az egész helyi mesh szinkronizálódhat a globális Railgun hálózattal, miközben megőrzi a végpontok közötti titkosítást."
+    },
+    "useCases": {
+      "title": "Amikor a Legjobban Szükséged Van Rá",
+      "subtitle": "A Csomópont Mód azokra a pillanatokra készült, amikor a hagyományos kommunikáció cserbenhagyott.",
+      "protests": {
+        "title": "Tüntetések és Polgári Zavargások",
+        "description": "Amikor a hatóságok lekapcsolják a mobilhálózatokat vagy elárasztják a tornyokat megfigyeléssel, biztonságosan koordinálj az eszközök közötti mesh hálózaton keresztül."
+      },
+      "disasters": {
+        "title": "Természeti Katasztrófák",
+        "description": "Földrengések, hurrikánok vagy árvizek után, amikor az infrastruktúra megsemmisült, tartsd a kapcsolatot a közeli túlélőkkel és mentőcsapatokkal."
+      },
+      "remote": {
+        "title": "Távoli Területek",
+        "description": "Túrázás, kempingezés vagy munka mobilhálózati lefedettség nélküli területeken? Maradj kapcsolatban a csoportoddal a mesh hálózaton keresztül."
+      },
+      "censorship": {
+        "title": "Internet Cenzúra",
+        "description": "Olyan régiókban, ahol az internetet blokkolják vagy erősen figyelik, szabadon kommunikálj helyi mesh hálózatokon keresztül."
+      },
+      "infrastructure": {
+        "title": "Infrastruktúra Hibák",
+        "description": "Áramszünetek, optikai kábel szakadások vagy ISP hibák nem állítják meg a Csomópont Módot. Amíg az eszközökben van akkumulátor, a kommunikáció folytatódik."
+      },
+      "privacy": {
+        "title": "Maximális Adatvédelem",
+        "description": "Érzékeny kommunikációhoz, amikor SEMMILYEN internetes forgalmat nem szeretnél, tartsd minden lokálisan és elszigetelten."
+      }
+    },
+    "howItWorks": {
+      "title": "Hogyan Működik a Csomópont Mód",
+      "subtitle": "Egy négy rétegű rendszer, amelyet ellenállásra, biztonságra és a valós mobil korlátokra terveztek.",
+      "discovery": {
+        "title": "Peer Felfedezés",
+        "description": "Az eszközök BLE hirdetéseket használnak a közeli Railgun felhasználók megtalálásához. Felfedezés után nagy sávszélességű kapcsolatot egyeztetnek Wi-Fi Direct vagy Wi-Fi Aware segítségével."
+      },
+      "mesh": {
+        "title": "Mesh Képződés",
+        "description": "A csomópontok peer táblát tartanak fenn és kompakt Bloom szűrők segítségével cserélik az üzenetek 'leltárát'. Nincs elárasztás—csak hatékony halmaz egyeztetés."
+      },
+      "storeForward": {
+        "title": "Tárolás és Továbbítás",
+        "description": "Az üzenetek opportunisztikusan terjednek TTL-lel és ugrás limitekkel. Hurok megelőzés, ellennyomás és kredit alapú továbbítás megakadályozza a visszaéléseket."
+      },
+      "gateway": {
+        "title": "Átjáró Szinkronizáció",
+        "description": "Amikor egy csomópont internet-hozzáférést kap, bejelenti az uplink elérhetőségét. A mesh titkosított borítékokon keresztül szinkronizál a globális hálózattal—az átjáró soha nem látja a nyílt szöveget."
+      }
+    },
+    "gateway": {
+      "title": "Az Átjáró: Egy Kapcsolat Mindenkinek",
+      "description1": "Képzelj el 100 embert egy tüntetésen mobil szolgáltatás nélkül. Ha akár EGYETLEN ember is rendelkezik műholdas hotspottal vagy talál kávézó Wi-Fi-t, az az eszköz átjáróvá válik—lehetővé téve mind a 100 felhasználó számára, hogy szinkronizálják üzeneteiket a külvilággal.",
+      "description2": "Az átjáró soha nem fejti vissza az üzeneteidet. Titkosított borítékokat irányít a globális Railgun hálózatba és onnan. Még egy kompromittált átjáró sem tudja olvasni a kommunikációdat. Az üzenetek intelligensen priorizálódnak:",
+      "priorityTitle": "Üzenet Prioritási Sor",
+      "priority1": "Vészhelyzeti és koordinációs üzenetek (legmagasabb prioritás)",
+      "priority2": "Rövid szöveges üzenetek",
+      "priority3": "Miniatűrök és előnézetek",
+      "priority4": "Teljes képek",
+      "priority5": "Videó és nagy fájlok (opportunisztikus)"
+    },
+    "technical": {
+      "title": "Biztonság Kompromisszumok Nélkül",
+      "subtitle": "A Csomópont Mód ugyanazokat a kriptográfiai garanciákat tartja fenn, mint az online Railgun—a kulcsaid soha nem hagyják el az eszközödet.",
+      "e2ee": {
+        "title": "Mindig Végpontok Közötti Titkosítás",
+        "description": "Minden üzenet, minden ugrás. Signal Protokoll forward secrecy-vel. A relay csomópontok nem tudják olvasni a tartalmat—csak titkosított blobokat látnak."
+      },
+      "metadata": {
+        "title": "Metaadat Minimalizálás",
+        "description": "Rotációs peer azonosítók, nincs globális felhasználónév a broadcast-okban. A stabil identitásod csak azoknak a kontaktoknak fedetik fel, akikben kifejezetten megbízol."
+      },
+      "battery": {
+        "title": "Akkumulátor Intelligens",
+        "description": "Az adaptív ciklusozás megakadályozza, hogy a rádiók lemerítségék az akkumulátorodat. Ki/Be/Agresszív módok különböző helyzetekre."
+      },
+      "abuse": {
+        "title": "Visszaélés Ellenálló",
+        "description": "Sebesség korlátozás, proof-of-work a broadcast-okhoz és kredit alapú továbbítás. Egy rossz szereplő nem tudja elárasztani a mesh-t."
+      },
+      "crossPlatform": {
+        "title": "Natív iOS és Android",
+        "description": "Platform natív API-k használatával építve: MultipeerConnectivity, Wi-Fi Aware, Nearby Connections. Nincs szükség jailbreak-re vagy root-olásra."
+      },
+      "superNodes": {
+        "title": "Asztali Szuper-Csomópontok",
+        "description": "A laptopok és asztali gépek nagy kapacitású mesh csomópontként működhetnek Wi-Fi AP móddal, kiterjesztett cache-eléssel és opcionális közösségi relay funkcionalitással."
+      }
+    },
+    "transparency": {
+      "title": "Őszinteség a Korlátokról",
+      "description1": "Hiszünk az átláthatóságban arról, amit a Csomópont Mód tud és nem tud megtenni. Semmilyen technológia nem legyőzhetetlen, és nem fogunk úgy tenni, mintha az lenne.",
+      "description2": "A Csomópont Mód jelentősen növeli az ellenállást a hálózat lekapcsolásokkal és megfigyeléssel szemben, de a valós világ korlátai között működik:",
+      "limitationsTitle": "Amit a Csomópont Mód Nem Tud Legyőzni",
+      "limitation1": "RF zavarás, amely lefedi az összes Bluetooth és Wi-Fi frekvenciát",
+      "limitation2": "Fizikai eszköz lefoglalás vagy OS szintű kompromittálás",
+      "limitation3": "Célzott egyéni megfigyelés korlátlan erőforrásokkal",
+      "limitation4": "iOS háttér végrehajtási korlátok (legjobban előtérben lévő alkalmazással működik)"
+    },
+    "cta": {
+      "title": "Csatlakozz a Hálózathoz",
+      "description": "A Csomópont Mód érkezik a Railgunhoz iOS, Android és Desktop platformokra. Csatlakozz a várólistához, hogy az elsők között lehess, akik egy ellenállóbb kommunikációs hálózatot építenek.",
+      "joinWaitlist": "Csatlakozz a Várólistához",
+      "readCharter": "Olvasd El Alapokmányunkat"
+    }
   }
 }

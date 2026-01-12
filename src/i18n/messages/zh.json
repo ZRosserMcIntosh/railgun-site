@@ -7,6 +7,7 @@
   },
   "nav": {
     "charter": "宪章",
+    "nodeMode": "节点模式",
     "features": "功能",
     "waitlist": "等候名单",
     "security": "安全",
@@ -250,5 +251,122 @@
     "title": "页面未找到",
     "description": "抱歉，我们找不到您要查找的页面。",
     "backHome": "返回首页"
+  },
+  "nodeMode": {
+    "badge": "韧性基础设施",
+    "title": "节点模式：无需基础设施的通信",
+    "subtitle": "当政府切断互联网、当基站故障、当你身处荒野——Railgun继续运行。你的手机成为直接连接人们的网状网络的一部分。",
+    "noInternet": "无网络",
+    "meshActive": "网状网络激活",
+    "stillSecure": "依然安全",
+    "whatIs": {
+      "title": "什么是节点模式？",
+      "description1": "节点模式将每个Railgun设备转变为通信中继器。使用蓝牙、Wi-Fi Direct和其他本地无线技术，设备自动相互发现并形成网状网络——无需基站、无需互联网、无需中央服务器。",
+      "description2": "消息按照延迟容忍网络（DTN）原理从设备跳转到设备。如果消息无法立即到达目的地，它会随着网络拓扑变化而存储和转发。这与为太空通信设计的技术相同，那里的延迟可能长达数小时。",
+      "description3": "当网状网络中哪怕只有一台设备恢复互联网访问——通过咖啡馆Wi-Fi、卫星链路或蜂窝信号——它就成为网关。整个本地网状网络可以在保持端到端加密的同时与全球Railgun网络同步。"
+    },
+    "useCases": {
+      "title": "最需要的时刻",
+      "subtitle": "节点模式专为传统通信失效的时刻而设计。",
+      "protests": {
+        "title": "抗议与民间骚乱",
+        "description": "当当局关闭蜂窝网络或用监控淹没基站时，通过设备间网状网络安全协调。"
+      },
+      "disasters": {
+        "title": "自然灾害",
+        "description": "地震、飓风或洪水摧毁基础设施后，与附近幸存者和救援队保持通信。"
+      },
+      "remote": {
+        "title": "偏远地区",
+        "description": "在没有蜂窝覆盖的地区徒步、露营或工作？通过网状网络与团队保持联系。"
+      },
+      "censorship": {
+        "title": "互联网审查",
+        "description": "在互联网被封锁或严密监控的地区，通过本地网状网络自由通信。"
+      },
+      "infrastructure": {
+        "title": "基础设施故障",
+        "description": "停电、光纤中断或ISP故障不会阻止节点模式。只要设备有电，通信就继续。"
+      },
+      "privacy": {
+        "title": "最大隐私",
+        "description": "对于不希望有任何互联网流量的敏感通信，将一切保持在本地和隔离状态。"
+      }
+    },
+    "howItWorks": {
+      "title": "节点模式如何工作",
+      "subtitle": "为韧性、安全性和现实移动设备限制而设计的四层系统。",
+      "discovery": {
+        "title": "对等发现",
+        "description": "设备使用BLE广播寻找附近的Railgun用户。发现后，通过Wi-Fi Direct或Wi-Fi Aware协商高带宽连接。"
+      },
+      "mesh": {
+        "title": "网状形成",
+        "description": "节点维护对等表并使用紧凑的布隆过滤器交换消息'库存'。无泛洪——仅高效的集合调和。"
+      },
+      "storeForward": {
+        "title": "存储转发",
+        "description": "消息以TTL和跳数限制机会性传播。循环防止、反压和基于信用的转发防止滥用。"
+      },
+      "gateway": {
+        "title": "网关同步",
+        "description": "当节点获得互联网访问时，它宣布上行链路可用性。网状网络通过加密信封与全球网络同步——网关永远看不到明文。"
+      }
+    },
+    "gateway": {
+      "title": "网关：一个连接惠及所有人",
+      "description1": "想象100人在没有蜂窝服务的抗议现场。如果仅一人有卫星热点或找到咖啡馆Wi-Fi，该设备就成为网关——让所有100名用户都能与外界同步消息。",
+      "description2": "网关永远不会解密你的消息。它路由加密信封往返全球Railgun网络。即使是被入侵的网关也无法读取你的通信。消息智能排序：",
+      "priorityTitle": "消息优先级队列",
+      "priority1": "紧急和协调消息（最高优先级）",
+      "priority2": "短文本消息",
+      "priority3": "缩略图和预览",
+      "priority4": "完整图片",
+      "priority5": "视频和大文件（机会性）"
+    },
+    "technical": {
+      "title": "零妥协的安全",
+      "subtitle": "节点模式保持与在线Railgun相同的加密保证——你的密钥永远不会离开设备。",
+      "e2ee": {
+        "title": "始终端到端加密",
+        "description": "每条消息，每次跳转。具有前向保密性的Signal协议。中继节点无法读取内容——只能看到加密数据块。"
+      },
+      "metadata": {
+        "title": "元数据最小化",
+        "description": "轮换对等ID，广播中无全局用户名。你的稳定身份仅向你明确信任的联系人透露。"
+      },
+      "battery": {
+        "title": "电池智能",
+        "description": "自适应占空比防止无线电耗尽电池。关闭/开启/激进模式适用于不同情况。"
+      },
+      "abuse": {
+        "title": "抗滥用",
+        "description": "速率限制、广播工作量证明和基于信用的转发。单个恶意行为者无法淹没网状网络。"
+      },
+      "crossPlatform": {
+        "title": "iOS和Android原生",
+        "description": "使用平台原生API构建：MultipeerConnectivity、Wi-Fi Aware、Nearby Connections。无需越狱或root。"
+      },
+      "superNodes": {
+        "title": "桌面超级节点",
+        "description": "笔记本电脑和台式机可以作为高容量网状节点运行，具有Wi-Fi AP模式、扩展缓存和可选的社区中继功能。"
+      }
+    },
+    "transparency": {
+      "title": "对限制的诚实",
+      "description1": "我们相信对节点模式能做和不能做的事情保持透明。没有技术是无敌的，我们不会假装如此。",
+      "description2": "节点模式显著提高了对网络关闭和监控的韧性，但在现实世界的约束下运行：",
+      "limitationsTitle": "节点模式无法克服的",
+      "limitation1": "覆盖所有蓝牙和Wi-Fi频率的射频干扰",
+      "limitation2": "物理设备没收或操作系统级入侵",
+      "limitation3": "拥有无限资源的针对性个人监控",
+      "limitation4": "iOS后台执行限制（应用在前台时效果最佳）"
+    },
+    "cta": {
+      "title": "加入网络",
+      "description": "节点模式即将登陆iOS、Android和桌面版Railgun。加入等候名单，成为首批构建更具韧性通信网络的人。",
+      "joinWaitlist": "加入等候名单",
+      "readCharter": "阅读我们的宪章"
+    }
   }
 }

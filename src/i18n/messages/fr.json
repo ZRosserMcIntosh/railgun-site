@@ -7,6 +7,7 @@
   },
   "nav": {
     "charter": "Charte",
+    "nodeMode": "Mode Nœud",
     "features": "Fonctionnalités",
     "waitlist": "Liste d'Attente",
     "security": "Sécurité",
@@ -250,5 +251,122 @@
     "title": "Page non trouvée",
     "description": "Désolé, nous n'avons pas pu trouver la page que vous cherchez.",
     "backHome": "Retour à l'accueil"
+  },
+  "nodeMode": {
+    "badge": "Infrastructure Résiliente",
+    "title": "Mode Nœud : Communication Sans Infrastructure",
+    "subtitle": "Quand les gouvernements coupent internet, quand les antennes-relais tombent en panne, quand vous êtes au milieu de nulle part—Railgun continue de fonctionner. Votre téléphone devient partie d'un réseau mesh qui connecte les gens directement.",
+    "noInternet": "Pas d'Internet",
+    "meshActive": "Mesh Actif",
+    "stillSecure": "Toujours Sécurisé",
+    "whatIs": {
+      "title": "Qu'est-ce que le Mode Nœud ?",
+      "description1": "Le Mode Nœud transforme chaque appareil Railgun en relais de communication. En utilisant Bluetooth, Wi-Fi Direct et d'autres technologies radio locales, les appareils se découvrent automatiquement et forment un réseau mesh—sans antennes-relais, sans internet, sans serveurs centraux.",
+      "description2": "Les messages sautent d'appareil en appareil selon les principes des réseaux tolérants aux délais (DTN). Si votre message ne peut pas atteindre sa destination immédiatement, il est stocké et transmis au fur et à mesure que la topologie du réseau change. C'est la même technologie conçue pour les communications spatiales où la latence peut être de plusieurs heures.",
+      "description3": "Dès qu'UN SEUL appareil dans le mesh retrouve l'accès à internet—via un Wi-Fi de café, un lien satellite ou un signal cellulaire—il devient une passerelle. Tout le mesh local peut alors se synchroniser avec le réseau global Railgun, tout en maintenant le chiffrement de bout en bout."
+    },
+    "useCases": {
+      "title": "Quand Vous en Avez le Plus Besoin",
+      "subtitle": "Le Mode Nœud a été conçu pour les moments où la communication traditionnelle vous fait défaut.",
+      "protests": {
+        "title": "Manifestations et Troubles Civils",
+        "description": "Quand les autorités coupent les réseaux cellulaires ou inondent les antennes de surveillance, coordonnez-vous en sécurité via le mesh appareil à appareil."
+      },
+      "disasters": {
+        "title": "Catastrophes Naturelles",
+        "description": "Après tremblements de terre, ouragans ou inondations quand l'infrastructure est détruite, maintenez la communication avec les survivants proches et les équipes de secours."
+      },
+      "remote": {
+        "title": "Zones Isolées",
+        "description": "Randonnée, camping ou travail dans des zones sans couverture cellulaire ? Restez connecté avec votre groupe grâce au réseau mesh."
+      },
+      "censorship": {
+        "title": "Censure d'Internet",
+        "description": "Dans les régions où internet est bloqué ou fortement surveillé, communiquez librement via les réseaux mesh locaux."
+      },
+      "infrastructure": {
+        "title": "Pannes d'Infrastructure",
+        "description": "Les coupures de courant, les ruptures de fibre ou les pannes de FAI n'arrêtent pas le Mode Nœud. Si les appareils ont de la batterie, la communication continue."
+      },
+      "privacy": {
+        "title": "Confidentialité Maximale",
+        "description": "Pour les communications sensibles où vous ne voulez AUCUN trafic internet, gardez tout local et isolé."
+      }
+    },
+    "howItWorks": {
+      "title": "Comment Fonctionne le Mode Nœud",
+      "subtitle": "Un système à quatre couches conçu pour la résilience, la sécurité et les contraintes réelles des mobiles.",
+      "discovery": {
+        "title": "Découverte des Pairs",
+        "description": "Les appareils utilisent la publicité BLE pour trouver les utilisateurs Railgun à proximité. Une fois découverts, ils négocient une connexion haut débit via Wi-Fi Direct ou Wi-Fi Aware."
+      },
+      "mesh": {
+        "title": "Formation du Mesh",
+        "description": "Les nœuds maintiennent une table de pairs et échangent l'« inventaire » des messages via des filtres de Bloom compacts. Pas d'inondation—juste une réconciliation efficace des ensembles."
+      },
+      "storeForward": {
+        "title": "Stocker et Transférer",
+        "description": "Les messages se propagent de manière opportuniste avec TTL et limites de sauts. Prévention des boucles, contre-pression et transfert basé sur des crédits préviennent les abus."
+      },
+      "gateway": {
+        "title": "Synchronisation de Passerelle",
+        "description": "Quand un nœud obtient l'accès internet, il annonce la disponibilité de l'uplink. Le mesh se synchronise avec le réseau global via des enveloppes chiffrées—la passerelle ne voit jamais le texte en clair."
+      }
+    },
+    "gateway": {
+      "title": "La Passerelle : Une Connexion pour Tous",
+      "description1": "Imaginez 100 personnes à une manifestation sans service cellulaire. Si UNE SEULE personne a un hotspot satellite ou trouve un Wi-Fi de café, cet appareil devient une passerelle—permettant aux 100 utilisateurs de synchroniser leurs messages avec le monde extérieur.",
+      "description2": "La passerelle ne déchiffre jamais vos messages. Elle route des enveloppes chiffrées vers et depuis le réseau global Railgun. Même une passerelle compromise ne peut pas lire vos communications. Les messages sont priorisés intelligemment :",
+      "priorityTitle": "File de Priorité des Messages",
+      "priority1": "Messages d'urgence et de coordination (priorité maximale)",
+      "priority2": "Messages texte courts",
+      "priority3": "Miniatures et aperçus",
+      "priority4": "Images complètes",
+      "priority5": "Vidéo et gros fichiers (opportuniste)"
+    },
+    "technical": {
+      "title": "Sécurité Sans Compromis",
+      "subtitle": "Le Mode Nœud maintient les mêmes garanties cryptographiques que Railgun en ligne—vos clés ne quittent jamais votre appareil.",
+      "e2ee": {
+        "title": "Toujours Chiffré de Bout en Bout",
+        "description": "Chaque message, chaque saut. Protocole Signal avec confidentialité persistante. Les nœuds relais ne peuvent pas lire le contenu—ils ne voient que des blobs chiffrés."
+      },
+      "metadata": {
+        "title": "Minimisation des Métadonnées",
+        "description": "IDs de pairs rotatifs, pas de noms d'utilisateur globaux dans les diffusions. Votre identité stable n'est révélée qu'aux contacts en qui vous avez explicitement confiance."
+      },
+      "battery": {
+        "title": "Intelligent avec la Batterie",
+        "description": "Le cyclage adaptatif empêche les radios de vider votre batterie. Modes Désactivé/Activé/Agressif pour différentes situations."
+      },
+      "abuse": {
+        "title": "Résistant aux Abus",
+        "description": "Limitation de débit, preuve de travail pour les diffusions et transfert basé sur des crédits. Un acteur malveillant ne peut pas inonder le mesh."
+      },
+      "crossPlatform": {
+        "title": "Natif iOS et Android",
+        "description": "Construit avec les APIs natives des plateformes : MultipeerConnectivity, Wi-Fi Aware, Nearby Connections. Sans jailbreak ni root requis."
+      },
+      "superNodes": {
+        "title": "Super-Nœuds de Bureau",
+        "description": "Les ordinateurs portables et de bureau peuvent fonctionner comme des nœuds mesh haute capacité avec mode AP Wi-Fi, cache étendu et fonctionnalité optionnelle de relais communautaire."
+      }
+    },
+    "transparency": {
+      "title": "Honnêteté sur les Limitations",
+      "description1": "Nous croyons en la transparence sur ce que le Mode Nœud peut et ne peut pas faire. Aucune technologie n'est invincible, et nous ne prétendrons pas le contraire.",
+      "description2": "Le Mode Nœud augmente significativement la résilience contre les coupures de réseau et la surveillance, mais opère dans les contraintes du monde réel :",
+      "limitationsTitle": "Ce que le Mode Nœud Ne Peut Pas Vaincre",
+      "limitation1": "Le brouillage RF qui couvre toutes les fréquences Bluetooth et Wi-Fi",
+      "limitation2": "La saisie physique de l'appareil ou la compromission au niveau de l'OS",
+      "limitation3": "La surveillance individuelle ciblée avec des ressources illimitées",
+      "limitation4": "Les limites d'exécution en arrière-plan d'iOS (fonctionne mieux avec l'app au premier plan)"
+    },
+    "cta": {
+      "title": "Rejoignez le Réseau",
+      "description": "Le Mode Nœud arrive sur Railgun pour iOS, Android et Bureau. Rejoignez la liste d'attente pour être parmi les premiers à construire un réseau de communication plus résilient.",
+      "joinWaitlist": "Rejoindre la Liste d'Attente",
+      "readCharter": "Lire Notre Charte"
+    }
   }
 }

@@ -7,6 +7,7 @@
   },
   "nav": {
     "charter": "Carta",
+    "nodeMode": "Modo Nó",
     "features": "Recursos",
     "waitlist": "Lista de Espera",
     "security": "Segurança",
@@ -250,5 +251,122 @@
     "title": "Página não encontrada",
     "description": "Desculpe, não conseguimos encontrar a página que você está procurando.",
     "backHome": "Voltar ao início"
+  },
+  "nodeMode": {
+    "badge": "Infraestrutura Resiliente",
+    "title": "Modo Nó: Comunicação Sem Infraestrutura",
+    "subtitle": "Quando governos desligam a internet, quando torres de celular falham, quando você está no meio do nada—Railgun continua funcionando. Seu telefone se torna parte de uma rede mesh que conecta pessoas diretamente.",
+    "noInternet": "Sem Internet",
+    "meshActive": "Mesh Ativa",
+    "stillSecure": "Ainda Seguro",
+    "whatIs": {
+      "title": "O Que é o Modo Nó?",
+      "description1": "O Modo Nó transforma cada dispositivo Railgun em um repetidor de comunicação. Usando Bluetooth, Wi-Fi Direct e outras tecnologias de rádio local, dispositivos se descobrem automaticamente e formam uma rede mesh—sem torres de celular, sem internet, sem servidores centrais.",
+      "description2": "Mensagens saltam de dispositivo a dispositivo usando princípios de redes tolerantes a atrasos (DTN). Se sua mensagem não pode chegar ao destino imediatamente, ela é armazenada e encaminhada conforme a topologia da rede muda. Esta é a mesma tecnologia projetada para comunicação espacial onde a latência pode ser de horas.",
+      "description3": "No momento em que mesmo UM dispositivo na mesh recupera acesso à internet—através de Wi-Fi de café, link de satélite ou sinal celular—ele se torna um gateway. Toda a mesh local pode sincronizar com a rede global Railgun, mantendo a criptografia de ponta a ponta."
+    },
+    "useCases": {
+      "title": "Quando Você Mais Precisa",
+      "subtitle": "O Modo Nó foi projetado para os momentos quando a comunicação tradicional falha.",
+      "protests": {
+        "title": "Protestos e Distúrbios Civis",
+        "description": "Quando autoridades desligam redes celulares ou inundam torres com vigilância, coordene com segurança através da mesh dispositivo a dispositivo."
+      },
+      "disasters": {
+        "title": "Desastres Naturais",
+        "description": "Após terremotos, furacões ou enchentes quando a infraestrutura está destruída, mantenha comunicação com sobreviventes próximos e equipes de resgate."
+      },
+      "remote": {
+        "title": "Áreas Remotas",
+        "description": "Trilhas, camping ou trabalho em áreas sem cobertura celular? Mantenha-se conectado com seu grupo através da rede mesh."
+      },
+      "censorship": {
+        "title": "Censura de Internet",
+        "description": "Em regiões onde a internet está bloqueada ou fortemente monitorada, comunique-se livremente através de redes mesh locais."
+      },
+      "infrastructure": {
+        "title": "Falhas de Infraestrutura",
+        "description": "Quedas de energia, cortes de fibra ou falhas de ISP não param o Modo Nó. Se os dispositivos têm bateria, a comunicação continua."
+      },
+      "privacy": {
+        "title": "Máxima Privacidade",
+        "description": "Para comunicações sensíveis onde você não quer NENHUM tráfego de internet, mantenha tudo local e isolado."
+      }
+    },
+    "howItWorks": {
+      "title": "Como o Modo Nó Funciona",
+      "subtitle": "Um sistema de quatro camadas projetado para resiliência, segurança e restrições reais de dispositivos móveis.",
+      "discovery": {
+        "title": "Descoberta de Pares",
+        "description": "Dispositivos usam publicidade BLE para encontrar usuários Railgun próximos. Uma vez descobertos, negociam uma conexão de alta largura de banda via Wi-Fi Direct ou Wi-Fi Aware."
+      },
+      "mesh": {
+        "title": "Formação de Mesh",
+        "description": "Nós mantêm uma tabela de pares e trocam 'inventário' de mensagens usando filtros bloom compactos. Sem inundação—apenas reconciliação eficiente de conjuntos."
+      },
+      "storeForward": {
+        "title": "Armazenar e Encaminhar",
+        "description": "Mensagens se propagam oportunisticamente com TTL e limites de saltos. Prevenção de loops, contrapressão e encaminhamento baseado em créditos previnem abusos."
+      },
+      "gateway": {
+        "title": "Sincronização do Gateway",
+        "description": "Quando um nó obtém acesso à internet, anuncia disponibilidade de uplink. A mesh sincroniza com a rede global através de envelopes criptografados—o gateway nunca vê texto plano."
+      }
+    },
+    "gateway": {
+      "title": "O Gateway: Uma Conexão para Todos",
+      "description1": "Imagine 100 pessoas em um protesto sem serviço celular. Se apenas UMA pessoa tem um hotspot de satélite ou encontra Wi-Fi de café, esse dispositivo se torna um gateway—permitindo que todos os 100 usuários sincronizem suas mensagens com o mundo exterior.",
+      "description2": "O gateway nunca descriptografa suas mensagens. Ele roteia envelopes criptografados de e para a rede global Railgun. Mesmo um gateway comprometido não pode ler suas comunicações. Mensagens são priorizadas inteligentemente:",
+      "priorityTitle": "Fila de Prioridade de Mensagens",
+      "priority1": "Mensagens de emergência e coordenação (maior prioridade)",
+      "priority2": "Mensagens de texto curtas",
+      "priority3": "Miniaturas e prévias",
+      "priority4": "Imagens completas",
+      "priority5": "Vídeo e arquivos grandes (oportunístico)"
+    },
+    "technical": {
+      "title": "Segurança Sem Compromissos",
+      "subtitle": "O Modo Nó mantém as mesmas garantias criptográficas do Railgun online—suas chaves nunca saem do seu dispositivo.",
+      "e2ee": {
+        "title": "Sempre Criptografia de Ponta a Ponta",
+        "description": "Cada mensagem, cada salto. Protocolo Signal com sigilo futuro. Nós repetidores não podem ler conteúdo—só veem blobs criptografados."
+      },
+      "metadata": {
+        "title": "Minimização de Metadados",
+        "description": "IDs de pares rotativos, sem nomes de usuário globais em transmissões. Sua identidade estável só é revelada para contatos que você confia explicitamente."
+      },
+      "battery": {
+        "title": "Inteligente com Bateria",
+        "description": "Ciclagem adaptativa evita que os rádios drenem sua bateria. Modos Desligado/Ligado/Agressivo para diferentes situações."
+      },
+      "abuse": {
+        "title": "Resistente a Abusos",
+        "description": "Limites de taxa, prova de trabalho para transmissões e encaminhamento baseado em créditos. Um mau ator não pode inundar a mesh."
+      },
+      "crossPlatform": {
+        "title": "Nativo em iOS e Android",
+        "description": "Construído usando APIs nativas de plataforma: MultipeerConnectivity, Wi-Fi Aware, Nearby Connections. Sem jailbreak ou root necessário."
+      },
+      "superNodes": {
+        "title": "Super-Nós de Desktop",
+        "description": "Laptops e desktops podem funcionar como nós mesh de alta capacidade com modo AP Wi-Fi, cache estendido e funcionalidade opcional de repetidor comunitário."
+      }
+    },
+    "transparency": {
+      "title": "Honestidade Sobre Limitações",
+      "description1": "Acreditamos em transparência sobre o que o Modo Nó pode e não pode fazer. Nenhuma tecnologia é invencível, e não vamos fingir o contrário.",
+      "description2": "O Modo Nó aumenta significativamente a resiliência contra desligamentos de rede e vigilância, mas opera dentro de restrições do mundo real:",
+      "limitationsTitle": "O Que o Modo Nó Não Pode Derrotar",
+      "limitation1": "Bloqueio de RF que cobre todas as frequências Bluetooth e Wi-Fi",
+      "limitation2": "Apreensão física do dispositivo ou comprometimento em nível de SO",
+      "limitation3": "Vigilância individual direcionada com recursos ilimitados",
+      "limitation4": "Limites de execução em segundo plano do iOS (funciona melhor com app em primeiro plano)"
+    },
+    "cta": {
+      "title": "Junte-se à Rede",
+      "description": "O Modo Nó está chegando ao Railgun para iOS, Android e Desktop. Junte-se à lista de espera para ser um dos primeiros a construir uma rede de comunicação mais resiliente.",
+      "joinWaitlist": "Entrar na Lista de Espera",
+      "readCharter": "Ler Nossa Carta"
+    }
   }
 }
