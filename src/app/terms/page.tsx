@@ -5,6 +5,12 @@ import { ArrowLeft } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Terms of Service',
   description: 'Rail Gun Terms of Service - Guidelines for using our service.',
+  alternates: {
+    canonical: 'https://railgun.app/terms',
+  },
+  openGraph: {
+    url: 'https://railgun.app/terms',
+  },
 };
 
 export default function TermsPage() {

@@ -15,11 +15,11 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { href: '#download', label: 'Download' },
+    { href: '/#download', label: 'Download' },
     { href: '/charter', label: t('charter') },
     { href: '/node-mode', label: t('nodeMode') },
-    { href: '#features', label: t('features') },
-    { href: '#security', label: t('security') },
+    { href: '/#features', label: t('features') },
+    { href: '/#security', label: t('security') },
   ];
 
   useEffect(() => {

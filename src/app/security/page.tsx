@@ -6,6 +6,12 @@ import { siteConfig } from '@/lib/config';
 export const metadata: Metadata = {
   title: 'Security',
   description: 'Rail Gun Security - Learn about our security practices and how to report vulnerabilities.',
+  alternates: {
+    canonical: 'https://railgun.app/security',
+  },
+  openGraph: {
+    url: 'https://railgun.app/security',
+  },
 };
 
 export default function SecurityPage() {

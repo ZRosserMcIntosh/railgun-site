@@ -2,13 +2,12 @@ import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 import { I18nClientWrapper } from '@/i18n/client-wrapper';
 import { StructuredData } from '@/components/structured-data';
-import { locales } from '@/i18n/config';
 import './globals.css';
 
-// Generate hreflang alternate links for all supported languages
-const languages = Object.fromEntries(
-  locales.map((locale) => [locale, `https://railgun.app?locale=${locale}`])
-);
+// Note: hreflang/alternates removed because locale switching is client-side only
+// (via cookie, not URL-based). Adding hreflang for ?locale=xx URLs that only
+// set a cookie would mislead search engines. To properly support i18n SEO,
+// implement path-based locale routing (e.g., /fr/, /de/) in the future.
 
 export const metadata: Metadata = {
   title: {
@@ -48,15 +47,11 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  alternates: {
-    canonical: 'https://railgun.app',
-    languages,
-  },
+  // Canonical and OG URL are set per-page via generateMetadata, not here
+  // This prevents all pages from canonicalizing to the homepage
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    alternateLocale: ['es_ES', 'pt_BR', 'fr_FR', 'de_DE', 'it_IT', 'uk_UA', 'ru_RU', 'pl_PL', 'hu_HU', 'ko_KR', 'ja_JP', 'zh_CN', 'fa_IR', 'ar_SA'],
-    url: 'https://railgun.app',
     siteName: 'Rail Gun',
     title: 'Rail Gun - Secure Private Messaging',
     description:

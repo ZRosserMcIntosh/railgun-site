@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { Header } from '@/components/header';
 import { Hero } from '@/components/hero';
 import { Downloads } from '@/components/downloads';
@@ -7,7 +8,17 @@ import { Platforms } from '@/components/platforms';
 import { Cta } from '@/components/cta';
 import { Footer } from '@/components/footer';
 
-export const dynamic = 'force-dynamic';
+// Removed force-dynamic - home page can be statically generated
+// Client-side i18n hydration happens via I18nClientWrapper in layout
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: 'https://railgun.app',
+  },
+  openGraph: {
+    url: 'https://railgun.app',
+  },
+};
 
 export default function Home() {
   return (

@@ -5,6 +5,12 @@ import { ArrowLeft } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Privacy Policy',
   description: 'Rail Gun Privacy Policy - How we protect your data and privacy.',
+  alternates: {
+    canonical: 'https://railgun.app/privacy',
+  },
+  openGraph: {
+    url: 'https://railgun.app/privacy',
+  },
 };
 
 export default function PrivacyPage() {

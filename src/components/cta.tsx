@@ -26,14 +26,14 @@ export function Cta() {
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
-                href="#waitlist"
+                href="/#download"
                 className="group inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 font-semibold text-accent transition-all hover:bg-white/90"
               >
                 {t('button')}
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
-                href="#security"
+                href="/#security"
                 className="inline-flex items-center gap-2 rounded-lg border border-white/20 px-8 py-4 font-semibold text-white transition-all hover:bg-white/10"
               >
                 {t('button')}

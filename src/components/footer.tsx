@@ -11,10 +11,10 @@ export function Footer() {
 
   const footerLinks = {
     product: [
-      { label: t('links.download'), href: '#download' },
+      { label: t('links.download'), href: '/#download' },
       { label: t('links.webApp'), href: siteConfig.webAppUrl, external: true },
-      { label: t('links.features'), href: '#features' },
-      { label: t('links.security'), href: '#security' },
+      { label: t('links.features'), href: '/#features' },
+      { label: t('links.security'), href: '/#security' },
     ],
     resources: [
       { label: t('links.charter'), href: '/charter' },
