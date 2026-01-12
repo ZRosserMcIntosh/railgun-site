@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import Script from 'next/script';
 import { I18nClientWrapper } from '@/i18n/client-wrapper';
 import { StructuredData } from '@/components/structured-data';
 import { locales } from '@/i18n/config';
@@ -108,6 +109,20 @@ export default function RootLayout({
         <StructuredData />
       </head>
       <body className="min-h-screen bg-background-primary font-sans antialiased">
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-QX1MVLYRD9"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-QX1MVLYRD9');
+          `}
+        </Script>
+
         <I18nClientWrapper>
           {children}
         </I18nClientWrapper>
