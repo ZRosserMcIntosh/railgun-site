@@ -187,6 +187,22 @@ export function Downloads() {
     }
   };
 
+  const getAlternateDownloads = (platform: DesktopPlatform): { label: string; url: string }[] => {
+    switch (platform) {
+      case 'mac':
+        return [
+          { label: 'Intel Mac (.dmg)', url: siteConfig.downloads.mac.dmgIntel },
+          { label: 'Apple Silicon (.zip)', url: siteConfig.downloads.mac.zip },
+        ];
+      case 'linux':
+        return [
+          { label: '.deb (Debian/Ubuntu)', url: siteConfig.downloads.linux.deb },
+        ];
+      default:
+        return [];
+    }
+  };
+
   const handleDownload = (platform: DesktopPlatform) => {
     setDownloading(platform);
     // Reset after 3 seconds (download should have started)
@@ -423,9 +439,12 @@ export function Downloads() {
               <div className="space-y-4 text-sm">
                 <div>
                   <p className="font-medium">1. Download the checksums file:</p>
-                  <code className="mt-1 block rounded bg-background-elevated p-2 text-xs">
-                    SHA256SUMS.txt from the release page
-                  </code>
+                  <a
+                    href={siteConfig.downloads.checksums}
+                    className="mt-1 block rounded bg-background-elevated p-2 text-xs text-accent hover:underline"
+                  >
+                    SHA256SUMS.txt
+                  </a>
                 </div>
                 <div>
                   <p className="font-medium">2. Verify the checksum:</p>
