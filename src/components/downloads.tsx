@@ -107,7 +107,6 @@ export function Downloads() {
   const [releaseInfo, setReleaseInfo] = useState<ReleaseInfo | null>(null);
   const [loading, setLoading] = useState(true);
   const [downloading, setDownloading] = useState<string | null>(null);
-  const [releaseAvailable, setReleaseAvailable] = useState(false);
 
   useEffect(() => {
     setDetectedPlatform(detectPlatform());
@@ -125,29 +124,23 @@ export function Downloads() {
           
           // Parse assets
           const assets: ReleaseInfo['assets'] = {};
-          let hasAssets = false;
           for (const asset of data.assets || []) {
             const name = asset.name.toLowerCase();
             if (name.includes('.dmg')) {
               if (!assets.mac) assets.mac = {};
               assets.mac.dmg = asset.browser_download_url;
-              hasAssets = true;
             } else if (name.includes('.zip') && name.includes('mac')) {
               if (!assets.mac) assets.mac = {};
               assets.mac.zip = asset.browser_download_url;
-              hasAssets = true;
             } else if (name.endsWith('.exe') || name.includes('setup')) {
               if (!assets.windows) assets.windows = {};
               assets.windows.exe = asset.browser_download_url;
-              hasAssets = true;
             } else if (name.includes('appimage')) {
               if (!assets.linux) assets.linux = {};
               assets.linux.appImage = asset.browser_download_url;
-              hasAssets = true;
             } else if (name.endsWith('.deb')) {
               if (!assets.linux) assets.linux = {};
               assets.linux.deb = asset.browser_download_url;
-              hasAssets = true;
             }
           }
           
@@ -157,7 +150,6 @@ export function Downloads() {
             releaseNotes: data.body || '',
             assets,
           });
-          setReleaseAvailable(hasAssets);
         }
       } catch (error) {
         console.error('Failed to fetch release info:', error);
@@ -170,6 +162,23 @@ export function Downloads() {
   }, []);
 
   const version = releaseInfo?.version || siteConfig.version;
+
+  /**
+   * Check if a specific platform has downloadable assets in the release.
+   */
+  const isPlatformAvailable = (platform: DesktopPlatform): boolean => {
+    if (!releaseInfo?.assets) return false;
+    switch (platform) {
+      case 'mac': return !!(releaseInfo.assets.mac?.dmg || releaseInfo.assets.mac?.zip);
+      case 'windows': return !!releaseInfo.assets.windows?.exe;
+      case 'linux': return !!(releaseInfo.assets.linux?.appImage || releaseInfo.assets.linux?.deb);
+      default: return false;
+    }
+  };
+
+  const anyReleaseAvailable = releaseInfo ? 
+    isPlatformAvailable('mac') || isPlatformAvailable('windows') || isPlatformAvailable('linux') 
+    : false;
 
   const getDownloadUrl = (platform: DesktopPlatform): string => {
     if (releaseInfo?.assets) {
@@ -257,7 +266,7 @@ export function Downloads() {
                   <Loader2 className="h-5 w-5 animate-spin" />
                   Checking for latest release...
                 </div>
-              ) : releaseAvailable ? (
+              ) : isPlatformAvailable(detectedPlatform as DesktopPlatform) ? (
                 <a
                   href={getDownloadUrl(detectedPlatform as DesktopPlatform)}
                   onClick={() => handleDownload(detectedPlatform as DesktopPlatform)}
@@ -295,7 +304,7 @@ export function Downloads() {
                   </p>
                 </div>
               )}
-              {releaseAvailable && (
+              {isPlatformAvailable(detectedPlatform as DesktopPlatform) && (
                 <p className="mt-3 text-xs text-foreground-tertiary">
                   Version {version} • Free and open source
                 </p>
@@ -365,7 +374,7 @@ export function Downloads() {
                       {details.description}
                     </p>
                   </div>
-                  {releaseAvailable ? (
+                  {isPlatformAvailable(platform) ? (
                     <a
                       href={getDownloadUrl(platform)}
                       onClick={() => handleDownload(platform)}
@@ -435,11 +444,21 @@ export function Downloads() {
         {/* Version Info & Links */}
         <div className="mt-12 text-center">
           <div className="inline-flex flex-wrap items-center justify-center gap-2 rounded-full bg-background-elevated px-4 py-2 text-sm">
-            <CheckCircle className="h-4 w-4 text-success" />
-            <span>
-              Version <strong>{version}</strong>
-            </span>
-            <span className="text-foreground-tertiary">•</span>
+            {anyReleaseAvailable ? (
+              <>
+                <CheckCircle className="h-4 w-4 text-success" />
+                <span>
+                  Version <strong>{version}</strong>
+                </span>
+                <span className="text-foreground-tertiary">•</span>
+              </>
+            ) : (
+              <>
+                <Loader2 className="h-4 w-4 text-accent" />
+                <span>Pre-release</span>
+                <span className="text-foreground-tertiary">•</span>
+              </>
+            )}
             <a
               href={siteConfig.links.releases}
               target="_blank"
