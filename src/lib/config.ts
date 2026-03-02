@@ -34,16 +34,16 @@ export const siteConfig = {
   
   downloads: {
     mac: {
-      dmg: getDownloadUrl(`Rail-Gun-${VERSION}-arm64.dmg`),
-      dmgIntel: getDownloadUrl(`Rail-Gun-${VERSION}-x64.dmg`),
-      zip: getDownloadUrl(`Rail-Gun-${VERSION}-arm64-mac.zip`),
+      dmg: getDownloadUrl(`Rail Gun-${VERSION}-arm64.dmg`),
+      dmgIntel: getDownloadUrl(`Rail Gun-${VERSION}-x64.dmg`),
+      zip: getDownloadUrl(`Rail Gun-${VERSION}-arm64-mac.zip`),
     },
     windows: {
-      exe: getDownloadUrl(`Rail-Gun-${VERSION}-Setup.exe`),
+      exe: getDownloadUrl(`Rail Gun-${VERSION}-Setup.exe`),
     },
     linux: {
-      appImage: getDownloadUrl(`Rail-Gun-${VERSION}.AppImage`),
-      deb: getDownloadUrl(`Rail-Gun-${VERSION}_amd64.deb`),
+      appImage: getDownloadUrl(`Rail Gun-${VERSION}.AppImage`),
+      deb: getDownloadUrl(`Rail Gun-${VERSION}_amd64.deb`),
     },
     checksums: getDownloadUrl('SHA256SUMS.txt'),
     // Latest release page for all platforms

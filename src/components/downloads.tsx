@@ -107,6 +107,7 @@ export function Downloads() {
   const [releaseInfo, setReleaseInfo] = useState<ReleaseInfo | null>(null);
   const [loading, setLoading] = useState(true);
   const [downloading, setDownloading] = useState<string | null>(null);
+  const [releaseAvailable, setReleaseAvailable] = useState(false);
 
   useEffect(() => {
     setDetectedPlatform(detectPlatform());
@@ -124,23 +125,29 @@ export function Downloads() {
           
           // Parse assets
           const assets: ReleaseInfo['assets'] = {};
+          let hasAssets = false;
           for (const asset of data.assets || []) {
             const name = asset.name.toLowerCase();
             if (name.includes('.dmg')) {
               if (!assets.mac) assets.mac = {};
               assets.mac.dmg = asset.browser_download_url;
+              hasAssets = true;
             } else if (name.includes('.zip') && name.includes('mac')) {
               if (!assets.mac) assets.mac = {};
               assets.mac.zip = asset.browser_download_url;
+              hasAssets = true;
             } else if (name.endsWith('.exe') || name.includes('setup')) {
               if (!assets.windows) assets.windows = {};
               assets.windows.exe = asset.browser_download_url;
+              hasAssets = true;
             } else if (name.includes('appimage')) {
               if (!assets.linux) assets.linux = {};
               assets.linux.appImage = asset.browser_download_url;
+              hasAssets = true;
             } else if (name.endsWith('.deb')) {
               if (!assets.linux) assets.linux = {};
               assets.linux.deb = asset.browser_download_url;
+              hasAssets = true;
             }
           }
           
@@ -150,6 +157,7 @@ export function Downloads() {
             releaseNotes: data.body || '',
             assets,
           });
+          setReleaseAvailable(hasAssets);
         }
       } catch (error) {
         console.error('Failed to fetch release info:', error);
@@ -244,26 +252,54 @@ export function Downloads() {
               <p className="mt-2 text-sm text-foreground-secondary">
                 {platformDetails[detectedPlatform as DesktopPlatform].requirements}
               </p>
-              <a
-                href={getDownloadUrl(detectedPlatform as DesktopPlatform)}
-                onClick={() => handleDownload(detectedPlatform as DesktopPlatform)}
-                className="mt-6 inline-flex items-center justify-center gap-2 rounded-lg bg-success px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-success/90 hover:scale-105"
-              >
-                {downloading === detectedPlatform ? (
-                  <>
-                    <Loader2 className="h-5 w-5 animate-spin" />
-                    Starting Download...
-                  </>
-                ) : (
-                  <>
-                    <Download className="h-5 w-5" />
-                    Download v{version}
-                  </>
-                )}
-              </a>
-              <p className="mt-3 text-xs text-foreground-tertiary">
-                Version {version} • Free and open source
-              </p>
+              {loading ? (
+                <div className="mt-6 inline-flex items-center justify-center gap-2 rounded-lg bg-accent/20 px-8 py-4 text-lg font-semibold text-accent">
+                  <Loader2 className="h-5 w-5 animate-spin" />
+                  Checking for latest release...
+                </div>
+              ) : releaseAvailable ? (
+                <a
+                  href={getDownloadUrl(detectedPlatform as DesktopPlatform)}
+                  onClick={() => handleDownload(detectedPlatform as DesktopPlatform)}
+                  className="mt-6 inline-flex items-center justify-center gap-2 rounded-lg bg-success px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-success/90 hover:scale-105"
+                >
+                  {downloading === detectedPlatform ? (
+                    <>
+                      <Loader2 className="h-5 w-5 animate-spin" />
+                      Starting Download...
+                    </>
+                  ) : (
+                    <>
+                      <Download className="h-5 w-5" />
+                      Download v{version}
+                    </>
+                  )}
+                </a>
+              ) : (
+                <div className="mt-6">
+                  <div className="inline-flex items-center justify-center gap-2 rounded-lg bg-accent/20 px-8 py-4 text-lg font-semibold text-accent">
+                    <Smartphone className="h-5 w-5" />
+                    First Release Coming Soon
+                  </div>
+                  <p className="mt-3 text-sm text-foreground-secondary">
+                    We&apos;re finishing up the first release. Star{' '}
+                    <a
+                      href={siteConfig.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-accent hover:underline"
+                    >
+                      the repo
+                    </a>
+                    {' '}to get notified.
+                  </p>
+                </div>
+              )}
+              {releaseAvailable && (
+                <p className="mt-3 text-xs text-foreground-tertiary">
+                  Version {version} • Free and open source
+                </p>
+              )}
             </div>
           </div>
         )}
@@ -329,22 +365,28 @@ export function Downloads() {
                       {details.description}
                     </p>
                   </div>
-                  <a
-                    href={getDownloadUrl(platform)}
-                    onClick={() => handleDownload(platform)}
-                    className={`mt-auto flex w-full items-center justify-center gap-2 rounded-lg px-4 py-3 font-semibold transition-colors ${
-                      isPrimary
-                        ? 'bg-success text-white hover:bg-success/90'
-                        : 'bg-accent text-white hover:bg-accent-hover'
-                    }`}
-                  >
-                    {isDownloading ? (
-                      <Loader2 className="h-4 w-4 animate-spin" />
-                    ) : (
-                      <Download className="h-4 w-4" />
-                    )}
-                    {isDownloading ? 'Downloading...' : 'Download'}
-                  </a>
+                  {releaseAvailable ? (
+                    <a
+                      href={getDownloadUrl(platform)}
+                      onClick={() => handleDownload(platform)}
+                      className={`mt-auto flex w-full items-center justify-center gap-2 rounded-lg px-4 py-3 font-semibold transition-colors ${
+                        isPrimary
+                          ? 'bg-success text-white hover:bg-success/90'
+                          : 'bg-accent text-white hover:bg-accent-hover'
+                      }`}
+                    >
+                      {isDownloading ? (
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                      ) : (
+                        <Download className="h-4 w-4" />
+                      )}
+                      {isDownloading ? 'Downloading...' : 'Download'}
+                    </a>
+                  ) : (
+                    <div className="mt-auto flex w-full items-center justify-center gap-2 rounded-lg bg-foreground-tertiary/20 px-4 py-3 font-semibold text-foreground-secondary">
+                      Coming Soon
+                    </div>
+                  )}
                 </div>
               );
             })}
