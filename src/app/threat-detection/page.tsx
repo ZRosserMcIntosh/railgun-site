@@ -20,10 +20,10 @@ export const metadata: Metadata = {
   description:
     'How Rail Gun detects NSO Group Pegasus, Predator, FinSpy, and other nation-state spyware on your device using static analysis, behavioral anomaly detection, and network forensics.',
   alternates: {
-    canonical: 'https://railgun.app/threat-detection',
+    canonical: 'https://railgun.chat/threat-detection',
   },
   openGraph: {
-    url: 'https://railgun.app/threat-detection',
+    url: 'https://railgun.chat/threat-detection',
   },
 };
 

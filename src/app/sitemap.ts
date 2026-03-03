@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://railgun.app';
+  const baseUrl = 'https://railgun.chat';
   
   // Main routes - only list actual crawlable URLs
   // Note: locale alternates removed because locale switching is client-side only

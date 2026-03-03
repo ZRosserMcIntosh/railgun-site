@@ -13,7 +13,7 @@ interface ReleaseInfo {
   publishedAt: string;
   releaseNotes: string;
   assets: {
-    mac?: { dmg?: string; zip?: string };
+    mac?: { dmg?: string; dmgIntel?: string; zip?: string };
     windows?: { exe?: string };
     linux?: { appImage?: string; deb?: string };
   };
@@ -126,12 +126,23 @@ export function Downloads() {
           const assets: ReleaseInfo['assets'] = {};
           for (const asset of data.assets || []) {
             const name = asset.name.toLowerCase();
-            if (name.includes('.dmg')) {
+            if (name.endsWith('.dmg')) {
               if (!assets.mac) assets.mac = {};
-              assets.mac.dmg = asset.browser_download_url;
-            } else if (name.includes('.zip') && name.includes('mac')) {
-              if (!assets.mac) assets.mac = {};
-              assets.mac.zip = asset.browser_download_url;
+              // Prefer arm64 DMG as primary, but accept any DMG
+              if (name.includes('arm64') || !assets.mac.dmg) {
+                assets.mac.dmg = asset.browser_download_url;
+              }
+              // Store x64 as the Intel variant
+              if (name.includes('x64') || name.includes('x86')) {
+                assets.mac.dmgIntel = asset.browser_download_url;
+              }
+            } else if (name.endsWith('.zip') && !name.includes('setup') && !name.endsWith('.exe')) {
+              // ZIP files that are NOT Windows: check if they're macOS
+              // macOS ZIPs contain arm64/x64/mac in the name, or are alongside DMGs
+              if (name.includes('mac') || name.includes('arm64') || name.includes('x64') || name.includes('darwin')) {
+                if (!assets.mac) assets.mac = {};
+                assets.mac.zip = asset.browser_download_url;
+              }
             } else if (name.endsWith('.exe') || name.includes('setup')) {
               if (!assets.windows) assets.windows = {};
               assets.windows.exe = asset.browser_download_url;
@@ -208,8 +219,8 @@ export function Downloads() {
     switch (platform) {
       case 'mac':
         return [
-          { label: 'Intel Mac (.dmg)', url: siteConfig.downloads.mac.dmgIntel },
-          { label: 'Apple Silicon (.zip)', url: siteConfig.downloads.mac.zip },
+          { label: 'Intel Mac (.dmg)', url: releaseInfo?.assets?.mac?.dmgIntel || siteConfig.downloads.mac.dmgIntel },
+          { label: 'Apple Silicon (.zip)', url: releaseInfo?.assets?.mac?.zip || siteConfig.downloads.mac.zip },
         ];
       case 'linux':
         return [

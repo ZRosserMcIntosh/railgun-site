@@ -18,32 +18,36 @@ const VERSION = process.env.NEXT_PUBLIC_APP_VERSION || '0.1.0';
 /**
  * Get download URL for a release artifact
  * Uses GitHub Releases for hosting
+ * Note: GitHub replaces spaces in filenames with dots
  */
 function getDownloadUrl(filename: string): string {
   return `${RELEASES_BASE}/download/v${VERSION}/${encodeURIComponent(filename)}`;
 }
 
+// Current release tag (may differ from VERSION for artifact naming)
+const RELEASE_TAG = VERSION;
+
 export const siteConfig = {
   name: 'Rail Gun',
   description: 'Secure private messaging with end-to-end encryption',
-  url: 'https://railgun.app',
-  webAppUrl: 'https://app.railgun.app',
+  url: 'https://railgun.chat',
+  webAppUrl: 'https://app.railgun.chat',
   githubUrl: `https://github.com/${GITHUB_REPO}`,
   
   version: VERSION,
   
   downloads: {
     mac: {
-      dmg: getDownloadUrl(`Rail Gun-${VERSION}-arm64.dmg`),
-      dmgIntel: getDownloadUrl(`Rail Gun-${VERSION}-x64.dmg`),
-      zip: getDownloadUrl(`Rail Gun-${VERSION}-arm64-mac.zip`),
+      dmg: getDownloadUrl(`Rail.Gun-${VERSION}-arm64.dmg`),
+      dmgIntel: getDownloadUrl(`Rail.Gun-${VERSION}-x64.dmg`),
+      zip: getDownloadUrl(`Rail.Gun-${VERSION}-arm64.zip`),
     },
     windows: {
-      exe: getDownloadUrl(`Rail Gun-${VERSION}-Setup.exe`),
+      exe: getDownloadUrl(`Rail.Gun-${VERSION}-Setup.exe`),
     },
     linux: {
-      appImage: getDownloadUrl(`Rail Gun-${VERSION}.AppImage`),
-      deb: getDownloadUrl(`Rail Gun-${VERSION}_amd64.deb`),
+      appImage: getDownloadUrl(`Rail.Gun-${VERSION}.AppImage`),
+      deb: getDownloadUrl(`Rail.Gun-${VERSION}_amd64.deb`),
     },
     checksums: getDownloadUrl('SHA256SUMS.txt'),
     // Latest release page for all platforms
@@ -53,7 +57,7 @@ export const siteConfig = {
   },
   
   links: {
-    docs: 'https://docs.railgun.app',
+    docs: 'https://docs.railgun.chat',
     charter: '/charter',
     security: '/security',
     privacy: '/privacy',

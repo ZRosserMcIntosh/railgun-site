@@ -7,10 +7,10 @@ export const metadata: Metadata = {
   description:
     'A deep dive into the mathematics behind Rail Gun\'s end-to-end encryption: X3DH key agreement, Double Ratchet, Curve25519, AES-256-GCM, and how they combine to protect your messages.',
   alternates: {
-    canonical: 'https://railgun.app/encryption',
+    canonical: 'https://railgun.chat/encryption',
   },
   openGraph: {
-    url: 'https://railgun.app/encryption',
+    url: 'https://railgun.chat/encryption',
   },
 };
 
