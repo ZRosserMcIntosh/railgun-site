@@ -18,6 +18,8 @@ export function Footer() {
     ],
     resources: [
       { label: t('links.charter'), href: '/charter' },
+      { label: 'Encryption Math', href: '/encryption' },
+      { label: 'Threat Shield', href: '/threat-detection' },
       { label: t('links.documentation'), href: siteConfig.links.docs, external: true },
       { label: t('links.releaseNotes'), href: siteConfig.links.releases, external: true },
       { label: t('links.reportIssues'), href: siteConfig.links.issues, external: true },

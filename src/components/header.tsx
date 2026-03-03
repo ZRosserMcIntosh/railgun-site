@@ -20,6 +20,8 @@ export function Header() {
     { href: '/node-mode', label: t('nodeMode') },
     { href: '/#features', label: t('features') },
     { href: '/#security', label: t('security') },
+    { href: '/encryption', label: 'Crypto' },
+    { href: '/threat-detection', label: 'Threat Shield' },
   ];
 
   useEffect(() => {

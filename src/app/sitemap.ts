@@ -13,6 +13,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/node-mode', changeFrequency: 'monthly' as const, priority: 0.85 },
     { path: '/download', changeFrequency: 'monthly' as const, priority: 0.8 },
     { path: '/security', changeFrequency: 'monthly' as const, priority: 0.7 },
+    { path: '/encryption', changeFrequency: 'monthly' as const, priority: 0.8 },
+    { path: '/threat-detection', changeFrequency: 'monthly' as const, priority: 0.8 },
     { path: '/privacy', changeFrequency: 'monthly' as const, priority: 0.5 },
     { path: '/terms', changeFrequency: 'monthly' as const, priority: 0.5 },
   ];
