@@ -16,6 +16,7 @@ export function Header() {
 
   const navLinks = [
     { href: '/#download', label: 'Download' },
+    { href: '/pricing', label: 'Pricing' },
     { href: '/charter', label: t('charter') },
     { href: '/node-mode', label: t('nodeMode') },
     { href: '/#features', label: t('features') },
