@@ -5,6 +5,7 @@ import { Download, ExternalLink, CheckCircle, Loader2, Smartphone } from 'lucide
 import { siteConfig } from '@/lib/config';
 
 type Platform = 'mac' | 'windows' | 'linux' | 'ios' | 'android' | 'unknown';
+type MacArch = 'arm64' | 'x64' | 'unknown';
 type DesktopPlatform = 'mac' | 'windows' | 'linux';
 type MobilePlatform = 'ios' | 'android';
 
@@ -47,9 +48,9 @@ const AndroidIcon = ({ className }: { className?: string }) => (
 const platformDetails = {
   mac: {
     name: 'macOS',
-    description: 'macOS 11+ (Intel & Apple Silicon)',
+    description: 'macOS 11+ (Apple Silicon & Intel)',
     icon: AppleIcon,
-    requirements: 'Universal binary for Intel and Apple Silicon Macs',
+    requirements: 'Separate builds for Apple Silicon (M1/M2/M3/M4) and Intel Macs',
     available: true,
   },
   windows: {
@@ -102,14 +103,60 @@ function detectPlatform(): Platform {
   return 'unknown';
 }
 
+/**
+ * Detect whether a Mac is Apple Silicon or Intel.
+ * Uses WebGL renderer info as a reliable heuristic:
+ * - Apple Silicon Macs report "Apple M1/M2/M3/M4" GPU
+ * - Intel Macs report "Intel" GPU
+ * Falls back to 'unknown' if detection fails.
+ */
+function detectMacArch(): MacArch {
+  if (typeof window === 'undefined') return 'unknown';
+
+  try {
+    const canvas = document.createElement('canvas');
+    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    if (gl && gl instanceof WebGLRenderingContext) {
+      const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+      if (debugInfo) {
+        const renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL) as string;
+        if (renderer) {
+          const rendererLower = renderer.toLowerCase();
+          // Apple GPU = Apple Silicon (M1, M2, M3, M4 chips)
+          if (rendererLower.includes('apple m') || rendererLower.includes('apple gpu')) {
+            return 'arm64';
+          }
+          // Intel GPU = Intel Mac
+          if (rendererLower.includes('intel')) {
+            return 'x64';
+          }
+          // AMD GPU could be either (older Mac Pros), but most likely Intel-era
+          if (rendererLower.includes('amd') || rendererLower.includes('radeon')) {
+            return 'x64';
+          }
+        }
+      }
+    }
+  } catch {
+    // WebGL detection failed
+  }
+
+  return 'unknown';
+}
+
 export function Downloads() {
   const [detectedPlatform, setDetectedPlatform] = useState<Platform>('unknown');
+  const [macArch, setMacArch] = useState<MacArch>('unknown');
   const [releaseInfo, setReleaseInfo] = useState<ReleaseInfo | null>(null);
   const [loading, setLoading] = useState(true);
   const [downloading, setDownloading] = useState<string | null>(null);
 
   useEffect(() => {
-    setDetectedPlatform(detectPlatform());
+    const platform = detectPlatform();
+    setDetectedPlatform(platform);
+    if (platform === 'mac') {
+      setMacArch(detectMacArch());
+    }
 
     // Try to fetch latest release info from GitHub
     async function fetchRelease() {
@@ -195,6 +242,11 @@ export function Downloads() {
     if (releaseInfo?.assets) {
       switch (platform) {
         case 'mac':
+          // If we know the architecture, return the right one
+          if (macArch === 'x64') {
+            return releaseInfo.assets.mac?.dmgIntel || siteConfig.downloads.mac.dmgIntel;
+          }
+          // Default to arm64 (Apple Silicon) — it's the more common modern Mac
           return releaseInfo.assets.mac?.dmg || siteConfig.downloads.mac.dmg;
         case 'windows':
           return releaseInfo.assets.windows?.exe || siteConfig.downloads.windows.exe;
@@ -205,6 +257,7 @@ export function Downloads() {
     // Fallback to config URLs
     switch (platform) {
       case 'mac':
+        if (macArch === 'x64') return siteConfig.downloads.mac.dmgIntel;
         return siteConfig.downloads.mac.dmg;
       case 'windows':
         return siteConfig.downloads.windows.exe;
@@ -215,20 +268,12 @@ export function Downloads() {
     }
   };
 
-  const getAlternateDownloads = (platform: DesktopPlatform): { label: string; url: string }[] => {
-    switch (platform) {
-      case 'mac':
-        return [
-          { label: 'Intel Mac (.dmg)', url: releaseInfo?.assets?.mac?.dmgIntel || siteConfig.downloads.mac.dmgIntel },
-          { label: 'Apple Silicon (.zip)', url: releaseInfo?.assets?.mac?.zip || siteConfig.downloads.mac.zip },
-        ];
-      case 'linux':
-        return [
-          { label: '.deb (Debian/Ubuntu)', url: siteConfig.downloads.linux.deb },
-        ];
-      default:
-        return [];
+  /** Get the Mac download URL for a specific architecture */
+  const getMacDownloadUrl = (arch: 'arm64' | 'x64'): string => {
+    if (arch === 'arm64') {
+      return releaseInfo?.assets?.mac?.dmg || siteConfig.downloads.mac.dmg;
     }
+    return releaseInfo?.assets?.mac?.dmgIntel || siteConfig.downloads.mac.dmgIntel;
   };
 
   const handleDownload = (platform: DesktopPlatform) => {
@@ -278,23 +323,118 @@ export function Downloads() {
                   Checking for latest release...
                 </div>
               ) : isPlatformAvailable(detectedPlatform as DesktopPlatform) ? (
-                <a
-                  href={getDownloadUrl(detectedPlatform as DesktopPlatform)}
-                  onClick={() => handleDownload(detectedPlatform as DesktopPlatform)}
-                  className="mt-6 inline-flex items-center justify-center gap-2 rounded-lg bg-success px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-success/90 hover:scale-105"
-                >
-                  {downloading === detectedPlatform ? (
-                    <>
-                      <Loader2 className="h-5 w-5 animate-spin" />
-                      Starting Download...
-                    </>
-                  ) : (
-                    <>
-                      <Download className="h-5 w-5" />
-                      Download v{version}
-                    </>
-                  )}
-                </a>
+                detectedPlatform === 'mac' ? (
+                  /* Mac: Show separate Apple Silicon and Intel buttons */
+                  <div className="mt-6 space-y-3">
+                    {macArch === 'arm64' ? (
+                      /* Detected Apple Silicon — show it as primary */
+                      <>
+                        <a
+                          href={getMacDownloadUrl('arm64')}
+                          onClick={() => handleDownload('mac')}
+                          className="flex items-center justify-center gap-2 rounded-lg bg-success px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-success/90 hover:scale-105"
+                        >
+                          {downloading === 'mac' ? (
+                            <>
+                              <Loader2 className="h-5 w-5 animate-spin" />
+                              Starting Download...
+                            </>
+                          ) : (
+                            <>
+                              <Download className="h-5 w-5" />
+                              Download for Apple Silicon (M1/M2/M3/M4)
+                            </>
+                          )}
+                        </a>
+                        <a
+                          href={getMacDownloadUrl('x64')}
+                          className="flex items-center justify-center gap-2 rounded-lg border border-foreground-secondary/30 px-6 py-3 text-sm font-medium text-foreground-secondary transition-colors hover:bg-background-elevated hover:text-foreground-primary"
+                        >
+                          <Download className="h-4 w-4" />
+                          Download for Intel Mac
+                        </a>
+                      </>
+                    ) : macArch === 'x64' ? (
+                      /* Detected Intel — show it as primary */
+                      <>
+                        <a
+                          href={getMacDownloadUrl('x64')}
+                          onClick={() => handleDownload('mac')}
+                          className="flex items-center justify-center gap-2 rounded-lg bg-success px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-success/90 hover:scale-105"
+                        >
+                          {downloading === 'mac' ? (
+                            <>
+                              <Loader2 className="h-5 w-5 animate-spin" />
+                              Starting Download...
+                            </>
+                          ) : (
+                            <>
+                              <Download className="h-5 w-5" />
+                              Download for Intel Mac
+                            </>
+                          )}
+                        </a>
+                        <a
+                          href={getMacDownloadUrl('arm64')}
+                          className="flex items-center justify-center gap-2 rounded-lg border border-foreground-secondary/30 px-6 py-3 text-sm font-medium text-foreground-secondary transition-colors hover:bg-background-elevated hover:text-foreground-primary"
+                        >
+                          <Download className="h-4 w-4" />
+                          Download for Apple Silicon (M1/M2/M3/M4)
+                        </a>
+                      </>
+                    ) : (
+                      /* Unknown arch — show both equally */
+                      <>
+                        <a
+                          href={getMacDownloadUrl('arm64')}
+                          onClick={() => handleDownload('mac')}
+                          className="flex items-center justify-center gap-2 rounded-lg bg-success px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-success/90 hover:scale-105"
+                        >
+                          <Download className="h-5 w-5" />
+                          Download for Apple Silicon (M1/M2/M3/M4)
+                        </a>
+                        <a
+                          href={getMacDownloadUrl('x64')}
+                          onClick={() => handleDownload('mac')}
+                          className="flex items-center justify-center gap-2 rounded-lg bg-accent px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-accent-hover hover:scale-105"
+                        >
+                          <Download className="h-5 w-5" />
+                          Download for Intel Mac
+                        </a>
+                        <p className="text-xs text-foreground-tertiary">
+                          Not sure which Mac you have?{' '}
+                          <a
+                            href="https://support.apple.com/en-us/116943"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-accent hover:underline"
+                          >
+                            Check here →
+                          </a>
+                        </p>
+                      </>
+                    )}
+                  </div>
+                ) : (
+                  /* Non-Mac: single download button */
+                  <a
+                    href={getDownloadUrl(detectedPlatform as DesktopPlatform)}
+                    onClick={() => handleDownload(detectedPlatform as DesktopPlatform)}
+                    className="mt-6 inline-flex items-center justify-center gap-2 rounded-lg bg-success px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-success/90 hover:scale-105"
+                  >
+                    {downloading === detectedPlatform ? (
+                      <>
+                        <Loader2 className="h-5 w-5 animate-spin" />
+                        Starting Download...
+                      </>
+                    ) : (
+                      <>
+                        <Download className="h-5 w-5" />
+                        Download v{version}
+                      </>
+                    )}
+                  </a>
+                )
               ) : (
                 <div className="mt-6">
                   <div className="inline-flex items-center justify-center gap-2 rounded-lg bg-accent/20 px-8 py-4 text-lg font-semibold text-accent">
@@ -386,22 +526,47 @@ export function Downloads() {
                     </p>
                   </div>
                   {isPlatformAvailable(platform) ? (
-                    <a
-                      href={getDownloadUrl(platform)}
-                      onClick={() => handleDownload(platform)}
-                      className={`mt-auto flex w-full items-center justify-center gap-2 rounded-lg px-4 py-3 font-semibold transition-colors ${
-                        isPrimary
-                          ? 'bg-success text-white hover:bg-success/90'
-                          : 'bg-accent text-white hover:bg-accent-hover'
-                      }`}
-                    >
-                      {isDownloading ? (
-                        <Loader2 className="h-4 w-4 animate-spin" />
-                      ) : (
-                        <Download className="h-4 w-4" />
-                      )}
-                      {isDownloading ? 'Downloading...' : 'Download'}
-                    </a>
+                    platform === 'mac' ? (
+                      /* Mac: show both Apple Silicon and Intel buttons */
+                      <div className="mt-auto flex w-full flex-col gap-2">
+                        <a
+                          href={getMacDownloadUrl('arm64')}
+                          onClick={() => handleDownload('mac')}
+                          className={`flex w-full items-center justify-center gap-2 rounded-lg px-4 py-3 text-sm font-semibold transition-colors ${
+                            isPrimary
+                              ? 'bg-success text-white hover:bg-success/90'
+                              : 'bg-accent text-white hover:bg-accent-hover'
+                          }`}
+                        >
+                          <Download className="h-4 w-4" />
+                          Apple Silicon
+                        </a>
+                        <a
+                          href={getMacDownloadUrl('x64')}
+                          className="flex w-full items-center justify-center gap-2 rounded-lg border border-foreground-secondary/30 px-4 py-2.5 text-sm font-medium text-foreground-secondary transition-colors hover:bg-background-elevated hover:text-foreground-primary"
+                        >
+                          <Download className="h-3.5 w-3.5" />
+                          Intel Mac
+                        </a>
+                      </div>
+                    ) : (
+                      <a
+                        href={getDownloadUrl(platform)}
+                        onClick={() => handleDownload(platform)}
+                        className={`mt-auto flex w-full items-center justify-center gap-2 rounded-lg px-4 py-3 font-semibold transition-colors ${
+                          isPrimary
+                            ? 'bg-success text-white hover:bg-success/90'
+                            : 'bg-accent text-white hover:bg-accent-hover'
+                        }`}
+                      >
+                        {isDownloading ? (
+                          <Loader2 className="h-4 w-4 animate-spin" />
+                        ) : (
+                          <Download className="h-4 w-4" />
+                        )}
+                        {isDownloading ? 'Downloading...' : 'Download'}
+                      </a>
+                    )
                   ) : (
                     <div className="mt-auto flex w-full items-center justify-center gap-2 rounded-lg bg-foreground-tertiary/20 px-4 py-3 font-semibold text-foreground-secondary">
                       Coming Soon
