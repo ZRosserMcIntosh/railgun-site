@@ -1,0 +1,243 @@
+{
+  "meta": {
+    "title": "Rail Gun - Pesan Pribadi yang Aman",
+    "titleTemplate": "{title} | Rail Gun",
+    "description": "Rail Gun adalah pesan terenkripsi end-to-end dengan Signal Protocol. Bekerja offline dengan mesh networking Node Mode. Komunikasi tahan sensor di mana kunci Anda tidak pernah meninggalkan perangkat Anda.",
+    "keywords": "pesan terenkripsi, chat aman, Signal protocol, enkripsi end-to-end, pesan pribadi, mesh network, pesan offline, tahan sensor, aplikasi privasi"
+  },
+  "nav": {
+    "charter": "Piagam",
+    "nodeMode": "Node Mode",
+    "features": "Fitur",
+    "waitlist": "Daftar Tunggu",
+    "security": "Keamanan",
+    "github": "GitHub",
+    "language": "Bahasa"
+  },
+  "hero": {
+    "badge": "Khusus Undangan · Beta Pribadi",
+    "headline1": "Pesan pribadi.",
+    "headline2": "Tanpa kompromi.",
+    "subheadline": "Rail Gun adalah infrastruktur sipil untuk komunikasi pribadi. Pesan terenkripsi end-to-end di mana kunci Anda tidak pernah meninggalkan perangkat Anda. Kebenaran tanpa izin.",
+    "cta": {
+      "waitlist": "Gabung Daftar Tunggu",
+      "security": "Pelajari Keamanan"
+    },
+    "stats": {
+      "protocol": { "title": "X3DH + Double Ratchet", "description": "Pertukaran kunci Signal Protocol" },
+      "curve": { "title": "Curve25519", "description": "Kriptografi kurva eliptik modern" },
+      "cipher": { "title": "ChaCha20-Poly1305", "description": "Enkripsi terotentikasi AEAD" }
+    }
+  },
+  "features": {
+    "title": "Mengapa Rail Gun?",
+    "subtitle": "Dibangun dari awal dengan privasi dan keamanan sebagai fondasi, bukan sebagai tambahan.",
+    "items": {
+      "signal": { "title": "Signal Protocol", "description": "Double Ratchet (rantai KDF) + pertukaran kunci X3DH. Enkripsi end-to-end standar industri dengan libsignal" },
+      "curve": { "title": "Enkripsi Curve25519", "description": "Kriptografi kurva eliptik modern (Curve25519) untuk pertukaran kunci dan tanda tangan via NaCl" },
+      "chacha": { "title": "ChaCha20-Poly1305", "description": "Cipher AEAD yang menyediakan enkripsi terotentikasi dengan data terkait untuk kerahasiaan pesan" },
+      "group": { "title": "Enkripsi Grup", "description": "Komunitas dengan saluran terenkripsi menggunakan sesi grup Signal Protocol dan kunci per-penerima" },
+      "pfs": { "title": "Perfect Forward Secrecy", "description": "Setiap pesan menggunakan kunci ephemeral. Kunci jangka panjang yang dikompromikan tidak dapat mendekripsi pesan masa lalu" },
+      "opensource": { "title": "Open Source & Dapat Diaudit", "description": "Transparansi penuh di GitHub. Implementasi kriptografi ditinjau dan dapat diaudit oleh pakar keamanan" },
+      "blind": { "title": "Server Buta", "description": "Backend hanya melihat blob terenkripsi dan metadata routing. Konten tidak pernah terekspos" },
+      "desktop": { "title": "Klien Desktop-First", "description": "Aplikasi Electron native untuk macOS, Windows, Linux dengan penyimpanan kunci lokal dan enkripsi level OS" }
+    }
+  },
+  "waitlist": {
+    "title": "Gabung Beta Pribadi",
+    "subtitle": "Rail Gun saat ini hanya undangan. Gabung daftar tunggu untuk akses awal ketika kami berkembang.",
+    "emailPlaceholder": "Masukkan email Anda",
+    "submit": "Gabung Daftar Tunggu",
+    "submitting": "Bergabung...",
+    "success": "Anda ada di daftar! Kami akan segera menghubungi.",
+    "error": "Terjadi kesalahan. Silakan coba lagi.",
+    "privacy": "Kami menghormati privasi Anda. Tidak ada spam, selamanya."
+  },
+  "security": {
+    "badge": "Keamanan Bawaan",
+    "title": "Pesan Anda benar-benar pribadi",
+    "subtitle": "Rail Gun menggunakan protokol enkripsi yang sama yang dipercaya oleh miliaran pengguna di seluruh dunia. Kunci pribadi Anda dibuat secara lokal dan tidak pernah menyentuh server kami.",
+    "features": [
+      "Signal Protocol (X3DH + Double Ratchet)",
+      "Perfect Forward Secrecy (PFS)",
+      "Extended Triple Diffie-Hellman (X3DH)",
+      "Double Ratchet Algorithm (Rantai KDF)",
+      "libsodium / NaCl (Curve25519, ChaCha20-Poly1305)",
+      "HMAC-based Key Derivation Function (HKDF)",
+      "Pembuatan dan penyimpanan kunci lokal (tidak pernah ditransmisikan)",
+      "Open source dan dapat diaudit (GitHub)",
+      "Tidak perlu nomor telepon",
+      "Minimalisasi metadata (hanya routing)",
+      "Forward Secrecy & Backward Secrecy",
+      "Otentikasi yang Dapat Disangkal"
+    ],
+    "verify": {
+      "title": "Verifikasi Unduhan Anda",
+      "description": "Selalu verifikasi unduhan untuk memastikan tidak ada yang diubah.",
+      "step1": { "title": "1. Impor kunci GPG kami:", "command": "gpg --keyserver keys.openpgp.org --recv-keys [KEY_ID]" },
+      "step2": { "title": "2. Verifikasi tanda tangan:", "command": "gpg --verify SHA256SUMS.txt.asc SHA256SUMS.txt" },
+      "step3": {
+        "title": "3. Periksa checksum:",
+        "macLinux": "# macOS/Linux\nsha256sum -c SHA256SUMS.txt --ignore-missing",
+        "windows": "# Windows PowerShell\nGet-FileHash Rail-Gun-*.exe | Format-List"
+      },
+      "checksums": "Checksum lengkap tersedia di"
+    }
+  },
+  "platforms": {
+    "title": "Tersedia Di Mana Saja",
+    "subtitle": "Unduh Rail Gun untuk platform Anda atau gunakan versi web.",
+    "download": "Unduh",
+    "comingSoon": "Segera Hadir",
+    "mac": "macOS",
+    "windows": "Windows",
+    "linux": "Linux",
+    "ios": "iOS",
+    "android": "Android",
+    "web": "Aplikasi Web"
+  },
+  "cta": {
+    "title": "Siap mengambil kembali privasi Anda?",
+    "subtitle": "Bergabunglah dengan ribuan pengguna yang mempercayai Rail Gun untuk komunikasi aman.",
+    "button": "Mulai"
+  },
+  "footer": {
+    "description": "Terenkripsi end-to-end dengan Signal Protocol (X3DH + Double Ratchet), Curve25519, dan ChaCha20-Poly1305. Kunci Anda, privasi Anda.",
+    "product": "Produk",
+    "resources": "Sumber Daya",
+    "legal": "Hukum",
+    "links": {
+      "download": "Unduh",
+      "webApp": "Aplikasi Web",
+      "features": "Fitur",
+      "security": "Keamanan",
+      "charter": "Piagam",
+      "documentation": "Dokumentasi",
+      "releaseNotes": "Catatan Rilis",
+      "reportIssues": "Laporkan Masalah",
+      "privacy": "Kebijakan Privasi",
+      "terms": "Ketentuan Layanan"
+    },
+    "copyright": "© {year} Rail Gun. Hak cipta dilindungi."
+  },
+  "charter": {
+    "badge": "Dokumen Dasar",
+    "title": "Piagam Rail Gun",
+    "subtitle": "Rail Gun adalah infrastruktur sipil. Ia ada untuk menurunkan biaya kebenaran, melindungi komunikasi tanpa izin, dan memungkinkan koordinasi damai dalam skala besar.",
+    "preamble": {
+      "title": "Pembukaan",
+      "p1": "Rail Gun bukan senjata. Ia adalah jalan, mesin cetak, utilitas publik untuk era informasi. Kami membangun infrastruktur yang membuat kekerasan tidak perlu dengan membuat kebenaran dapat diakses, kebohongan mahal, dan koreksi diri yang damai menjadi mungkin.",
+      "p2": "Kami berhasil ketika seorang jurnalis dapat menerbitkan bukti tanpa rasa takut, ketika keluarga dapat berkomunikasi melintasi perbatasan yang bermusuhan, ketika komunitas dapat mengorganisir bantuan bersama tanpa pengawasan."
+    },
+    "principlesTitle": "Sepuluh Prinsip",
+    "principlesSubtitle": "Prinsip-prinsip ini tidak dapat dinegosiasikan. Setiap keputusan produk, setiap fitur harus selaras dengannya.",
+    "principles": {
+      "1": { "title": "Non-Kekerasan Tidak Dapat Dinegosiasikan", "description": "Rail Gun tidak pernah mengadvokasi, memfasilitasi, atau memungkinkan kekerasan, paksaan, atau bahaya fisik." },
+      "2": { "title": "Infrastruktur, Bukan Agitasi", "description": "Kami membangun jalan, bukan barikade. Mesin cetak, bukan senjata." },
+      "3": { "title": "Kebenaran Tanpa Izin", "description": "Setiap orang berhak berkomunikasi, menerbitkan bukti, dan berkoordinasi dengan orang lain." },
+      "4": { "title": "Kedaulatan di Pinggiran", "description": "Pengguna mengendalikan kunci, data, dan hubungan mereka sendiri." },
+      "5": { "title": "Protokol Bertahan dari Operator", "description": "Protokol inti harus tetap berfungsi meskipun Rail Gun dikompromikan, diakuisisi, atau ditutup." },
+      "6": { "title": "Pemisahan Berlapis Melindungi Legitimasi", "description": "Inti Berdaulat (protokol) bersifat netral. Lapisan Layanan (enterprise, kepatuhan) adalah tempat bisnis terjadi." },
+      "7": { "title": "Default Aman, Kekuatan Disengaja", "description": "Pengaturan default aman dan sesuai untuk komunikasi biasa." },
+      "8": { "title": "Retensi Minimal, Penghapusan Maksimal", "description": "Kami menyimpan data minimum yang diperlukan untuk routing dan tidak lebih lama dari yang diperlukan." },
+      "9": { "title": "Legitimasi Melalui Transparansi", "description": "Rail Gun menerbitkan protokolnya, mengaudit kodenya, mengungkapkan pendanaannya." },
+      "10": { "title": "Tidak Ada Musuh, Hanya Masalah", "description": "Kami tidak mempersonalisasi lawan. Kami menjelaskan masalah dan membangun solusi." }
+    },
+    "whatWeAreNot": {
+      "title": "Apa yang Bukan Rail Gun",
+      "items": [
+        "Bukan alat untuk pelecehan, doxxing, atau stalking",
+        "Bukan platform untuk koordinasi kekerasan ilegal",
+        "Bukan senjata melawan orang, lembaga, atau pemerintah mana pun",
+        "Bukan janji kekebalan dari konsekuensi",
+        "Bukan ideologi—ini adalah infrastruktur"
+      ]
+    },
+    "commitments": {
+      "title": "Komitmen Operasional",
+      "items": {
+        "audit": { "title": "Audit Etika Tahunan", "description": "Tinjauan independen keputusan produk terhadap Piagam ini." },
+        "transparency": { "title": "Laporan Transparansi", "description": "Pengungkapan triwulanan permintaan pemerintah dan tindakan kepatuhan." },
+        "marketing": { "title": "Tanpa Pemasaran yang Menipu", "description": "Semua klaim tentang keamanan dan privasi harus dapat diverifikasi secara teknis." },
+        "governance": { "title": "Tata Kelola Komunitas", "description": "Perubahan protokol memerlukan deliberasi terbuka dan konsensus." }
+      }
+    },
+    "closing": "Piagam ini adalah dokumen hidup. Amandemen memerlukan deliberasi publik, persetujuan komunitas, dan keselarasan dengan prinsip non-kekerasan.",
+    "viewOnGithub": "Lihat di GitHub",
+    "securityDetails": "Detail Keamanan"
+  },
+  "notFound": {
+    "title": "Halaman tidak ditemukan",
+    "description": "Maaf, kami tidak dapat menemukan halaman yang Anda cari.",
+    "backHome": "Kembali ke beranda"
+  },
+  "nodeMode": {
+    "badge": "Infrastruktur Tangguh",
+    "title": "Node Mode: Komunikasi Tanpa Infrastruktur",
+    "subtitle": "Ketika pemerintah memutus internet, ketika menara seluler gagal—Railgun tetap bekerja. Ponsel Anda menjadi bagian dari jaringan mesh.",
+    "noInternet": "Tanpa Internet",
+    "meshActive": "Mesh Aktif",
+    "stillSecure": "Masih Aman",
+    "whatIs": {
+      "title": "Apa itu Node Mode?",
+      "description1": "Node Mode mengubah setiap perangkat Railgun menjadi relay komunikasi menggunakan Bluetooth, Wi-Fi Direct, dan teknologi radio lokal lainnya.",
+      "description2": "Pesan melompat dari perangkat ke perangkat menggunakan prinsip delay-tolerant networking (DTN).",
+      "description3": "Saat bahkan SATU perangkat di mesh mendapatkan akses internet, ia menjadi gateway untuk seluruh mesh lokal."
+    },
+    "useCases": {
+      "title": "Saat Anda Paling Membutuhkannya",
+      "subtitle": "Node Mode dirancang untuk saat-saat ketika komunikasi tradisional gagal.",
+      "protests": { "title": "Protes & Kerusuhan Sipil", "description": "Ketika otoritas memutus jaringan seluler, koordinasi dengan aman melalui mesh device-to-device." },
+      "disasters": { "title": "Bencana Alam", "description": "Setelah gempa, badai, atau banjir ketika infrastruktur hancur, pertahankan komunikasi." },
+      "remote": { "title": "Daerah Terpencil", "description": "Tanpa jangkauan seluler? Tetap terhubung dengan grup Anda melalui mesh networking." },
+      "censorship": { "title": "Sensor Internet", "description": "Di wilayah di mana internet diblokir, berkomunikasi bebas melalui jaringan mesh lokal." },
+      "infrastructure": { "title": "Kegagalan Infrastruktur", "description": "Pemadaman listrik atau kegagalan ISP tidak menghentikan Node Mode." },
+      "privacy": { "title": "Privasi Maksimal", "description": "Untuk komunikasi sensitif di mana Anda tidak menginginkan APAPUN lalu lintas internet." }
+    },
+    "howItWorks": {
+      "title": "Cara Kerja Node Mode",
+      "subtitle": "Sistem empat lapis yang dirancang untuk ketahanan, keamanan, dan kendala mobile dunia nyata.",
+      "discovery": { "title": "Penemuan Peer", "description": "Perangkat menggunakan iklan BLE untuk menemukan pengguna Railgun terdekat." },
+      "mesh": { "title": "Pembentukan Mesh", "description": "Node memelihara tabel peer dan bertukar 'inventaris' pesan menggunakan bloom filter." },
+      "storeForward": { "title": "Simpan & Teruskan", "description": "Pesan menyebar secara oportunistik dengan TTL dan batas hop." },
+      "gateway": { "title": "Sinkronisasi Gateway", "description": "Ketika node mendapat akses internet, ia mengiklankan ketersediaan uplink." }
+    },
+    "gateway": {
+      "title": "Gateway: Satu Koneksi untuk Semua",
+      "description1": "Bayangkan 100 orang di protes tanpa layanan seluler. Jika hanya SATU orang punya hotspot satelit, perangkat itu menjadi gateway.",
+      "description2": "Gateway tidak pernah mendekripsi pesan Anda. Ia merutekan amplop terenkripsi.",
+      "priorityTitle": "Antrean Prioritas Pesan",
+      "priority1": "Pesan darurat & koordinasi (prioritas tertinggi)",
+      "priority2": "Pesan teks pendek",
+      "priority3": "Thumbnail & pratinjau",
+      "priority4": "Gambar penuh",
+      "priority5": "Video & file besar (oportunistik)"
+    },
+    "technical": {
+      "title": "Keamanan Tanpa Kompromi",
+      "subtitle": "Node Mode mempertahankan jaminan kriptografi yang sama dengan Railgun online.",
+      "e2ee": { "title": "Selalu Terenkripsi End-to-End", "description": "Setiap pesan, setiap hop. Signal Protocol dengan forward secrecy." },
+      "metadata": { "title": "Minimalisasi Metadata", "description": "ID peer berputar, tidak ada username global di broadcast." },
+      "battery": { "title": "Cerdas Baterai", "description": "Duty cycling adaptif menjaga baterai Anda." },
+      "abuse": { "title": "Tahan Penyalahgunaan", "description": "Rate limiting, proof-of-work untuk broadcast." },
+      "crossPlatform": { "title": "iOS & Android Native", "description": "Dibangun menggunakan API native platform." },
+      "superNodes": { "title": "Desktop Super-Node", "description": "Laptop dan desktop dapat berjalan sebagai node mesh berkapasitas tinggi." }
+    },
+    "transparency": {
+      "title": "Jujur Tentang Keterbatasan",
+      "description1": "Kami percaya pada transparansi tentang apa yang Node Mode bisa dan tidak bisa lakukan.",
+      "description2": "Node Mode secara signifikan meningkatkan ketahanan terhadap pemutusan jaringan dan pengawasan, tetapi beroperasi dalam kendala dunia nyata:",
+      "limitationsTitle": "Yang Tidak Bisa Dikalahkan Node Mode",
+      "limitation1": "Jamming RF yang mencakup semua frekuensi Bluetooth dan Wi-Fi",
+      "limitation2": "Penyitaan perangkat fisik atau kompromi level OS",
+      "limitation3": "Pengawasan individu tertarget dengan sumber daya tak terbatas",
+      "limitation4": "Batasan eksekusi latar belakang iOS (bekerja terbaik dengan app di foreground)"
+    },
+    "cta": {
+      "title": "Gabung Jaringan",
+      "description": "Node Mode hadir di Railgun untuk iOS, Android, dan Desktop.",
+      "joinWaitlist": "Gabung Daftar Tunggu",
+      "readCharter": "Baca Piagam Kami"
+    }
+  }
+}

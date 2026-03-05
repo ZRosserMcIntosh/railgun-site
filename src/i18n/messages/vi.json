@@ -1,0 +1,243 @@
+{
+  "meta": {
+    "title": "Rail Gun - Nhắn Tin Riêng Tư An Toàn",
+    "titleTemplate": "{title} | Rail Gun",
+    "description": "Rail Gun là nhắn tin được mã hóa đầu cuối với Signal Protocol. Hoạt động ngoại tuyến với mesh networking Node Mode. Giao tiếp chống kiểm duyệt nơi khóa của bạn không bao giờ rời thiết bị.",
+    "keywords": "nhắn tin mã hóa, trò chuyện an toàn, Signal protocol, mã hóa đầu cuối, nhắn tin riêng tư, mesh networking, nhắn tin ngoại tuyến, chống kiểm duyệt, ứng dụng riêng tư"
+  },
+  "nav": {
+    "charter": "Hiến Chương",
+    "nodeMode": "Node Mode",
+    "features": "Tính Năng",
+    "waitlist": "Danh Sách Chờ",
+    "security": "Bảo Mật",
+    "github": "GitHub",
+    "language": "Ngôn Ngữ"
+  },
+  "hero": {
+    "badge": "Chỉ Theo Lời Mời · Beta Riêng Tư",
+    "headline1": "Nhắn tin riêng tư.",
+    "headline2": "Không thỏa hiệp.",
+    "subheadline": "Rail Gun là hạ tầng dân sự cho giao tiếp riêng tư. Nhắn tin mã hóa đầu cuối nơi khóa của bạn không bao giờ rời thiết bị. Sự thật không cần xin phép.",
+    "cta": {
+      "waitlist": "Tham Gia Danh Sách Chờ",
+      "security": "Tìm Hiểu Về Bảo Mật"
+    },
+    "stats": {
+      "protocol": { "title": "X3DH + Double Ratchet", "description": "Trao đổi khóa Signal Protocol" },
+      "curve": { "title": "Curve25519", "description": "Mật mã đường cong elliptic hiện đại" },
+      "cipher": { "title": "ChaCha20-Poly1305", "description": "Mã hóa xác thực AEAD" }
+    }
+  },
+  "features": {
+    "title": "Tại Sao Chọn Rail Gun?",
+    "subtitle": "Được xây dựng với quyền riêng tư và bảo mật là nền tảng, không phải thêm vào sau.",
+    "items": {
+      "signal": { "title": "Signal Protocol", "description": "Double Ratchet (chuỗi KDF) + trao đổi khóa X3DH. Mã hóa đầu cuối tiêu chuẩn ngành với libsignal" },
+      "curve": { "title": "Mã Hóa Curve25519", "description": "Mật mã đường cong elliptic hiện đại (Curve25519) cho trao đổi khóa và chữ ký" },
+      "chacha": { "title": "ChaCha20-Poly1305", "description": "Mã AEAD cung cấp mã hóa xác thực với dữ liệu liên kết cho bảo mật tin nhắn" },
+      "group": { "title": "Mã Hóa Nhóm", "description": "Cộng đồng với kênh được mã hóa sử dụng phiên nhóm Signal Protocol và khóa theo người nhận" },
+      "pfs": { "title": "Bảo Mật Chuyển Tiếp Hoàn Hảo", "description": "Mỗi tin nhắn sử dụng khóa tạm thời. Khóa dài hạn bị xâm phạm không giải mã được tin nhắn quá khứ" },
+      "opensource": { "title": "Mã Nguồn Mở & Có Thể Kiểm Toán", "description": "Hoàn toàn minh bạch trên GitHub. Triển khai mật mã được chuyên gia bảo mật xem xét và kiểm toán" },
+      "blind": { "title": "Máy Chủ Mù", "description": "Backend chỉ thấy blob được mã hóa và metadata định tuyến. Nội dung không bao giờ bị lộ" },
+      "desktop": { "title": "Ứng Dụng Desktop-Trước", "description": "Ứng dụng Electron native cho macOS, Windows, Linux với lưu trữ khóa native và mã hóa cấp hệ điều hành" }
+    }
+  },
+  "waitlist": {
+    "title": "Tham Gia Beta Riêng Tư",
+    "subtitle": "Rail Gun hiện chỉ theo lời mời. Tham gia danh sách chờ để nhận quyền truy cập sớm khi chúng tôi mở rộng.",
+    "emailPlaceholder": "Nhập email của bạn",
+    "submit": "Tham Gia Danh Sách Chờ",
+    "submitting": "Đang tham gia...",
+    "success": "Bạn đã vào danh sách! Chúng tôi sẽ liên hệ sớm.",
+    "error": "Đã xảy ra lỗi. Vui lòng thử lại.",
+    "privacy": "Chúng tôi tôn trọng quyền riêng tư của bạn. Không bao giờ spam."
+  },
+  "security": {
+    "badge": "Bảo Mật Tích Hợp",
+    "title": "Tin nhắn của bạn thực sự riêng tư",
+    "subtitle": "Rail Gun sử dụng cùng giao thức mã hóa được hàng tỷ người dùng trên toàn thế giới tin tưởng.",
+    "features": [
+      "Signal Protocol (X3DH + Double Ratchet)",
+      "Bảo Mật Chuyển Tiếp Hoàn Hảo (PFS)",
+      "Trao Đổi Diffie-Hellman Ba Chiều Mở Rộng (X3DH)",
+      "Thuật Toán Double Ratchet (Chuỗi KDF)",
+      "libsodium / NaCl (Curve25519, ChaCha20-Poly1305)",
+      "Hàm Dẫn Xuất Khóa dựa trên HMAC (HKDF)",
+      "Tạo & lưu khóa cục bộ (không bao giờ truyền đi)",
+      "Mã nguồn mở & có thể kiểm toán (GitHub)",
+      "Không yêu cầu số điện thoại",
+      "Giảm thiểu metadata (chỉ định tuyến)",
+      "Bảo Mật Chuyển Tiếp & Bảo Mật Tương Lai",
+      "Xác Thực Có Thể Phủ Nhận"
+    ],
+    "verify": {
+      "title": "Xác Minh Bản Tải Xuống",
+      "description": "Luôn xác minh bản tải xuống để đảm bảo không bị giả mạo.",
+      "step1": { "title": "1. Nhập khóa GPG của chúng tôi:", "command": "gpg --keyserver keys.openpgp.org --recv-keys [KEY_ID]" },
+      "step2": { "title": "2. Xác minh chữ ký:", "command": "gpg --verify SHA256SUMS.txt.asc SHA256SUMS.txt" },
+      "step3": {
+        "title": "3. Kiểm tra checksum:",
+        "macLinux": "# macOS/Linux\nsha256sum -c SHA256SUMS.txt --ignore-missing",
+        "windows": "# Windows PowerShell\nGet-FileHash Rail-Gun-*.exe | Format-List"
+      },
+      "checksums": "Checksums đầy đủ có sẵn"
+    }
+  },
+  "platforms": {
+    "title": "Có Mặt Mọi Nơi",
+    "subtitle": "Tải Rail Gun cho nền tảng của bạn hoặc sử dụng phiên bản web.",
+    "download": "Tải Về",
+    "comingSoon": "Sắp Ra Mắt",
+    "mac": "macOS",
+    "windows": "Windows",
+    "linux": "Linux",
+    "ios": "iOS",
+    "android": "Android",
+    "web": "Ứng Dụng Web"
+  },
+  "cta": {
+    "title": "Sẵn sàng lấy lại quyền riêng tư?",
+    "subtitle": "Tham gia cùng hàng nghìn người dùng tin tưởng Rail Gun cho giao tiếp an toàn.",
+    "button": "Bắt Đầu"
+  },
+  "footer": {
+    "description": "Mã hóa đầu cuối với Signal Protocol (X3DH + Double Ratchet), Curve25519, và ChaCha20-Poly1305. Khóa của bạn, quyền riêng tư của bạn.",
+    "product": "Sản Phẩm",
+    "resources": "Tài Nguyên",
+    "legal": "Pháp Lý",
+    "links": {
+      "download": "Tải Về",
+      "webApp": "Ứng Dụng Web",
+      "features": "Tính Năng",
+      "security": "Bảo Mật",
+      "charter": "Hiến Chương",
+      "documentation": "Tài Liệu",
+      "releaseNotes": "Ghi Chú Phát Hành",
+      "reportIssues": "Báo Cáo Vấn Đề",
+      "privacy": "Chính Sách Riêng Tư",
+      "terms": "Điều Khoản Dịch Vụ"
+    },
+    "copyright": "© {year} Rail Gun. Tất cả quyền được bảo lưu."
+  },
+  "charter": {
+    "badge": "Tài Liệu Sáng Lập",
+    "title": "Hiến Chương Rail Gun",
+    "subtitle": "Rail Gun là hạ tầng dân sự. Nó tồn tại để giảm chi phí sự thật, bảo vệ giao tiếp không cần xin phép, và cho phép phối hợp hòa bình ở quy mô lớn.",
+    "preamble": {
+      "title": "Lời Mở Đầu",
+      "p1": "Rail Gun không phải là vũ khí. Nó là con đường, là nhà in, là tiện ích công cộng cho thời đại thông tin. Chúng tôi xây dựng hạ tầng làm cho sự thật có thể tiếp cận, sự dối trá tốn kém, và tự sửa chữa hòa bình khả thi—làm cho bạo lực trở nên không cần thiết.",
+      "p2": "Chúng tôi thành công khi một nhà báo có thể xuất bản bằng chứng mà không sợ hãi, khi gia đình có thể giao tiếp xuyên biên giới thù địch, khi cộng đồng có thể tổ chức cứu trợ lẫn nhau mà không bị giám sát."
+    },
+    "principlesTitle": "Mười Nguyên Tắc",
+    "principlesSubtitle": "Những nguyên tắc này không thể thương lượng. Mọi quyết định sản phẩm, mọi tính năng phải phù hợp với chúng.",
+    "principles": {
+      "1": { "title": "Bất Bạo Động Không Thể Thương Lượng", "description": "Rail Gun không bao giờ ủng hộ, tạo điều kiện, hoặc cho phép bạo lực, ép buộc, hoặc gây hại thể xác." },
+      "2": { "title": "Hạ Tầng, Không Phải Kích Động", "description": "Chúng tôi xây đường, không phải rào chắn. Nhà in, không phải vũ khí." },
+      "3": { "title": "Sự Thật Không Cần Xin Phép", "description": "Mọi người có quyền giao tiếp, xuất bản bằng chứng, và phối hợp với người khác." },
+      "4": { "title": "Chủ Quyền Ở Biên", "description": "Người dùng kiểm soát khóa, dữ liệu và mối quan hệ của mình." },
+      "5": { "title": "Giao Thức Tồn Tại Sau Nhà Điều Hành", "description": "Giao thức cốt lõi phải tiếp tục hoạt động ngay cả khi Rail Gun bị xâm phạm, mua lại, hoặc đóng cửa." },
+      "6": { "title": "Phân Tách Lớp Bảo Vệ Tính Hợp Pháp", "description": "Lõi Chủ Quyền (giao thức) là trung lập. Lớp Dịch Vụ (doanh nghiệp, tuân thủ) là nơi công việc được thực hiện." },
+      "7": { "title": "Mặc Định An Toàn, Sức Mạnh Có Chủ Đích", "description": "Cài đặt mặc định an toàn và phù hợp cho giao tiếp thông thường." },
+      "8": { "title": "Lưu Trữ Tối Thiểu, Xóa Tối Đa", "description": "Chúng tôi lưu trữ dữ liệu tối thiểu cần thiết cho định tuyến và không bao giờ lâu hơn cần thiết." },
+      "9": { "title": "Tính Hợp Pháp Qua Minh Bạch", "description": "Rail Gun công bố giao thức, kiểm toán mã nguồn, tiết lộ tài chính." },
+      "10": { "title": "Không Có Kẻ Thù, Chỉ Có Vấn Đề", "description": "Chúng tôi không cá nhân hóa đối thủ. Chúng tôi xác định vấn đề và xây dựng giải pháp." }
+    },
+    "whatWeAreNot": {
+      "title": "Rail Gun Không Phải Là Gì",
+      "items": [
+        "Không phải công cụ quấy rối, doxxing, hoặc theo dõi",
+        "Không phải nền tảng phối hợp bạo lực bất hợp pháp",
+        "Không phải vũ khí chống lại bất kỳ cá nhân, tổ chức, hoặc chính phủ nào",
+        "Không phải lời hứa miễn trừ hậu quả",
+        "Không phải hệ tư tưởng—là hạ tầng"
+      ]
+    },
+    "commitments": {
+      "title": "Cam Kết Hoạt Động",
+      "items": {
+        "audit": { "title": "Kiểm Toán Đạo Đức Hàng Năm", "description": "Đánh giá độc lập các quyết định sản phẩm theo Hiến Chương này." },
+        "transparency": { "title": "Báo Cáo Minh Bạch", "description": "Công bố hàng quý về yêu cầu chính phủ và hành động tuân thủ." },
+        "marketing": { "title": "Không Tiếp Thị Sai Lệch", "description": "Mọi tuyên bố về bảo mật và quyền riêng tư phải có thể xác minh kỹ thuật." },
+        "governance": { "title": "Quản Trị Cộng Đồng", "description": "Thay đổi giao thức yêu cầu thảo luận mở và đồng thuận." }
+      }
+    },
+    "closing": "Hiến Chương này là tài liệu sống. Thay đổi yêu cầu thảo luận công khai, phê duyệt cộng đồng, và phù hợp với nguyên tắc bất bạo động.",
+    "viewOnGithub": "Xem Trên GitHub",
+    "securityDetails": "Chi Tiết Bảo Mật"
+  },
+  "notFound": {
+    "title": "Không tìm thấy trang",
+    "description": "Xin lỗi, chúng tôi không tìm thấy trang bạn đang tìm kiếm.",
+    "backHome": "Quay về trang chủ"
+  },
+  "nodeMode": {
+    "badge": "Hạ Tầng Bền Vững",
+    "title": "Node Mode: Giao Tiếp Không Cần Hạ Tầng",
+    "subtitle": "Khi chính phủ tắt internet, khi trạm phát sóng sập—Railgun vẫn hoạt động. Điện thoại của bạn trở thành một phần của mạng mesh.",
+    "noInternet": "Không Internet",
+    "meshActive": "Mesh Đang Hoạt Động",
+    "stillSecure": "Vẫn An Toàn",
+    "whatIs": {
+      "title": "Node Mode Là Gì?",
+      "description1": "Node Mode biến mỗi thiết bị Railgun thành một relay giao tiếp sử dụng Bluetooth, Wi-Fi Direct, và các công nghệ radio cục bộ khác.",
+      "description2": "Tin nhắn nhảy từ thiết bị này sang thiết bị khác sử dụng nguyên lý mạng chịu trễ (DTN).",
+      "description3": "Khi DÙ CHỈ MỘT thiết bị trong mesh có quyền truy cập internet, nó trở thành gateway cho toàn bộ mesh cục bộ."
+    },
+    "useCases": {
+      "title": "Khi Bạn Cần Nhất",
+      "subtitle": "Node Mode được thiết kế cho những khoảnh khắc khi giao tiếp truyền thống làm bạn thất vọng.",
+      "protests": { "title": "Biểu Tình & Bất Ổn Dân Sự", "description": "Khi chính quyền tắt mạng di động, phối hợp an toàn qua mesh thiết bị-đến-thiết bị." },
+      "disasters": { "title": "Thiên Tai", "description": "Khi hạ tầng bị phá hủy, duy trì giao tiếp với những người sống sót gần đó." },
+      "remote": { "title": "Vùng Xa Xôi", "description": "Không có sóng di động? Giữ liên lạc với nhóm qua mesh networking." },
+      "censorship": { "title": "Kiểm Duyệt Internet", "description": "Giao tiếp tự do qua mạng mesh cục bộ ở những nơi internet bị chặn." },
+      "infrastructure": { "title": "Sự Cố Hạ Tầng", "description": "Mất điện hoặc sự cố ISP không ngăn được Node Mode." },
+      "privacy": { "title": "Quyền Riêng Tư Tối Đa", "description": "Giữ mọi thứ cục bộ cho giao tiếp nhạy cảm khi bạn không muốn BẤT KỲ lưu lượng internet nào." }
+    },
+    "howItWorks": {
+      "title": "Node Mode Hoạt Động Thế Nào",
+      "subtitle": "Hệ thống bốn lớp được thiết kế cho khả năng phục hồi, bảo mật, và ràng buộc thực tế trên di động.",
+      "discovery": { "title": "Khám Phá Peer", "description": "Thiết bị sử dụng quảng cáo BLE để tìm người dùng Railgun gần đó." },
+      "mesh": { "title": "Hình Thành Mesh", "description": "Các node duy trì bảng peer và trao đổi 'kho' tin nhắn sử dụng bloom filter." },
+      "storeForward": { "title": "Lưu & Chuyển Tiếp", "description": "Tin nhắn được truyền theo cơ hội với TTL và giới hạn hop." },
+      "gateway": { "title": "Đồng Bộ Gateway", "description": "Khi một node có quyền truy cập internet, nó quảng bá khả năng uplink." }
+    },
+    "gateway": {
+      "title": "Gateway: Một Kết Nối Cho Tất Cả",
+      "description1": "Hãy tưởng tượng 100 người trong một cuộc biểu tình không có dịch vụ di động. Nếu chỉ MỘT người có hotspot vệ tinh, thiết bị đó trở thành gateway.",
+      "description2": "Gateway không bao giờ giải mã tin nhắn của bạn. Nó chuyển tiếp các phong bì được mã hóa.",
+      "priorityTitle": "Thứ Tự Ưu Tiên Tin Nhắn",
+      "priority1": "Tin nhắn khẩn cấp & phối hợp (ưu tiên cao nhất)",
+      "priority2": "Tin nhắn văn bản ngắn",
+      "priority3": "Ảnh thu nhỏ & xem trước",
+      "priority4": "Hình ảnh kích thước đầy đủ",
+      "priority5": "Video & tệp lớn (theo cơ hội)"
+    },
+    "technical": {
+      "title": "Bảo Mật Không Thỏa Hiệp",
+      "subtitle": "Node Mode duy trì cùng đảm bảo mật mã như Railgun trực tuyến.",
+      "e2ee": { "title": "Luôn Mã Hóa Đầu Cuối", "description": "Mỗi tin nhắn, mỗi hop. Signal Protocol với forward secrecy." },
+      "metadata": { "title": "Giảm Thiểu Metadata", "description": "ID peer xoay vòng, không có username toàn cục trong quảng bá." },
+      "battery": { "title": "Thông Minh Với Pin", "description": "Chu kỳ nhiệm vụ thích ứng bảo vệ pin của bạn." },
+      "abuse": { "title": "Chống Lạm Dụng", "description": "Giới hạn tốc độ, bằng chứng công việc cho quảng bá." },
+      "crossPlatform": { "title": "iOS & Android Native", "description": "Được xây dựng bằng API native của từng nền tảng." },
+      "superNodes": { "title": "Super Node Máy Tính", "description": "Laptop và desktop có thể hoạt động như node mesh dung lượng cao." }
+    },
+    "transparency": {
+      "title": "Trung Thực Về Giới Hạn",
+      "description1": "Chúng tôi tin vào sự minh bạch về những gì Node Mode có thể và không thể làm.",
+      "description2": "Node Mode tăng cường đáng kể khả năng phục hồi trước sự cố mạng và giám sát, nhưng hoạt động trong ràng buộc thực tế:",
+      "limitationsTitle": "Những Gì Node Mode Không Thể Đánh Bại",
+      "limitation1": "Gây nhiễu RF bao phủ tất cả tần số Bluetooth và Wi-Fi",
+      "limitation2": "Thu giữ thiết bị vật lý hoặc xâm phạm cấp hệ điều hành",
+      "limitation3": "Giám sát cá nhân có mục tiêu với nguồn lực không giới hạn",
+      "limitation4": "Hạn chế thực thi nền iOS (ứng dụng hoạt động tốt nhất ở nền trước)"
+    },
+    "cta": {
+      "title": "Tham Gia Mạng Lưới",
+      "description": "Node Mode đang đến với Railgun cho iOS, Android, và Desktop.",
+      "joinWaitlist": "Tham Gia Danh Sách Chờ",
+      "readCharter": "Đọc Hiến Chương"
+    }
+  }
+}

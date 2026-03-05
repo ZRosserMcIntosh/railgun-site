@@ -1,0 +1,243 @@
+{
+  "meta": {
+    "title": "Rail Gun - Güvenli Özel Mesajlaşma",
+    "titleTemplate": "{title} | Rail Gun",
+    "description": "Rail Gun, Signal Protokolü ile uçtan uca şifreli mesajlaşmadır. Mesh ağ Node Mode ile çevrimdışı çalışır. Anahtarlarınızın cihazınızı asla terk etmediği sansüre dayanıklı iletişim.",
+    "keywords": "şifreli mesajlaşma, güvenli sohbet, Signal protokolü, uçtan uca şifreleme, özel mesajlaşma, mesh ağ, çevrimdışı mesajlaşma, sansüre dayanıklı, gizlilik uygulaması"
+  },
+  "nav": {
+    "charter": "Tüzük",
+    "nodeMode": "Node Mode",
+    "features": "Özellikler",
+    "waitlist": "Bekleme Listesi",
+    "security": "Güvenlik",
+    "github": "GitHub",
+    "language": "Dil"
+  },
+  "hero": {
+    "badge": "Yalnızca Davetiye · Özel Beta",
+    "headline1": "Özel mesajlaşma.",
+    "headline2": "Sıfır taviz.",
+    "subheadline": "Rail Gun, özel iletişim için sivil altyapıdır. Anahtarlarınızın cihazınızı asla terk etmediği uçtan uca şifreli mesajlaşma. İzinsiz gerçek.",
+    "cta": {
+      "waitlist": "Bekleme Listesine Katıl",
+      "security": "Güvenlik Hakkında Bilgi"
+    },
+    "stats": {
+      "protocol": { "title": "X3DH + Double Ratchet", "description": "Signal Protokolü anahtar değişimi" },
+      "curve": { "title": "Curve25519", "description": "Modern eliptik eğri kriptografisi" },
+      "cipher": { "title": "ChaCha20-Poly1305", "description": "AEAD kimlik doğrulamalı şifreleme" }
+    }
+  },
+  "features": {
+    "title": "Neden Rail Gun?",
+    "subtitle": "Baştan sona gizlilik ve güvenlik temel alınarak inşa edildi, sonradan eklenmedi.",
+    "items": {
+      "signal": { "title": "Signal Protokolü", "description": "Double Ratchet (KDF zincirleri) + X3DH anahtar değişimi. libsignal ile endüstri standardı uçtan uca şifreleme" },
+      "curve": { "title": "Curve25519 Şifreleme", "description": "Anahtar değişimi ve imzalar için modern eliptik eğri kriptografisi (Curve25519)" },
+      "chacha": { "title": "ChaCha20-Poly1305", "description": "Mesaj gizliliği için ilişkili verilerle kimlik doğrulamalı şifreleme sağlayan AEAD şifresi" },
+      "group": { "title": "Grup Şifreleme", "description": "Signal Protokolü grup oturumları ve alıcı başına anahtarlar kullanan şifreli kanallara sahip topluluklar" },
+      "pfs": { "title": "Mükemmel İleri Gizlilik", "description": "Her mesaj geçici anahtarlar kullanır. Ele geçirilen uzun vadeli anahtarlar geçmiş mesajları çözemez" },
+      "opensource": { "title": "Açık Kaynak ve Denetlenebilir", "description": "GitHub'da tam şeffaflık. Güvenlik uzmanları tarafından incelenen ve denetlenebilir kriptografik uygulamalar" },
+      "blind": { "title": "Sunucu Körlüğü", "description": "Backend yalnızca şifreli blobları ve yönlendirme meta verilerini görür. İçerik asla açığa çıkmaz" },
+      "desktop": { "title": "Masaüstü-Öncelikli İstemci", "description": "macOS, Windows, Linux için yerel anahtar depolama ve işletim sistemi düzeyinde şifreleme ile native Electron uygulaması" }
+    }
+  },
+  "waitlist": {
+    "title": "Özel Beta'ya Katıl",
+    "subtitle": "Rail Gun şu anda yalnızca davetiye ile. Genişlediğimizde erken erişim almak için bekleme listesine katılın.",
+    "emailPlaceholder": "E-posta adresinizi girin",
+    "submit": "Bekleme Listesine Katıl",
+    "submitting": "Katılıyor...",
+    "success": "Listedesiniz! Yakında iletişime geçeceğiz.",
+    "error": "Bir şeyler ters gitti. Lütfen tekrar deneyin.",
+    "privacy": "Gizliliğinize saygı duyuyoruz. Asla spam yok."
+  },
+  "security": {
+    "badge": "Yerleşik Güvenlik",
+    "title": "Mesajlarınız gerçekten özel",
+    "subtitle": "Rail Gun, dünya çapında milyarlarca kullanıcı tarafından güvenilen aynı şifreleme protokolünü kullanır.",
+    "features": [
+      "Signal Protokolü (X3DH + Double Ratchet)",
+      "Mükemmel İleri Gizlilik (PFS)",
+      "Genişletilmiş Üçlü Diffie-Hellman (X3DH)",
+      "Double Ratchet Algoritması (KDF Zinciri)",
+      "libsodium / NaCl (Curve25519, ChaCha20-Poly1305)",
+      "HMAC tabanlı Anahtar Türetme Fonksiyonu (HKDF)",
+      "Yerel anahtar oluşturma ve depolama (asla iletilmez)",
+      "Açık kaynak ve denetlenebilir (GitHub)",
+      "Telefon numarası gerekli değil",
+      "Meta veri minimizasyonu (yalnızca yönlendirme)",
+      "İleri Gizlilik ve Geri Gizlilik",
+      "İnkâr Edilebilir Kimlik Doğrulama"
+    ],
+    "verify": {
+      "title": "İndirmenizi Doğrulayın",
+      "description": "Değiştirilmediğinden emin olmak için indirmeleri her zaman doğrulayın.",
+      "step1": { "title": "1. GPG anahtarımızı içe aktarın:", "command": "gpg --keyserver keys.openpgp.org --recv-keys [KEY_ID]" },
+      "step2": { "title": "2. İmzayı doğrulayın:", "command": "gpg --verify SHA256SUMS.txt.asc SHA256SUMS.txt" },
+      "step3": {
+        "title": "3. Sağlama toplamını kontrol edin:",
+        "macLinux": "# macOS/Linux\nsha256sum -c SHA256SUMS.txt --ignore-missing",
+        "windows": "# Windows PowerShell\nGet-FileHash Rail-Gun-*.exe | Format-List"
+      },
+      "checksums": "Tam sağlama toplamları mevcut"
+    }
+  },
+  "platforms": {
+    "title": "Her Yerde Mevcut",
+    "subtitle": "Platformunuz için Rail Gun'ı indirin veya web sürümünü kullanın.",
+    "download": "İndir",
+    "comingSoon": "Yakında",
+    "mac": "macOS",
+    "windows": "Windows",
+    "linux": "Linux",
+    "ios": "iOS",
+    "android": "Android",
+    "web": "Web Uygulaması"
+  },
+  "cta": {
+    "title": "Gizliliğinizi geri almaya hazır mısınız?",
+    "subtitle": "Güvenli iletişim için Rail Gun'a güvenen binlerce kullanıcıya katılın.",
+    "button": "Başla"
+  },
+  "footer": {
+    "description": "Signal Protokolü (X3DH + Double Ratchet), Curve25519 ve ChaCha20-Poly1305 ile uçtan uca şifreli. Anahtarlarınız, gizliliğiniz.",
+    "product": "Ürün",
+    "resources": "Kaynaklar",
+    "legal": "Yasal",
+    "links": {
+      "download": "İndir",
+      "webApp": "Web Uygulaması",
+      "features": "Özellikler",
+      "security": "Güvenlik",
+      "charter": "Tüzük",
+      "documentation": "Dokümantasyon",
+      "releaseNotes": "Sürüm Notları",
+      "reportIssues": "Sorun Bildir",
+      "privacy": "Gizlilik Politikası",
+      "terms": "Hizmet Şartları"
+    },
+    "copyright": "© {year} Rail Gun. Tüm hakları saklıdır."
+  },
+  "charter": {
+    "badge": "Kurucu Belge",
+    "title": "Rail Gun Tüzüğü",
+    "subtitle": "Rail Gun sivil altyapıdır. Gerçeğin maliyetini düşürmek, izinsiz iletişimi korumak ve büyük ölçekte barışçıl koordinasyonu mümkün kılmak için var.",
+    "preamble": {
+      "title": "Giriş",
+      "p1": "Rail Gun bir silah değil. Bir yol, bir matbaa, bilgi çağı için bir kamu hizmetidir. Gerçeği erişilebilir, yalanı pahalı ve barışçıl öz-düzeltmeyi mümkün kılarak şiddeti gereksiz kılan altyapı inşa ediyoruz.",
+      "p2": "Bir gazeteci korkusuzca kanıt yayınlayabildiğinde, aileler düşman sınırlar ötesinde iletişim kurabildiğinde, topluluklar gözetim olmadan yardımlaşma organize edebildiğinde başarılı oluruz."
+    },
+    "principlesTitle": "On İlke",
+    "principlesSubtitle": "Bu ilkeler pazarlık edilemez. Her ürün kararı, her özellik bunlarla uyumlu olmalıdır.",
+    "principles": {
+      "1": { "title": "Şiddetsizlik Pazarlık Edilemez", "description": "Rail Gun asla şiddeti, zorlamayı veya fiziksel zararı savunmaz, kolaylaştırmaz veya mümkün kılmaz." },
+      "2": { "title": "Altyapı, Kışkırtma Değil", "description": "Yollar inşa ediyoruz, barikatlar değil. Matbaalar, silahlar değil." },
+      "3": { "title": "İzinsiz Gerçek", "description": "Her insan iletişim kurma, kanıt yayınlama ve başkalarıyla koordine olma hakkına sahiptir." },
+      "4": { "title": "Uçta Egemenlik", "description": "Kullanıcılar kendi anahtarlarını, verilerini ve ilişkilerini kontrol eder." },
+      "5": { "title": "Protokol Operatörden Sağ Çıkar", "description": "Çekirdek protokol, Rail Gun ele geçirilse, satın alınsa veya kapatılsa bile çalışmaya devam etmelidir." },
+      "6": { "title": "Katmanlı Ayrım Meşruiyeti Korur", "description": "Egemen Çekirdek (protokol) tarafsızdır. Hizmet Katmanı (kurumsal, uyumluluk) işin yapıldığı yerdir." },
+      "7": { "title": "Güvenli Varsayılanlar, Kasıtlı Güç", "description": "Varsayılan ayarlar sıradan iletişim için güvenli ve uygundur." },
+      "8": { "title": "Minimum Saklama, Maksimum Silme", "description": "Yönlendirme için gereken minimum veriyi saklarız ve gerekenden daha uzun süre asla." },
+      "9": { "title": "Şeffaflık Yoluyla Meşruiyet", "description": "Rail Gun protokollerini yayınlar, kodunu denetler, finansmanını açıklar." },
+      "10": { "title": "Düşman Yok, Sadece Sorunlar", "description": "Rakipleri kişiselleştirmiyoruz. Sorunları tanımlıyor ve çözümler üretiyoruz." }
+    },
+    "whatWeAreNot": {
+      "title": "Rail Gun Ne Değildir",
+      "items": [
+        "Taciz, doxxing veya takip aracı değil",
+        "Yasadışı şiddet koordinasyonu platformu değil",
+        "Herhangi bir kişi, kurum veya hükümete karşı silah değil",
+        "Sonuçlardan muafiyet vaadi değil",
+        "Bir ideoloji değil—altyapıdır"
+      ]
+    },
+    "commitments": {
+      "title": "Operasyonel Taahhütler",
+      "items": {
+        "audit": { "title": "Yıllık Etik Denetimi", "description": "Bu Tüzüğe karşı ürün kararlarının bağımsız incelemesi." },
+        "transparency": { "title": "Şeffaflık Raporları", "description": "Hükümet talepleri ve uyumluluk eylemlerinin üç aylık açıklaması." },
+        "marketing": { "title": "Yanıltıcı Pazarlama Yok", "description": "Güvenlik ve gizlilik hakkındaki tüm iddialar teknik olarak doğrulanabilir olmalıdır." },
+        "governance": { "title": "Topluluk Yönetişimi", "description": "Protokol değişiklikleri açık müzakere ve uzlaşma gerektirir." }
+      }
+    },
+    "closing": "Bu Tüzük yaşayan bir belgedir. Değişiklikler kamusal müzakere, topluluk onayı ve şiddetsizlik ilkesiyle uyum gerektirir.",
+    "viewOnGithub": "GitHub'da Görüntüle",
+    "securityDetails": "Güvenlik Detayları"
+  },
+  "notFound": {
+    "title": "Sayfa bulunamadı",
+    "description": "Üzgünüz, aradığınız sayfayı bulamadık.",
+    "backHome": "Ana sayfaya dön"
+  },
+  "nodeMode": {
+    "badge": "Dayanıklı Altyapı",
+    "title": "Node Mode: Altyapısız İletişim",
+    "subtitle": "Hükümetler interneti kapattığında, baz istasyonları çöktüğünde—Railgun çalışmaya devam eder. Telefonunuz bir mesh ağının parçası olur.",
+    "noInternet": "İnternet Yok",
+    "meshActive": "Mesh Aktif",
+    "stillSecure": "Hâlâ Güvenli",
+    "whatIs": {
+      "title": "Node Mode Nedir?",
+      "description1": "Node Mode, her Railgun cihazını Bluetooth, Wi-Fi Direct ve diğer yerel radyo teknolojilerini kullanarak bir iletişim rölesi haline getirir.",
+      "description2": "Mesajlar, gecikmeye toleranslı ağ (DTN) ilkelerini kullanarak cihazdan cihaza atlar.",
+      "description3": "Mesh'teki TEK bir cihaz bile internet erişimi kazandığında, tüm yerel mesh için ağ geçidi olur."
+    },
+    "useCases": {
+      "title": "En Çok İhtiyaç Duyduğunuzda",
+      "subtitle": "Node Mode, geleneksel iletişimin sizi yarı yolda bıraktığı anlar için tasarlandı.",
+      "protests": { "title": "Protestolar ve Sivil Huzursuzluk", "description": "Yetkililer hücresel ağları kapattığında, cihazdan cihaza mesh üzerinden güvenle koordine olun." },
+      "disasters": { "title": "Doğal Afetler", "description": "Altyapı yıkıldığında, yakındaki hayatta kalanlarla iletişimi sürdürün." },
+      "remote": { "title": "Uzak Bölgeler", "description": "Hücresel kapsama alanı yok mu? Mesh ağ ile grubunuzla bağlantıda kalın." },
+      "censorship": { "title": "İnternet Sansürü", "description": "İnternetin engellendiği bölgelerde yerel mesh ağları üzerinden özgürce iletişim kurun." },
+      "infrastructure": { "title": "Altyapı Arızaları", "description": "Elektrik kesintileri veya ISP arızaları Node Mode'u durdurmaz." },
+      "privacy": { "title": "Maksimum Gizlilik", "description": "HİÇBİR internet trafiği istemediğiniz hassas iletişimler için her şeyi yerel tutun." }
+    },
+    "howItWorks": {
+      "title": "Node Mode Nasıl Çalışır",
+      "subtitle": "Dayanıklılık, güvenlik ve gerçek dünya mobil kısıtlamaları için tasarlanmış dört katmanlı sistem.",
+      "discovery": { "title": "Eş Keşfi", "description": "Cihazlar yakındaki Railgun kullanıcılarını bulmak için BLE reklamı kullanır." },
+      "mesh": { "title": "Mesh Oluşumu", "description": "Düğümler eş tablosu tutar ve bloom filtreleri kullanarak mesaj 'envanteri' değiştirir." },
+      "storeForward": { "title": "Depola ve İlet", "description": "Mesajlar TTL ve atlama limitleriyle fırsatçı şekilde yayılır." },
+      "gateway": { "title": "Ağ Geçidi Senkronizasyonu", "description": "Bir düğüm internet erişimi kazandığında uplink kullanılabilirliğini duyurur." }
+    },
+    "gateway": {
+      "title": "Ağ Geçidi: Herkes İçin Tek Bağlantı",
+      "description1": "Hücresel hizmet olmadan bir protestoda 100 kişi hayal edin. Sadece BİR kişinin uydu hotspot'u varsa, o cihaz ağ geçidi olur.",
+      "description2": "Ağ geçidi mesajlarınızı asla çözmez. Şifreli zarfları yönlendirir.",
+      "priorityTitle": "Mesaj Öncelik Sırası",
+      "priority1": "Acil durum ve koordinasyon mesajları (en yüksek öncelik)",
+      "priority2": "Kısa metin mesajları",
+      "priority3": "Küçük resimler ve önizlemeler",
+      "priority4": "Tam boyut görüntüler",
+      "priority5": "Video ve büyük dosyalar (fırsatçı)"
+    },
+    "technical": {
+      "title": "Taviz Vermeden Güvenlik",
+      "subtitle": "Node Mode, çevrimiçi Railgun ile aynı kriptografik garantileri korur.",
+      "e2ee": { "title": "Her Zaman Uçtan Uca Şifreli", "description": "Her mesaj, her atlama. Forward secrecy ile Signal Protokolü." },
+      "metadata": { "title": "Meta Veri Minimizasyonu", "description": "Dönen eş kimlikleri, yayınlarda global kullanıcı adı yok." },
+      "battery": { "title": "Pil Akıllı", "description": "Adaptif görev döngüsü pilinizi tüketmekten korur." },
+      "abuse": { "title": "Kötüye Kullanıma Dayanıklı", "description": "Hız sınırlandırma, yayınlar için iş ispatı." },
+      "crossPlatform": { "title": "iOS ve Android Native", "description": "Platform-native API'ler kullanılarak geliştirildi." },
+      "superNodes": { "title": "Masaüstü Süper Düğümler", "description": "Dizüstü ve masaüstü bilgisayarlar yüksek kapasiteli mesh düğümleri olarak çalışabilir." }
+    },
+    "transparency": {
+      "title": "Sınırlamalar Hakkında Dürüst",
+      "description1": "Node Mode'un neler yapıp yapamayacağı konusunda şeffaflığa inanıyoruz.",
+      "description2": "Node Mode, ağ kesintileri ve gözetlemeye karşı dayanıklılığı önemli ölçüde artırır, ancak gerçek dünya kısıtlamaları içinde çalışır:",
+      "limitationsTitle": "Node Mode'un Yenemeyeceği Şeyler",
+      "limitation1": "Tüm Bluetooth ve Wi-Fi frekanslarını kapsayan RF karıştırma",
+      "limitation2": "Fiziksel cihaz el koyma veya işletim sistemi düzeyinde ele geçirme",
+      "limitation3": "Sınırsız kaynakla hedefli bireysel gözetim",
+      "limitation4": "iOS arka plan yürütme sınırlamaları (uygulama ön planda en iyi çalışır)"
+    },
+    "cta": {
+      "title": "Ağa Katılın",
+      "description": "Node Mode, iOS, Android ve Masaüstü için Railgun'a geliyor.",
+      "joinWaitlist": "Bekleme Listesine Katıl",
+      "readCharter": "Tüzüğümüzü Oku"
+    }
+  }
+}

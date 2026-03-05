@@ -7,20 +7,25 @@
 
 export const locales = [
   'en',    // English (default)
-  'es',    // Spanish
-  'pt',    // Portuguese
-  'fr',    // French
-  'de',    // German
-  'it',    // Italian
-  'uk',    // Ukrainian
-  'ru',    // Russian
-  'pl',    // Polish
-  'hu',    // Hungarian
-  'ko',    // Korean
-  'ja',    // Japanese
   'zh',    // Chinese (Simplified)
-  'fa',    // Persian/Farsi (Iran)
+  'hi',    // Hindi
+  'es',    // Spanish
+  'fr',    // French
   'ar',    // Arabic
+  'bn',    // Bengali
+  'pt',    // Portuguese
+  'ru',    // Russian
+  'ja',    // Japanese
+  'id',    // Indonesian
+  'de',    // German
+  'ko',    // Korean
+  'tr',    // Turkish
+  'vi',    // Vietnamese
+  'it',    // Italian
+  'pl',    // Polish
+  'uk',    // Ukrainian
+  'fa',    // Persian/Farsi
+  'hu',    // Hungarian
 ] as const;
 
 export type Locale = (typeof locales)[number];
@@ -33,39 +38,49 @@ export const rtlLocales: Locale[] = ['ar', 'fa'];
 // Language display names (in their native script)
 export const localeNames: Record<Locale, string> = {
   en: 'English',
-  es: 'Español',
-  pt: 'Português',
-  fr: 'Français',
-  de: 'Deutsch',
-  it: 'Italiano',
-  uk: 'Українська',
-  ru: 'Русский',
-  pl: 'Polski',
-  hu: 'Magyar',
-  ko: '한국어',
-  ja: '日本語',
   zh: '中文',
-  fa: 'فارسی',
+  hi: 'हिन्दी',
+  es: 'Español',
+  fr: 'Français',
   ar: 'العربية',
+  bn: 'বাংলা',
+  pt: 'Português',
+  ru: 'Русский',
+  ja: '日本語',
+  id: 'Bahasa Indonesia',
+  de: 'Deutsch',
+  ko: '한국어',
+  tr: 'Türkçe',
+  vi: 'Tiếng Việt',
+  it: 'Italiano',
+  pl: 'Polski',
+  uk: 'Українська',
+  fa: 'فارسی',
+  hu: 'Magyar',
 };
 
 // Language flags (using country codes for flag emojis)
 export const localeFlags: Record<Locale, string> = {
   en: '🇺🇸',
+  zh: '��',
+  hi: '��',
   es: '🇪🇸',
-  pt: '🇧🇷',
   fr: '🇫🇷',
-  de: '🇩🇪',
-  it: '🇮🇹',
-  uk: '🇺🇦',
+  ar: '��',
+  bn: '��',
+  pt: '��',
   ru: '🇷🇺',
-  pl: '🇵🇱',
-  hu: '🇭🇺',
+  ja: '��🇵',
+  id: '�🇩',
+  de: '��',
   ko: '🇰🇷',
-  ja: '🇯🇵',
-  zh: '🇨🇳',
+  tr: '🇹🇷',
+  vi: '🇻🇳',
+  it: '🇮�',
+  pl: '🇵🇱',
+  uk: '��',
   fa: '🇮🇷',
-  ar: '🇸🇦',
+  hu: '��',
 };
 
 /**
