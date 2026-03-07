@@ -5,7 +5,7 @@ import { Pricing } from '@/components/pricing';
 
 export const metadata: Metadata = {
   title: 'Pricing — Rail Gun',
-  description: 'Rail Gun Pro: End-to-end encrypted messaging with HD media, encrypted email, Threat Shield, and more. Plans starting at $4.99/month.',
+  description: 'Rail Gun Pro: End-to-end encrypted messaging with HD media, encrypted email, Threat Shield, and more. Plans starting at $7/month.',
   openGraph: {
     title: 'Pricing — Rail Gun',
     description: 'Unlock HD media, encrypted email, and Threat Shield with Rail Gun Pro.',
