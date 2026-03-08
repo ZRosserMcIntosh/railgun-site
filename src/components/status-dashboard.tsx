@@ -49,10 +49,8 @@ interface GroupSummary {
 }
 
 // ---------------------------------------------------------------------------
-// Config
+// Config — API base is used by the server-side proxy (/api/health-check)
 // ---------------------------------------------------------------------------
-
-const API_BASE = 'https://railgun-api.fly.dev/api/v1';
 
 const ENDPOINT_DEFINITIONS: Omit<EndpointCheck, 'status' | 'latencyMs' | 'statusCode'>[] = [
   // Core Infrastructure
@@ -153,9 +151,9 @@ const ENDPOINT_DEFINITIONS: Omit<EndpointCheck, 'status' | 'latencyMs' | 'status
 
   // Crypto & Keys
   {
-    name: 'Crypto — Key Bundle',
-    description: 'Signal Protocol key exchange endpoint (requires auth)',
-    endpoint: '/crypto/keys/bundle',
+    name: 'Crypto — Key Registration',
+    description: 'Signal Protocol key registration endpoint (requires auth)',
+    endpoint: '/keys/register',
     method: 'POST',
     group: 'Encryption & Keys',
     icon: Shield,
@@ -173,9 +171,9 @@ const ENDPOINT_DEFINITIONS: Omit<EndpointCheck, 'status' | 'latencyMs' | 'status
 
   // Search
   {
-    name: 'Search',
-    description: 'Full-text search endpoint',
-    endpoint: '/search',
+    name: 'Search — Users',
+    description: 'User search endpoint',
+    endpoint: '/search/users',
     method: 'GET',
     group: 'Search & Discovery',
     icon: Globe,
@@ -185,7 +183,7 @@ const ENDPOINT_DEFINITIONS: Omit<EndpointCheck, 'status' | 'latencyMs' | 'status
   {
     name: 'Analytics',
     description: 'Usage analytics endpoint (requires auth)',
-    endpoint: '/analytics',
+    endpoint: '/analytics/dau',
     method: 'GET',
     group: 'Search & Discovery',
     icon: Activity,
@@ -483,38 +481,43 @@ export function StatusDashboard() {
 
         try {
           const controller = new AbortController();
-          const timeout = setTimeout(() => controller.abort(), 10000);
+          const timeout = setTimeout(() => controller.abort(), 15000);
 
-          const resp = await fetch(`${API_BASE}${def.endpoint}`, {
-            method: def.method,
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: def.method === 'POST' ? '{}' : undefined,
+          // Route through our own API route to avoid CORS issues.
+          // The server-side proxy hits the production API directly.
+          const proxyUrl = `/api/health-check?endpoint=${encodeURIComponent(def.endpoint)}&method=${def.method}`;
+          const resp = await fetch(proxyUrl, {
             signal: controller.signal,
-            mode: 'cors',
           });
 
           clearTimeout(timeout);
-          statusCode = resp.status;
 
-          // Determine status based on response
           if (resp.ok) {
-            status = 'up';
-          } else if (resp.status === 401 || resp.status === 403) {
-            // Auth-required endpoints — reachable but need credentials
-            status = 'up';
-          } else if (resp.status === 400 || resp.status === 422) {
-            // Validation error = endpoint exists and works
-            status = 'up';
-          } else if (resp.status === 429) {
-            // Rate limited = endpoint exists, just busy
-            status = 'degraded';
-          } else if (resp.status >= 500) {
-            status = 'down';
+            const data = await resp.json();
+            statusCode = data.statusCode;
+
+            if (!data.ok || statusCode === null) {
+              // Network error on server side
+              status = 'down';
+            } else if (statusCode >= 200 && statusCode < 300) {
+              status = 'up';
+            } else if (statusCode === 401 || statusCode === 403) {
+              // Auth-required endpoints — reachable but need credentials
+              status = 'up';
+            } else if (statusCode === 400 || statusCode === 422) {
+              // Validation error = endpoint exists and works
+              status = 'up';
+            } else if (statusCode === 429) {
+              // Rate limited = endpoint exists, just busy
+              status = 'degraded';
+            } else if (statusCode >= 500) {
+              status = 'down';
+            } else {
+              // 404, etc.
+              status = 'up';
+            }
           } else {
-            // 404, etc.
-            status = 'up';
+            status = 'down';
           }
         } catch {
           status = 'down';
@@ -720,7 +723,7 @@ export function StatusDashboard() {
             </p>
           )}
           <p className="mt-1">
-            Health checks run client-side from your browser via CORS. Results reflect your network path to our API.
+            Health checks run server-side from our edge network. Results reflect real-time API availability.
           </p>
         </div>
       </div>
