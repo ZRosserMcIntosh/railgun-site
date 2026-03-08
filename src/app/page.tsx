@@ -13,10 +13,10 @@ import { Footer } from '@/components/footer';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://railgun.app',
+    canonical: 'https://railgun.chat',
   },
   openGraph: {
-    url: 'https://railgun.app',
+    url: 'https://railgun.chat',
   },
 };
 

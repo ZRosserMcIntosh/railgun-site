@@ -9,8 +9,8 @@ export function OrganizationSchema() {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Rail Gun',
-    url: 'https://railgun.app',
-    logo: 'https://railgun.app/logo.png',
+    url: 'https://railgun.chat',
+    logo: 'https://railgun.chat/logo.png',
     description: 'End-to-end encrypted messaging with Signal Protocol. Censorship-resistant communication for everyone.',
     sameAs: [
       'https://github.com/nickolasvl/Railgun',
@@ -34,7 +34,7 @@ export function SoftwareApplicationSchema() {
     // Only list currently available platforms
     operatingSystem: ['macOS', 'Windows', 'Linux'],
     description: 'Secure end-to-end encrypted messaging app with Signal Protocol and censorship-resistant communication.',
-    url: 'https://railgun.app',
+    url: 'https://railgun.chat',
     offers: {
       '@type': 'Offer',
       price: '0',
@@ -62,7 +62,7 @@ export function WebsiteSchema() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Rail Gun',
-    url: 'https://railgun.app',
+    url: 'https://railgun.chat',
     description: 'End-to-end encrypted messaging with Signal Protocol. Censorship-resistant communication for everyone.',
     // Removed SearchAction - no real search endpoint
     // Removed inLanguage array - locale switching is client-side only

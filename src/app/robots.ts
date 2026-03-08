@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/_next/'],
     },
-    sitemap: 'https://railgun.app/sitemap.xml',
+    sitemap: 'https://railgun.chat/sitemap.xml',
   };
 }

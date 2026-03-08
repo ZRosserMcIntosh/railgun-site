@@ -78,7 +78,7 @@ export const metadata: Metadata = {
     apple: '/apple-touch-icon.png',
   },
   manifest: '/site.webmanifest',
-  metadataBase: new URL('https://railgun.app'),
+  metadataBase: new URL('https://railgun.chat'),
   verification: {
     // Add your verification codes here when ready
     // google: 'your-google-verification-code',
