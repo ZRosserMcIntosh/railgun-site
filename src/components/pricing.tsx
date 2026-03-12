@@ -156,11 +156,11 @@ export function Pricing() {
               <p className="text-gray-400">Heavy bandwidth + encrypted email</p>
             </div>
             <div className="mb-2">
-              <span className="text-5xl font-bold text-white">$7</span>
+              <span className="text-5xl font-bold text-white">$9</span>
               <span className="text-gray-500 ml-2">/month</span>
             </div>
             <p className="text-sm text-gray-500 mb-6">
-              or $70/year (save ~17%)
+              or $99/year (save ~8%)
             </p>
             <a
               href="/download"
