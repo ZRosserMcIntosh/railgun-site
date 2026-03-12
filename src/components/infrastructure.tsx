@@ -9,6 +9,8 @@ import {
   Network,
   Radio,
   Bell,
+  GitBranch,
+  CreditCard,
 } from 'lucide-react';
 import { useTranslations } from '@/i18n/provider';
 
@@ -55,6 +57,16 @@ export function Infrastructure() {
       icon: Shield,
       title: t('items.loadTested.title'),
       description: t('items.loadTested.description'),
+    },
+    {
+      icon: GitBranch,
+      title: t('items.cicd.title'),
+      description: t('items.cicd.description'),
+    },
+    {
+      icon: CreditCard,
+      title: t('items.billing.title'),
+      description: t('items.billing.description'),
     },
   ];
 

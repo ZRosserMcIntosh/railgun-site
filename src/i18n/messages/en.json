@@ -113,6 +113,14 @@
       "loadTested": {
         "title": "Load Tested to 100K",
         "description": "k6 stress-tested with 100,000 concurrent WebSocket connections, message relay under load, and burst traffic simulation"
+      },
+      "cicd": {
+        "title": "Automated CI/CD Pipeline",
+        "description": "GitHub Actions builds, tests, signs, and deploys every commit. Desktop binaries are code-signed and notarized. Zero-touch deployment to Fly.io"
+      },
+      "billing": {
+        "title": "Stripe Billing Integration",
+        "description": "Secure subscription management with Stripe. Ed25519-signed entitlement tokens verified on-device. No billing data touches Railgun servers"
       }
     },
     "stats": {
