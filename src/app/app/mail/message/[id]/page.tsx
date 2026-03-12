@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { mailApi, type MailMessage, ApiError } from '@/lib/api';
+import DOMPurify from 'dompurify';
 import {
   ArrowLeft,
   Reply,
@@ -181,19 +182,33 @@ export default function MessagePage() {
 }
 
 /**
- * Basic HTML sanitization for email body display.
+ * HTML sanitization for email body display using DOMPurify.
  *
- * SECURITY: Strips dangerous tags (script, iframe, object, embed, form)
- * and event handlers. In production, use DOMPurify for complete sanitization.
+ * SECURITY: DOMPurify is the industry-standard HTML sanitizer.
+ * Strips all XSS vectors including script injection, event handlers,
+ * data: URIs, javascript: URIs, and dangerous tags.
  */
 function sanitizeHtml(html: string): string {
-  return html
-    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
-    .replace(/\s+on\w+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]*)/gi, '')
-    .replace(
-      /<\/?(?:iframe|object|embed|form|applet|base|link|meta)\b[^>]*>/gi,
-      '',
-    )
-    .replace(/\bhref\s*=\s*["']?\s*javascript:/gi, 'href="')
-    .replace(/\bsrc\s*=\s*["']?\s*data:/gi, 'src="');
+  if (typeof window === 'undefined') {
+    // SSR fallback — strip all HTML tags
+    return html.replace(/<[^>]*>/g, '');
+  }
+
+  return DOMPurify.sanitize(html, {
+    ALLOWED_TAGS: [
+      'p', 'br', 'b', 'i', 'u', 'em', 'strong', 'a', 'ul', 'ol', 'li',
+      'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'pre', 'code',
+      'table', 'thead', 'tbody', 'tr', 'th', 'td', 'hr', 'span', 'div',
+      'img', 'sup', 'sub', 'small',
+    ],
+    ALLOWED_ATTR: [
+      'href', 'target', 'rel', 'src', 'alt', 'width', 'height',
+      'class', 'style', 'colspan', 'rowspan',
+    ],
+    ALLOW_DATA_ATTR: false,
+    ADD_ATTR: ['target'],
+    // Force all links to open in new tab
+    FORBID_TAGS: ['script', 'iframe', 'object', 'embed', 'form', 'input', 'textarea', 'select', 'button'],
+    FORBID_ATTR: ['onerror', 'onload', 'onclick', 'onmouseover'],
+  });
 }
