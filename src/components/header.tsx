@@ -21,6 +21,7 @@ export function Header() {
     { href: '/charter', label: t('charter') },
     { href: '/node-mode', label: t('nodeMode') },
     { href: '/#features', label: t('features') },
+    { href: '/#infrastructure', label: t('infrastructure') },
     { href: '/#security', label: t('security') },
     { href: '/encryption', label: 'Crypto' },
     { href: '/threat-detection', label: 'Threat Shield' },

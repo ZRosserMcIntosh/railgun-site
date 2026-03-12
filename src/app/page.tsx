@@ -3,6 +3,7 @@ import { Header } from '@/components/header';
 import { Hero } from '@/components/hero';
 import { Downloads } from '@/components/downloads';
 import { Features } from '@/components/features';
+import { Infrastructure } from '@/components/infrastructure';
 import { Security } from '@/components/security';
 import { Platforms } from '@/components/platforms';
 import { Cta } from '@/components/cta';
@@ -27,6 +28,7 @@ export default function Home() {
       <Hero />
       <Downloads />
       <Features />
+      <Infrastructure />
       <Security />
       <Platforms />
       <Cta />

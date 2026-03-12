@@ -2,13 +2,14 @@
   "meta": {
     "title": "Rail Gun - Secure Private Messaging",
     "titleTemplate": "{title} | Rail Gun",
-    "description": "Rail Gun is end-to-end encrypted messaging with Signal Protocol. Works offline with mesh networking Node Mode. Censorship-resistant communication where your keys never leave your device.",
-    "keywords": "encrypted messaging, secure chat, Signal protocol, end-to-end encryption, private messaging, mesh network, offline messaging, censorship resistant, Node Mode, privacy app, secure communications, Telegram alternative, WhatsApp alternative, anonymous messaging, digital privacy"
+    "description": "Rail Gun is end-to-end encrypted messaging with Signal Protocol. Relay-only architecture — messages never stored on servers. P2P hybrid transport, 100K+ concurrent connections, and mesh networking Node Mode. Censorship-resistant communication where your keys never leave your device.",
+    "keywords": "encrypted messaging, secure chat, Signal protocol, end-to-end encryption, private messaging, mesh network, offline messaging, censorship resistant, Node Mode, privacy app, secure communications, Telegram alternative, WhatsApp alternative, anonymous messaging, digital privacy, relay architecture, P2P messaging, WebRTC, decentralized"
   },
   "nav": {
     "charter": "Charter",
     "nodeMode": "Node Mode",
     "features": "Features",
+    "infrastructure": "Infrastructure",
     "waitlist": "Waitlist",
     "security": "Security",
     "github": "GitHub",
@@ -67,13 +68,58 @@
         "description": "Full transparency on GitHub. Cryptographic implementations reviewed and auditable by security experts"
       },
       "blind": {
-        "title": "Server Blindness",
-        "description": "Backend sees only encrypted blobs (ChaCha20-Poly1305) and routing metadata. Content never exposed"
+        "title": "Relay-Only Architecture",
+        "description": "Server never stores messages. Encrypted envelopes are relayed in real-time and queued temporarily for offline users. Zero plaintext exposure"
       },
       "desktop": {
-        "title": "Desktop-First Client",
-        "description": "Native Electron app for macOS, Windows, Linux with local key storage and OS-level encryption"
+        "title": "Cross-Platform",
+        "description": "Native apps for macOS, Windows, Linux, iOS, and Android. Message history stays on your devices—synced peer-to-peer"
       }
+    }
+  },
+  "infrastructure": {
+    "badge": "Production-Grade Infrastructure",
+    "title": "Built to Scale",
+    "subtitle": "Rail Gun's relay infrastructure is engineered for 100,000+ concurrent connections with sub-100ms message delivery. No compromises on speed or privacy.",
+    "items": {
+      "nats": {
+        "title": "NATS JetStream Event Bus",
+        "description": "High-throughput inter-service messaging at 10M+ messages/sec. Durable streams for push notifications, ephemeral for presence and typing"
+      },
+      "gateway": {
+        "title": "Dedicated Gateway Service",
+        "description": "Stateless WebSocket relay decoupled from the API. Scales independently to handle connection surges without impacting REST endpoints"
+      },
+      "multiRegion": {
+        "title": "Multi-Region Deployment",
+        "description": "Deployed across multiple Fly.io regions with Redis pub/sub for cross-machine broadcasting. Your messages take the shortest path"
+      },
+      "p2p": {
+        "title": "P2P Hybrid Transport",
+        "description": "50%+ of messages bypass servers entirely via WebRTC data channels. Reduces latency, cost, and surveillance surface simultaneously"
+      },
+      "observability": {
+        "title": "Full Observability Stack",
+        "description": "Prometheus metrics, Grafana dashboards, OpenTelemetry distributed tracing, and Jaeger. Every relay hop is measurable"
+      },
+      "autoScale": {
+        "title": "Auto-Scaling",
+        "description": "Metric-driven scaling across API, gateway, and worker processes. Scales up in seconds based on connection count and queue depth"
+      },
+      "push": {
+        "title": "Push Notifications",
+        "description": "FCM (Android) and APNs (iOS) push notifications for offline message delivery. No metadata stored—only encrypted wake-up signals"
+      },
+      "loadTested": {
+        "title": "Load Tested to 100K",
+        "description": "k6 stress-tested with 100,000 concurrent WebSocket connections, message relay under load, and burst traffic simulation"
+      }
+    },
+    "stats": {
+      "connections": "Concurrent Connections",
+      "messagesPerSec": "Messages Per Second",
+      "p95Latency": "p95 Relay Latency",
+      "uptime": "Target Uptime"
     }
   },
   "waitlist": {
@@ -98,11 +144,13 @@
       "libsodium / NaCl (Curve25519, ChaCha20-Poly1305)",
       "HMAC-based Key Derivation Function (HKDF)",
       "Local key generation and storage (never transmitted)",
+      "Relay-only architecture (messages never stored on server)",
       "Open source and auditable (GitHub)",
       "No phone number required",
       "Metadata minimization (routing only)",
       "Forward Secrecy & Backward Secrecy",
-      "Deniable Authentication"
+      "Deniable Authentication",
+      "P2P hybrid transport (WebRTC, 50%+ off-server)"
     ],
     "verify": {
       "title": "Verify Your Download",

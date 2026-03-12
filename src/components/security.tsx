@@ -20,6 +20,8 @@ export function Security() {
     t('features.9'),
     t('features.10'),
     t('features.11'),
+    t('features.12'),
+    t('features.13'),
   ];
 
   return (
