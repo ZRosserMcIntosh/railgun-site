@@ -3,14 +3,16 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, LogIn, Mail } from 'lucide-react';
 import { siteConfig } from '@/lib/config';
 import { cn } from '@/lib/utils';
 import { LanguageSwitcher } from './language-switcher';
 import { useTranslations } from '@/i18n/provider';
+import { useAuth } from '@/lib/auth-context';
 
 export function Header() {
   const { t } = useTranslations('nav');
+  const { isAuthenticated } = useAuth();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -72,14 +74,23 @@ export function Header() {
             </Link>
           ))}
           <LanguageSwitcher />
-          <Link
-            href={siteConfig.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-lg bg-background-secondary px-4 py-2 text-sm font-medium transition-colors hover:bg-background-elevated"
-          >
-            {t('github')}
-          </Link>
+          {isAuthenticated ? (
+            <Link
+              href="/app/mail/inbox"
+              className="flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-accent-hover"
+            >
+              <Mail className="h-4 w-4" />
+              Open Mail
+            </Link>
+          ) : (
+            <Link
+              href="/login"
+              className="flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-accent-hover"
+            >
+              <LogIn className="h-4 w-4" />
+              Sign In
+            </Link>
+          )}
         </div>
 
         {/* Mobile Menu Button */}
@@ -111,15 +122,25 @@ export function Header() {
               </a>
             ))}
             <LanguageSwitcher className="w-full" />
-            <a
-              href={siteConfig.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full rounded-lg bg-background-secondary px-4 py-3 text-center font-medium transition-colors hover:bg-background-elevated"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {t('github')}
-            </a>
+            {isAuthenticated ? (
+              <Link
+                href="/app/mail/inbox"
+                className="flex w-full items-center justify-center gap-2 rounded-lg bg-accent px-4 py-3 font-medium text-white transition-colors hover:bg-accent-hover"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <Mail className="h-4 w-4" />
+                Open Mail
+              </Link>
+            ) : (
+              <Link
+                href="/login"
+                className="flex w-full items-center justify-center gap-2 rounded-lg bg-accent px-4 py-3 font-medium text-white transition-colors hover:bg-accent-hover"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <LogIn className="h-4 w-4" />
+                Sign In
+              </Link>
+            )}
           </div>
         </div>
       )}

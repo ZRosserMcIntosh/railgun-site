@@ -53,5 +53,6 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   // Match all paths except static files and API routes
+  // Note: /app/* auth protection is client-side via AuthProvider (tokens are in memory, not cookies)
   matcher: ['/((?!api|_next/static|_next/image|favicon.ico|.*\\..*).*)'],
 };

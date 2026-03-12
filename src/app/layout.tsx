@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 import { I18nClientWrapper } from '@/i18n/client-wrapper';
 import { StructuredData } from '@/components/structured-data';
+import { AuthProvider } from '@/lib/auth-context';
 import './globals.css';
 
 // Note: hreflang/alternates removed because locale switching is client-side only
@@ -119,7 +120,9 @@ export default function RootLayout({
         </Script>
 
         <I18nClientWrapper>
-          {children}
+          <AuthProvider>
+            {children}
+          </AuthProvider>
         </I18nClientWrapper>
       </body>
     </html>
