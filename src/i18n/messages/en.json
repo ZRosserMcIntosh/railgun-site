@@ -74,6 +74,10 @@
       "desktop": {
         "title": "Cross-Platform",
         "description": "Native apps for macOS, Windows, Linux, iOS, and Android. Message history stays on your devices—synced peer-to-peer"
+      },
+      "nuke": {
+        "title": "Nuke Button",
+        "description": "One-click account self-destruct with military-grade secure wipe. 100-pass overwrite destroys all keys, messages, and local data beyond forensic recovery"
       }
     }
   },

@@ -9,6 +9,7 @@ import {
   Code,
   Key,
   Eye,
+  Bomb,
 } from 'lucide-react';
 import { useTranslations } from '@/i18n/provider';
 
@@ -21,6 +22,7 @@ const featureIcons = {
   opensource: Code,
   blind: Eye,
   desktop: Monitor,
+  nuke: Bomb,
 };
 
 export function Features() {
@@ -66,6 +68,11 @@ export function Features() {
       icon: Monitor,
       title: t('items.desktop.title'),
       description: t('items.desktop.description'),
+    },
+    {
+      icon: Bomb,
+      title: t('items.nuke.title'),
+      description: t('items.nuke.description'),
     },
   ];
 
