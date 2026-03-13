@@ -279,3 +279,48 @@ export const mailApi = {
       { method: 'POST', body: dto },
     ),
 };
+
+// ─── Realtime API (Supabase Broadcast transport) ──────────────────
+
+export interface SendMessageDto {
+  channelId?: string;
+  recipientId?: string;
+  encryptedEnvelope?: string;
+  clientNonce: string;
+  protocolVersion?: number;
+  replyToId?: string;
+  deviceEnvelopes?: { deviceId: number; encryptedEnvelope: string }[];
+}
+
+export interface SendMessageResponse {
+  success: boolean;
+  messageId: string;
+  conversationId?: string;
+  conversationType?: string;
+  status: string;
+  duplicate?: boolean;
+  createdAt?: string;
+}
+
+export const realtimeApi = {
+  /** Send a message (server relays + broadcasts via Supabase) */
+  send: (dto: SendMessageDto) =>
+    apiFetch<SendMessageResponse>('/realtime/send', {
+      method: 'POST',
+      body: dto,
+    }),
+
+  /** Send typing indicator */
+  typing: (channelId?: string, conversationId?: string, isTyping = true) =>
+    apiFetch<{ success: boolean }>('/realtime/typing', {
+      method: 'POST',
+      body: { channelId, conversationId, isTyping },
+    }),
+
+  /** Update presence status */
+  presence: (status: string) =>
+    apiFetch<{ success: boolean }>('/realtime/presence', {
+      method: 'POST',
+      body: { status },
+    }),
+};
