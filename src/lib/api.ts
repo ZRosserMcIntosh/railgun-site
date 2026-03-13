@@ -230,6 +230,8 @@ export interface MailMessage {
   to: string;
   subject: string;
   body: string;
+  encryptedSubject?: string;
+  encryptedBody?: string;
   isRead?: boolean;
   isInternal?: boolean;
   threadId?: string;
