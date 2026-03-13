@@ -23,7 +23,7 @@ import {
 export const metadata: Metadata = {
   title: 'Threat Shield — Local Spyware Indicator Detection',
   description:
-    'How Rail Gun detects known indicators consistent with Pegasus-class compromise, including static analysis, behavioral anomaly detection, and network forensics. Open source and fully auditable.',
+    'How Rail Gun detects known indicators consistent with Pegasus-class compromise, including static IOC analysis, behavioral anomaly detection, and C2 network monitoring. Open source and fully auditable.',
   alternates: {
     canonical: 'https://railgun.chat/threat-detection',
   },
@@ -123,14 +123,13 @@ export default function ThreatDetectionPage() {
           <ol className="space-y-2 text-sm">
             <li><a href="#overview" className="text-accent hover:underline">1. Detection Architecture</a></li>
             <li><a href="#layer1" className="text-accent hover:underline">2. Layer 1: Static Indicator Analysis</a></li>
-            <li><a href="#layer2" className="text-accent hover:underline">3. Layer 2: Behavioral Anomaly Detection</a></li>
-            <li><a href="#layer3" className="text-accent hover:underline">4. Layer 3: Network Forensics</a></li>
-            <li><a href="#scoring" className="text-accent hover:underline">5. Threat Scoring Mathematics</a></li>
-            <li><a href="#response" className="text-accent hover:underline">6. Automated Response</a></li>
-            <li><a href="#recovery" className="text-accent hover:underline">7. Lockdown Recovery Flow</a></li>
-            <li><a href="#spyware" className="text-accent hover:underline">8. Known Spyware Signatures</a></li>
-            <li><a href="#operational" className="text-accent hover:underline">9. Operational Status</a></li>
-            <li><a href="#privacy" className="text-accent hover:underline">10. Privacy Guarantees</a></li>
+            <li><a href="#layer2" className="text-accent hover:underline">3. Layer 2: Behavioral & Network Monitoring</a></li>
+            <li><a href="#scoring" className="text-accent hover:underline">4. Threat Scoring</a></li>
+            <li><a href="#response" className="text-accent hover:underline">5. Automated Response</a></li>
+            <li><a href="#recovery" className="text-accent hover:underline">6. Lockdown Recovery Flow</a></li>
+            <li><a href="#spyware" className="text-accent hover:underline">7. Known Spyware Signatures</a></li>
+            <li><a href="#operational" className="text-accent hover:underline">8. Operational Status</a></li>
+            <li><a href="#privacy" className="text-accent hover:underline">9. Privacy Guarantees</a></li>
           </ol>
         </nav>
 
@@ -143,9 +142,10 @@ export default function ThreatDetectionPage() {
             <h2 className="text-2xl font-bold">1. Detection Architecture</h2>
           </div>
           <p className="text-foreground-secondary leading-relaxed">
-            Threat Shield uses a <strong className="text-foreground-primary">three-layer defense</strong> model, inspired by the approach
+            Threat Shield uses a <strong className="text-foreground-primary">two-layer defense</strong> model, inspired by the approach
             used by <a href="https://github.com/mvt-project/mvt" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">Amnesty International&apos;s MVT</a> (Mobile
-            Verification Toolkit), adapted for real-time desktop detection.
+            Verification Toolkit), adapted for real-time desktop detection. An additional Update Shield
+            gates the update mechanism on device health.
           </p>
 
           <div className="mt-6 grid gap-4 sm:grid-cols-3">
@@ -153,19 +153,19 @@ export default function ThreatDetectionPage() {
               {
                 icon: FileSearch,
                 title: 'Layer 1: Static',
-                desc: 'File artifacts, certificates, process enumeration. Runs on every app launch. ~50ms.',
+                desc: 'File artifacts, certificates, process enumeration, stalkerware detection, debugger & injection checks. Runs on every app launch. ~50ms.',
                 color: 'text-green-400',
               },
               {
                 icon: Activity,
                 title: 'Layer 2: Behavioral',
-                desc: 'CPU/memory anomalies, suspicious library injection, debugger detection. Runs periodically.',
+                desc: 'C2 network connection monitoring, CPU usage anomalies, suspicious listening ports, library injection detection. Runs every 15 minutes.',
                 color: 'text-yellow-400',
               },
               {
-                icon: Wifi,
-                title: 'Layer 3: Network',
-                desc: 'DNS resolution to known C2 infrastructure, unusual connection patterns. Background monitoring.',
+                icon: Lock,
+                title: 'Update Shield',
+                desc: 'Blocks updates if device appears compromised. Verifies binary hash against signed manifest before applying.',
                 color: 'text-red-400',
               },
             ].map((layer) => (
@@ -270,120 +270,94 @@ export default function ThreatDetectionPage() {
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-yellow-500/10">
               <Activity className="h-5 w-5 text-yellow-400" />
             </div>
-            <h2 className="text-2xl font-bold">3. Layer 2: Behavioral Anomaly Detection</h2>
+            <h2 className="text-2xl font-bold">3. Layer 2: Behavioral &amp; Network Monitoring</h2>
           </div>
           <p className="text-foreground-secondary leading-relaxed">
             Advanced spyware like Pegasus may not leave static file artifacts (especially
             zero-click exploits that operate entirely in memory). Layer 2 detects anomalous
-            runtime behavior that indicates active surveillance.
+            runtime behavior and network connections that indicate active surveillance.
+            These checks run every 15 minutes in the background.
           </p>
 
           <div className="mt-6 rounded-xl border border-foreground-secondary/20 bg-background-secondary p-6">
-            <h3 className="font-semibold mb-3">CPU & Memory Anomaly Detection</h3>
+            <h3 className="font-semibold mb-3">C2 Network Connection Monitoring</h3>
             <p className="text-sm text-foreground-secondary mb-4">
-              Spyware performing data exfiltration, audio/video capture, or keylogging
-              consumes measurable CPU and memory. Threat Shield establishes a baseline
-              and flags significant deviations:
+              Spyware communicates with Command &amp; Control (C2) servers to exfiltrate data.
+              Threat Shield checks active network connections against known C2 infrastructure
+              from public threat intelligence:
             </p>
-            <div className="overflow-x-auto rounded-lg bg-background-elevated p-4 font-mono text-xs space-y-2">
-              <p className="text-foreground-tertiary">{'//'} Statistical anomaly detection</p>
-              <p>baseline_cpu = moving_average(cpu_samples, window=60s)</p>
-              <p>baseline_mem = moving_average(mem_samples, window=60s)</p>
-              <p className="mt-2">current_cpu = measure()</p>
-              <p>deviation = |current_cpu - baseline_cpu| / stddev(cpu_samples)</p>
-              <p className="mt-2">if deviation &gt; 3.0:  <span className="text-foreground-tertiary">{'// 3 sigma = 99.7% confidence'}</span></p>
-              <p>  emit ThreatIndicator(</p>
-              <p>    category: &quot;battery_anomaly&quot;,</p>
-              <p>    severity: deviation &gt; 5.0 ? &quot;high&quot; : &quot;medium&quot;</p>
-              <p>  )</p>
+            <div className="overflow-x-auto rounded-lg bg-background-elevated p-4 font-mono text-xs space-y-1">
+              <p className="text-foreground-tertiary">{'//'} Check active connections against known C2 IPs</p>
+              <p>connections = exec(&quot;netstat -an | grep ESTABLISHED&quot;)</p>
+              <p>for each prefix in KNOWN_C2_IP_PREFIXES:</p>
+              <p>  if connections.includes(prefix):</p>
+              <p>    emit ThreatIndicator(severity: &quot;high&quot;)</p>
+              <p className="mt-2 text-foreground-tertiary">{'//'} Also check against known C2 domains</p>
+              <p>host_connections = exec(&quot;lsof -i -nP | grep ESTABLISHED&quot;)</p>
+              <p>for each domain in KNOWN_C2_DOMAINS:</p>
+              <p>  if host_connections matches domain pattern:</p>
+              <p>    emit ThreatIndicator(severity: &quot;high&quot;)</p>
             </div>
             <p className="mt-4 text-sm text-foreground-secondary">
-              This uses the <strong className="text-foreground-primary">Z-score method</strong>: if the current value is more than
-              3 standard deviations from the rolling mean, it&apos;s flagged. This catches background
-              exfiltration that Pegasus performs in bursts to evade simple threshold checks.
+              Sources: Amnesty International, Citizen Lab, and open threat intelligence feeds.
+              Includes known NSO Group infrastructure, Cytrox/Intellexa domains, and documented
+              Pegasus CDN fronts.
             </p>
+          </div>
+
+          <div className="mt-6 rounded-xl border border-foreground-secondary/20 bg-background-secondary p-6">
+            <h3 className="font-semibold mb-3">CPU Usage Anomaly Detection</h3>
+            <p className="text-sm text-foreground-secondary mb-4">
+              Spyware performing data exfiltration, audio/video capture, or keylogging
+              consumes measurable CPU. Threat Shield establishes a baseline and flags
+              significant deviations between scan intervals:
+            </p>
+            <div className="overflow-x-auto rounded-lg bg-background-elevated p-4 font-mono text-xs space-y-2">
+              <p className="text-foreground-tertiary">{'//'} CPU delta detection between 15-minute scans</p>
+              <p>cpu_usage = process.cpuUsage()</p>
+              <p>total_cpu = (cpu_usage.user + cpu_usage.system) / 1e6  <span className="text-foreground-tertiary">{'// seconds'}</span></p>
+              <p className="mt-2">if baseline exists:</p>
+              <p>  delta = total_cpu - baseline</p>
+              <p>  if delta &gt; 60:  <span className="text-foreground-tertiary">{'// 60+ CPU-seconds between scans'}</span></p>
+              <p>    emit ThreatIndicator(severity: &quot;low&quot;)</p>
+              <p>baseline = total_cpu</p>
+            </div>
+            <p className="mt-4 text-sm text-foreground-secondary">
+              This catches background exfiltration that Pegasus performs in bursts. A single
+              CPU anomaly emits a low-severity indicator — it takes corroborating static evidence
+              to escalate beyond SUSPICIOUS.
+            </p>
+          </div>
+
+          <div className="mt-6 rounded-xl border border-foreground-secondary/20 bg-background-secondary p-6">
+            <h3 className="font-semibold mb-3">Suspicious Port Detection</h3>
+            <p className="text-sm text-foreground-secondary mb-4">
+              Certain listening ports indicate active instrumentation or proxy interception:
+            </p>
+            <div className="overflow-x-auto rounded-lg bg-background-elevated p-4 font-mono text-xs space-y-1">
+              <p className="text-foreground-tertiary">{'//'} Ports checked</p>
+              <p>27042, 27043  <span className="text-foreground-tertiary">{'// Frida default ports → critical'}</span></p>
+              <p>1080          <span className="text-foreground-tertiary">{'// SOCKS proxy → medium'}</span></p>
+              <p>8080, 8888, 9090  <span className="text-foreground-tertiary">{'// Common proxy/debug ports → low'}</span></p>
+            </div>
           </div>
 
           <div className="mt-6 rounded-xl border border-foreground-secondary/20 bg-background-secondary p-6">
             <h3 className="font-semibold mb-3">Library Injection Detection</h3>
             <p className="text-sm text-foreground-secondary mb-4">
               On macOS, spyware injects dynamic libraries into running processes. Threat Shield
-              checks loaded dylibs against a whitelist:
+              checks for known injection mechanisms and suspicious loaded libraries:
             </p>
             <div className="overflow-x-auto rounded-lg bg-background-elevated p-4 font-mono text-xs space-y-1">
               <p className="text-foreground-tertiary">{'//'} macOS: Check for injected libraries</p>
-              <p>loaded_libs = exec(&quot;vmmap PID | grep .dylib&quot;)</p>
-              <p>suspicious = loaded_libs.filter(lib =&gt;</p>
-              <p>  !lib.starts_with(&quot;/System/&quot;) &amp;&amp;</p>
-              <p>  !lib.starts_with(&quot;/usr/lib/&quot;) &amp;&amp;</p>
-              <p>  !lib.starts_with(&quot;/Library/Frameworks/&quot;) &amp;&amp;</p>
-              <p>  !lib.is_code_signed_by_apple()</p>
-              <p>)</p>
-              <p className="mt-2 text-foreground-tertiary">{'//'} Known malicious library patterns</p>
-              <p>MALICIOUS_PATTERNS = [</p>
-              <p>  &quot;frida-agent&quot;, &quot;substrate&quot;, &quot;cycript&quot;,</p>
-              <p>  &quot;libimobiledevice&quot;, &quot;SSLKillSwitch&quot;</p>
-              <p>]</p>
+              <p>if DYLD_INSERT_LIBRARIES is set → critical</p>
+              <p>if LD_PRELOAD is set → critical</p>
+              <p className="mt-2">loaded_libs = exec(&quot;vmmap PID | grep .dylib&quot;)</p>
+              <p>suspicious_patterns = [&quot;frida&quot;, &quot;substrate&quot;, &quot;cycript&quot;, &quot;inject&quot;, &quot;hook&quot;, &quot;spy&quot;]</p>
+              <p>for each lib in loaded_libs:</p>
+              <p>  if lib matches any suspicious_pattern:</p>
+              <p>    emit ThreatIndicator(severity: &quot;high&quot;)</p>
             </div>
-          </div>
-        </section>
-
-        {/* Layer 3: Network Forensics */}
-        <section id="layer3" className="mt-16">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-red-500/10">
-              <Wifi className="h-5 w-5 text-red-400" />
-            </div>
-            <h2 className="text-2xl font-bold">4. Layer 3: Network Forensics</h2>
-          </div>
-          <p className="text-foreground-secondary leading-relaxed">
-            Pegasus and Predator communicate with Command &amp; Control (C2) servers
-            to exfiltrate data. Threat Shield checks DNS resolutions and active
-            connections against known C2 infrastructure from public threat intelligence.
-          </p>
-
-          <div className="mt-6 rounded-xl border border-foreground-secondary/20 bg-background-secondary p-6">
-            <h3 className="font-semibold mb-3">Known C2 Infrastructure</h3>
-            <p className="text-sm text-foreground-secondary mb-4">
-              Sources: Amnesty International, Citizen Lab, MITRE ATT&CK, and open threat intelligence feeds.
-              C2 indicators include domains, IP ranges, and TLS certificate fingerprints:
-            </p>
-            <div className="overflow-x-auto rounded-lg bg-background-elevated p-4 font-mono text-xs space-y-1">
-              <p className="text-foreground-tertiary">{'//'} Known C2 domains from public threat intel</p>
-              <p>C2_DOMAINS = [</p>
-              <p>  &quot;*.amazonaws.com.cdn77.org&quot;,     <span className="text-foreground-tertiary">{'// Pegasus CDN front'}</span></p>
-              <p>  &quot;imgcache-us.azureedge.net&quot;,     <span className="text-foreground-tertiary">{'// Pegasus Azure front'}</span></p>
-              <p>  &quot;pcap.digital&quot;,                  <span className="text-foreground-tertiary">{'// Known NSO domain'}</span></p>
-              <p>  &quot;*.cytrox.com&quot;,                  <span className="text-foreground-tertiary">{'// Predator (Cytrox)'}</span></p>
-              <p>  &quot;*.intellexa.com&quot;,               <span className="text-foreground-tertiary">{'// Predator (Intellexa)'}</span></p>
-              <p>]</p>
-            </div>
-          </div>
-
-          <div className="mt-6 rounded-xl border border-foreground-secondary/20 bg-background-secondary p-6">
-            <h3 className="font-semibold mb-3">DNS Anomaly Detection</h3>
-            <p className="text-sm text-foreground-secondary mb-4">
-              Beyond known domains, Threat Shield detects suspicious DNS patterns that indicate
-              C2 communication, even to previously unknown infrastructure:
-            </p>
-            <div className="overflow-x-auto rounded-lg bg-background-elevated p-4 font-mono text-xs space-y-2">
-              <p className="text-foreground-tertiary">{'//'} Entropy-based DNS anomaly detection</p>
-              <p>for each dns_query in recent_queries:</p>
-              <p>  entropy = shannon_entropy(query.domain)</p>
-              <p>  if entropy &gt; 4.5:  <span className="text-foreground-tertiary">{'// Random-looking domains'}</span></p>
-              <p>    flag as suspicious</p>
-              <p className="mt-2 text-foreground-tertiary">{'//'} Shannon entropy formula</p>
-              <p>H(X) = -Σ p(xᵢ) · log₂(p(xᵢ))</p>
-              <p className="mt-2 text-foreground-tertiary">{'//'} Normal domains: H ≈ 2.5-3.5</p>
-              <p className="text-foreground-tertiary">{'//'} DGA domains:    H ≈ 4.0-5.0</p>
-              <p className="text-foreground-tertiary">{'//'} Random/C2:      H &gt; 4.5</p>
-            </div>
-            <p className="mt-4 text-sm text-foreground-secondary">
-              <strong className="text-foreground-primary">Shannon entropy</strong> measures the randomness of a string.
-              Domain Generation Algorithms (DGAs) used by spyware produce high-entropy domains
-              like <code className="rounded bg-background-elevated px-1.5 py-0.5 text-xs">a8f3k2x9m.example.com</code> that
-              score significantly higher than normal domains like <code className="rounded bg-background-elevated px-1.5 py-0.5 text-xs">mail.google.com</code>.
-            </p>
           </div>
         </section>
 
@@ -393,72 +367,66 @@ export default function ThreatDetectionPage() {
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10">
               <Cpu className="h-5 w-5 text-accent" />
             </div>
-            <h2 className="text-2xl font-bold">5. Threat Scoring Mathematics</h2>
+            <h2 className="text-2xl font-bold">4. Threat Scoring</h2>
           </div>
           <p className="text-foreground-secondary leading-relaxed">
-            Individual indicators are aggregated into a <strong className="text-foreground-primary">composite threat score</strong> using
-            weighted severity classification. This prevents false positives from a single
+            Individual indicators are aggregated into a <strong className="text-foreground-primary">composite threat level</strong> using
+            severity classification. This prevents false positives from a single
             low-confidence indicator while ensuring high-severity findings trigger immediate action.
           </p>
 
           <div className="mt-6 rounded-xl border border-foreground-secondary/20 bg-background-secondary p-6">
-            <h3 className="font-semibold mb-3">Severity Weights</h3>
+            <h3 className="font-semibold mb-3">Severity Classification</h3>
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-foreground-secondary/10">
                     <th className="px-3 py-2 text-left">Severity</th>
-                    <th className="px-3 py-2 text-left">Weight</th>
                     <th className="px-3 py-2 text-left">Example</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-foreground-secondary/10 text-foreground-secondary">
-                  <tr><td className="px-3 py-2 font-medium text-foreground-primary">Critical</td><td className="px-3 py-2 text-red-400 font-mono">10.0</td><td className="px-3 py-2">Pegasus staging directory found</td></tr>
-                  <tr><td className="px-3 py-2 font-medium text-foreground-primary">High</td><td className="px-3 py-2 text-yellow-400 font-mono">5.0</td><td className="px-3 py-2">Known C2 domain resolved</td></tr>
-                  <tr><td className="px-3 py-2 font-medium text-foreground-primary">Medium</td><td className="px-3 py-2 text-blue-400 font-mono">2.0</td><td className="px-3 py-2">CPU anomaly (3σ deviation)</td></tr>
-                  <tr><td className="px-3 py-2 font-medium text-foreground-primary">Low</td><td className="px-3 py-2 text-green-400 font-mono">1.0</td><td className="px-3 py-2">Single unsigned dylib loaded</td></tr>
+                  <tr><td className="px-3 py-2 font-medium text-red-400">Critical</td><td className="px-3 py-2">Pegasus staging directory found, Frida ports open, DYLD injection</td></tr>
+                  <tr><td className="px-3 py-2 font-medium text-yellow-400">High</td><td className="px-3 py-2">C2 IP/domain match, MitM proxy certificate, debugger attached</td></tr>
+                  <tr><td className="px-3 py-2 font-medium text-blue-400">Medium</td><td className="px-3 py-2">System proxy active, SOCKS port listening, excess certificates</td></tr>
+                  <tr><td className="px-3 py-2 font-medium text-green-400">Low</td><td className="px-3 py-2">CPU usage anomaly, common proxy/debug port open</td></tr>
                 </tbody>
               </table>
             </div>
           </div>
 
           <div className="mt-6 rounded-xl border border-foreground-secondary/20 bg-background-secondary p-6">
-            <h3 className="font-semibold mb-3">Composite Score Formula</h3>
+            <h3 className="font-semibold mb-3">Escalation Logic</h3>
             <div className="overflow-x-auto rounded-lg bg-background-elevated p-4 font-mono text-xs space-y-2">
-              <p className="text-foreground-tertiary">{'//'} Aggregate all indicators into a threat score</p>
-              <p>threat_score = Σ weight(indicator.severity)</p>
-              <p className="mt-2 text-foreground-tertiary">{'//'} Threat Level thresholds</p>
-              <p>CLEAR     : score = 0</p>
-              <p>SUSPICIOUS: score ∈ [1, 5)     <span className="text-foreground-tertiary">{'// Warn user, continue'}</span></p>
-              <p>PROBABLE  : score ∈ [5, 10)    <span className="text-foreground-tertiary">{'// Reduced functionality'}</span></p>
-              <p>CONFIRMED : score ≥ 10         <span className="text-foreground-tertiary">{'// LOCKDOWN'}</span></p>
+              <p className="text-foreground-tertiary">{'//'} Threat Level determination</p>
+              <p>if any indicator.severity == &quot;critical&quot;:</p>
+              <p>  level = CONFIRMED</p>
+              <p className="mt-1">else if count(severity == &quot;high&quot;) &gt;= 2:</p>
+              <p>  level = CONFIRMED</p>
+              <p className="mt-1">else if has_static_evidence AND (has_high OR medium_count &gt;= 3):</p>
+              <p>  level = PROBABLE</p>
+              <p className="mt-1">else if has_high OR medium_count &gt;= 3:</p>
+              <p>  level = SUSPICIOUS  <span className="text-foreground-tertiary">{'// capped without static corroboration'}</span></p>
+              <p className="mt-1">else if medium_count &gt; 0 OR has_low:</p>
+              <p>  level = SUSPICIOUS</p>
+              <p className="mt-1">else:</p>
+              <p>  level = CLEAR</p>
             </div>
-            <p className="mt-4 text-sm text-foreground-secondary">
-              A single <em>critical</em> indicator (weight 10) immediately triggers CONFIRMED.
-              Multiple medium-confidence indicators can escalate to PROBABLE (e.g., CPU anomaly +
-              suspicious DNS + unsigned library = 2 + 2 + 1 = 5 → PROBABLE).
-            </p>
           </div>
 
           <div className="mt-6 rounded-xl border border-foreground-secondary/20 bg-background-secondary p-6">
             <h3 className="font-semibold mb-3">False Positive Mitigation</h3>
             <div className="space-y-2 text-sm text-foreground-secondary">
               <p>
-                <strong className="text-foreground-primary">Decay function:</strong> Old indicators reduce in weight over time.
-                A CPU spike from 10 minutes ago contributes less than one from 30 seconds ago:
-              </p>
-              <div className="overflow-x-auto rounded-lg bg-background-elevated p-3 font-mono text-xs">
-                <p>effective_weight = base_weight × e^(-λt)</p>
-                <p>where λ = 0.01, t = seconds since detection</p>
-              </div>
-              <p>
                 <strong className="text-foreground-primary">Correlation requirement:</strong> Behavioral indicators (Layer 2)
-                alone cannot exceed SUSPICIOUS level. At least one static (Layer 1) or network (Layer 3)
-                indicator must be present to escalate to PROBABLE.
+                alone cannot escalate beyond SUSPICIOUS. At least one static (Layer 1)
+                indicator must be present to reach PROBABLE. This means a coincidental CPU spike
+                or a developer running Charles Proxy will not lock you out of the app.
               </p>
               <p>
-                <strong className="text-foreground-primary">Whitelist:</strong> Known legitimate security tools (antivirus, MDM
-                agents, developer tools in debug mode) are excluded from process scanning.
+                <strong className="text-foreground-primary">Critical severity bypass:</strong> Critical findings (Pegasus file artifacts,
+                Frida injection, DYLD library hijacking) immediately escalate to CONFIRMED regardless
+                of source, because these are unambiguous indicators of compromise.
               </p>
             </div>
           </div>
@@ -470,7 +438,7 @@ export default function ThreatDetectionPage() {
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-red-500/10">
               <ShieldOff className="h-5 w-5 text-red-400" />
             </div>
-            <h2 className="text-2xl font-bold">6. Automated Response</h2>
+            <h2 className="text-2xl font-bold">5. Automated Response</h2>
           </div>
           <p className="text-foreground-secondary leading-relaxed">
             When a threat is detected, Rail Gun takes automatic protective action scaled
@@ -522,7 +490,7 @@ export default function ThreatDetectionPage() {
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-orange-500/10">
               <RefreshCw className="h-5 w-5 text-orange-400" />
             </div>
-            <h2 className="text-2xl font-bold">7. Lockdown Recovery Flow</h2>
+            <h2 className="text-2xl font-bold">6. Lockdown Recovery Flow</h2>
           </div>
           <p className="text-foreground-secondary leading-relaxed">
             A CONFIRMED lockdown is a serious event — it means Rail Gun believes
@@ -597,7 +565,7 @@ export default function ThreatDetectionPage() {
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10">
               <Eye className="h-5 w-5 text-accent" />
             </div>
-            <h2 className="text-2xl font-bold">8. Known Spyware Signatures</h2>
+            <h2 className="text-2xl font-bold">7. Known Spyware Signatures</h2>
           </div>
           <p className="text-foreground-secondary leading-relaxed">
             Threat Shield maintains an up-to-date database of indicators for these known
@@ -662,7 +630,7 @@ export default function ThreatDetectionPage() {
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10">
               <Clock className="h-5 w-5 text-accent" />
             </div>
-            <h2 className="text-2xl font-bold">9. Operational Status</h2>
+            <h2 className="text-2xl font-bold">8. Operational Status</h2>
           </div>
           <p className="text-foreground-secondary leading-relaxed">
             Security credibility requires transparency. Here are the boring, operational details that
@@ -681,12 +649,16 @@ export default function ThreatDetectionPage() {
                   <td className="px-4 py-3 text-foreground-secondary">Amnesty MVT, Citizen Lab, MITRE ATT&CK, open threat intel feeds</td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-3 font-medium text-foreground-primary whitespace-nowrap">Detection Engine Version</td>
-                  <td className="px-4 py-3 text-foreground-secondary font-mono">1.4.0</td>
+                  <td className="px-4 py-3 font-medium text-foreground-primary whitespace-nowrap">Static Checks</td>
+                  <td className="px-4 py-3 text-foreground-secondary font-mono">8 checks (debugger, file artifacts, processes, certs, injection, env tampering, proxy, stalkerware)</td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-3 font-medium text-foreground-primary whitespace-nowrap">Behavioral Checks</td>
+                  <td className="px-4 py-3 text-foreground-secondary font-mono">3 checks (C2 network connections, CPU anomaly, suspicious ports)</td>
                 </tr>
                 <tr>
                   <td className="px-4 py-3 font-medium text-foreground-primary whitespace-nowrap">Last Code Review</td>
-                  <td className="px-4 py-3 text-foreground-secondary">February 2026 (internal)</td>
+                  <td className="px-4 py-3 text-foreground-secondary">March 2026 (internal audit)</td>
                 </tr>
               </tbody>
             </table>
@@ -704,25 +676,21 @@ export default function ThreatDetectionPage() {
                     <th className="px-3 py-2 text-left">Platform</th>
                     <th className="px-3 py-2 text-left">Static (L1)</th>
                     <th className="px-3 py-2 text-left">Behavioral (L2)</th>
-                    <th className="px-3 py-2 text-left">Network (L3)</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-foreground-secondary/10 text-foreground-secondary">
                   <tr>
                     <td className="px-3 py-2 font-medium text-foreground-primary">macOS (arm64, x64)</td>
-                    <td className="px-3 py-2 text-green-400">Full</td>
-                    <td className="px-3 py-2 text-green-400">Full</td>
-                    <td className="px-3 py-2 text-green-400">Full</td>
+                    <td className="px-3 py-2 text-green-400">Full (8 checks)</td>
+                    <td className="px-3 py-2 text-green-400">Full (3 checks)</td>
                   </tr>
                   <tr>
                     <td className="px-3 py-2 font-medium text-foreground-primary">Windows (x64)</td>
                     <td className="px-3 py-2 text-green-400">Full</td>
                     <td className="px-3 py-2 text-green-400">Full</td>
-                    <td className="px-3 py-2 text-green-400">Full</td>
                   </tr>
                   <tr>
-                    <td className="px-3 py-2 font-medium text-foreground-primary">Linux (x64, AppImage / deb)</td>
-                    <td className="px-3 py-2 text-green-400">Full</td>
+                    <td className="px-3 py-2 font-medium text-foreground-primary">Linux (x64)</td>
                     <td className="px-3 py-2 text-yellow-400">Partial</td>
                     <td className="px-3 py-2 text-green-400">Full</td>
                   </tr>
@@ -741,9 +709,9 @@ export default function ThreatDetectionPage() {
                 Some indicators — debuggers, custom certificates, proxies like Charles, enterprise MDM agents —
                 are legitimate in developer and corporate environments. Threat Shield handles this in three ways:
               </p>
-              <p>• <strong className="text-foreground-primary">Whitelist:</strong> Known legitimate tools (Xcode instruments, Charles Proxy, corporate MDM agents) are excluded from process scanning by default.</p>
-              <p>• <strong className="text-foreground-primary">Correlation requirement:</strong> Behavioral indicators (Layer 2) alone cannot escalate beyond SUSPICIOUS. A false-positive CPU spike will not lock you out.</p>
-              <p>• <strong className="text-foreground-primary">User override:</strong> At SUSPICIOUS level, users can acknowledge and dismiss. The warning does not block app usage. Only PROBABLE and CONFIRMED restrict functionality, and those require corroborating evidence from multiple layers.</p>
+              <p>• <strong className="text-foreground-primary">Correlation requirement:</strong> Behavioral indicators (Layer 2) alone cannot escalate beyond SUSPICIOUS. A false-positive CPU spike or developer proxy will not lock you out.</p>
+              <p>• <strong className="text-foreground-primary">User override:</strong> At SUSPICIOUS level, users can acknowledge and dismiss. The warning does not block app usage. Only PROBABLE and CONFIRMED restrict functionality, and those require corroborating static evidence.</p>
+              <p>• <strong className="text-foreground-primary">Critical bypass:</strong> Only unambiguous indicators (Pegasus artifacts, Frida injection, library hijacking) can directly reach CONFIRMED. These have near-zero false positive rates.</p>
             </div>
           </div>
         </section>
@@ -754,7 +722,7 @@ export default function ThreatDetectionPage() {
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-success/10">
               <Lock className="h-5 w-5 text-success" />
             </div>
-            <h2 className="text-2xl font-bold">10. Privacy Guarantees</h2>
+            <h2 className="text-2xl font-bold">9. Privacy Guarantees</h2>
           </div>
           <p className="text-foreground-secondary leading-relaxed">
             Threat Shield was designed with the same privacy-first principles as the rest
