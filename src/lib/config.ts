@@ -13,7 +13,7 @@ const RELEASES_BASE = `https://github.com/${GITHUB_REPO}/releases`;
 
 // Current version - update this when releasing
 // This is overridden by NEXT_PUBLIC_APP_VERSION env var
-const VERSION = process.env.NEXT_PUBLIC_APP_VERSION || '1.0.0';
+const VERSION = process.env.NEXT_PUBLIC_APP_VERSION || '1.1.0';
 
 /**
  * Get download URL for a release artifact
